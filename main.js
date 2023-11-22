@@ -215,13 +215,13 @@ const renderAnimesList = (array) => {
       `<img class="anime-img" src="${elem.imageSrc}" alt="${elem.animeName}"/>`
     );
     const animeName = $(`<p class="anime-name">${elem.animeName}</p>`);
-    const animeGenre = $(`<p class="anime-genre">${elem.Genres}</p>`);
+    const AnimeGenresArray = elem.Genres.join(" ")
+    const animeGenre = $(`<p class="anime-genre">${AnimeGenresArray}</p>`);
     const animeStudio = $(`<p class="anime-studio">${elem.Studios}</p>`);
     const animeType = $(`<p class="anime-type">${elem.type}</p>`);
+    const animeFav = $(`<p class="anime-fav">FAV</p>`);
 
-
-
-    animeDiv.append(animeImage, animeName, animeGenre,animeStudio,animeType);
+    animeDiv.append(animeImage, animeName, animeGenre, animeStudio, animeType, animeFav);
     main.append(animeDiv);
   });
 };

@@ -39,11 +39,14 @@ html {
 }
 
 .anime-div {
+  border: 2px var(--main-color-2) solid;
+  border-radius: 5%;
   margin: 1%;
   width: 31%;
   display: grid;
   grid-template: repeat(4, 1fr) / 1fr 2fr;
   grid-template-areas: "Image Name" "Image Genre" "Image Studio" "Image Type";
+  position: relative;
 }
 
 .anime-img {
@@ -57,26 +60,35 @@ html {
   padding-top: 5%;
   padding-left: 5%;
   grid-area: Name;
+  overflow-wrap: break-word;
 }
 
 .anime-genre {
   padding-top: 5%;
   padding-left: 5%;
   grid-area: Genre;
+  overflow-wrap: break-word;
 }
 
 .anime-studio {
   padding-top: 5%;
   padding-left: 5%;
   grid-area: Studio;
+  overflow-wrap: break-word;
 }
 
 .anime-type {
   padding-left: 5%;
   padding-block: 5%;
   grid-area: Type;
+  overflow-wrap: break-word;
 }
 
+.anime-fav {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
 #footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
