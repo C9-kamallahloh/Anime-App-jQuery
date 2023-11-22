@@ -3,12 +3,15 @@
   padding: 0;
   box-sizing: border-box;
 }
-#test {
-  color: rgb(244, 238, 255);
-  color: rgb(220, 214, 247);
-  color: rgb(166, 177, 225);
-  color: rgb(66, 72, 116);
+
+:root {
+  --main-color-1: rgb(244, 238, 255);
+  --main-color-2: rgb(220, 214, 247);
+  --main-color-3: rgb(166, 177, 225);
+  --main-color-4: rgb(66, 72, 116);
+  --main-color-5: rgb(37, 41, 66);
 }
+
 html {
   margin: 0px;
   height: 100%;
@@ -28,41 +31,74 @@ html {
   padding: 15px;
   background-color: rgb(244, 238, 255);
 }
+
 #main {
   display: flex;
   flex-wrap: wrap;
   overflow-y: scroll;
 }
+
 .anime-div {
   margin: 1%;
-  width: 30%;
+  width: 31%;
   display: grid;
-  grid-template: repeat(4, 1fr) / 1.5fr 2fr;
-  grid-template-areas: "Image Name" "Image Genre" "Image Type" "Image Studio";
+  grid-template: repeat(4, 1fr) / 1fr 2fr;
+  grid-template-areas: "Image Name" "Image Genre" "Image Studio" "Image Type";
 }
+
 .anime-img {
   width: 100%;
+  align-self: center;
   grid-area: Image;
+  /* padding: 5%; */
 }
+
+.anime-name {
+  padding-top: 5%;
+  padding-left: 5%;
+  grid-area: Name;
+}
+
+.anime-genre {
+  padding-top: 5%;
+  padding-left: 5%;
+  grid-area: Genre;
+}
+
+.anime-studio {
+  padding-top: 5%;
+  padding-left: 5%;
+  grid-area: Studio;
+}
+
+.anime-type {
+  padding-left: 5%;
+  padding-block: 5%;
+  grid-area: Type;
+}
+
 #footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  /* align-items: end; */
 }
 
 #footer button {
   width: 100%;
+  max-height: 50px;
   height: 100%;
   font-size: large;
   border-style: hidden;
   color: rgb(244, 238, 255);
-  background-color: rgb(66, 72, 116);
+  background-color: var(--main-color-4);
 }
+
 #footer button:hover {
-  background-color: rgb(52, 57, 92);
+  background-color: var(--main-color-5);
 }
 
 #footer button:active {
-  background-color: rgb(166, 177, 225);
+  background-color: var(--main-color-3);
 }
 
 #home-button {
