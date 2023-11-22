@@ -1,9 +1,3 @@
-const body = $("body");
-const header = $("#header");
-const main = $("#main");
-const footer = $("#footer");
-// console.log(header[0].innerHTML);
-
 const animes = [
   {
     id: 1,
@@ -208,20 +202,49 @@ const animes = [
   },
 ];
 
+
+
+const body = $("body");
+const header = $("#header");
+const main = $("#main");
+const footer = $("#footer");
+// console.log(header[0].innerHTML);
+
+
 const renderAnimesList = (array) => {
   array.forEach((elem, i) => {
-    const animeDiv = $(`<div class="anime-div" id="${elem.id}"></div>`);
+    const animeDiv = $(`<div  id="${elem.id}"></div>`);
+    animeDiv.addClass("anime-div");
     const animeImage = $(
-      `<img class="anime-img" src="${elem.imageSrc}" alt="${elem.animeName}"/>`
+      `<img src="${elem.imageSrc}" alt="${elem.animeName}"/>`
     );
-    const animeName = $(`<p class="anime-name">${elem.animeName}</p>`);
-    const AnimeGenresArray = elem.Genres.join(" ")
-    const animeGenre = $(`<p class="anime-genre">${AnimeGenresArray}</p>`);
-    const animeStudio = $(`<p class="anime-studio">${elem.Studios}</p>`);
-    const animeType = $(`<p class="anime-type">${elem.type}</p>`);
-    const animeFav = $(`<p class="anime-fav">FAV</p>`);
+    animeImage.addClass("anime-img");
 
-    animeDiv.append(animeImage, animeName, animeGenre, animeStudio, animeType, animeFav);
+    const animeName = $(`<p>${elem.animeName}</p>`);
+    animeName.addClass("anime-name");
+
+    const AnimeGenresArray = elem.Genres.join(" ");
+    const animeGenre = $(`<p>${AnimeGenresArray}</p>`);
+    animeGenre.addClass("anime-genre");
+
+    const animeStudio = $(`<p>${elem.Studios}</p>`);
+    animeStudio.addClass("anime-studio");
+
+    const animeType = $(`<p>${elem.type}</p>`);
+    animeType.addClass("anime-type");
+
+    const animeFav = $(`<p class="anime-fav">FAV</p>`);
+    animeFav.addClass("anime-fav");
+
+    animeDiv.append(
+      animeImage,
+      animeName,
+      animeGenre,
+      animeStudio,
+      animeType,
+      animeFav
+    );
+
     main.append(animeDiv);
   });
 };
