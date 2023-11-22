@@ -206,7 +206,10 @@ const animes = [
 
 const body = $("body");
 const header = $("#header");
-const main = $("#main");
+const mainPage = $("#main-page");
+const userPage = $("#user-page");
+const animePage = $("#anime-page");
+const searchPage = $("#search-page");
 const footer = $("#footer");
 // console.log(header[0].innerHTML);
 
@@ -245,7 +248,7 @@ const renderAnimesList = (array) => {
       animeFav
     );
 
-    main.append(animeDiv);
+    mainPage.append(animeDiv);
   });
 };
 
