@@ -202,17 +202,46 @@ const animes = [
   },
 ];
 
-
-
 const body = $("body");
 const header = $("#header");
+
+
+
+const filterInput = $("#filter-input")
+const filterButton = $("#filter-button")
+
 const mainPage = $("#main-page");
 const userPage = $("#user-page");
 const animePage = $("#anime-page");
 const searchPage = $("#search-page");
+const settingPopUp = $("#setting-pop-up");
 const footer = $("#footer");
 // console.log(header[0].innerHTML);
 
+const home = $("#home");
+const homeButton = $("#home-button");
+
+const user = $("#user");
+const userButton = $("#user-button");
+
+const topRated = $("#top-rated");
+const topRatedButton = $("#top-rated-button");
+
+const setting = $("#setting");
+const settingButton = $("#setting-button");
+
+//* ///////////////////////////////////////////////////////////
+
+mainPage.css("display", "flex");
+// userPage.css("display","none");
+// animePage.css("display","none");
+// searchPage.css("display","none");
+userPage.hide();
+animePage.hide();
+searchPage.hide();
+settingPopUp.hide();
+
+//* ///////////////////////////////////////////////////////////
 
 const renderAnimesList = (array) => {
   array.forEach((elem, i) => {
@@ -253,3 +282,38 @@ const renderAnimesList = (array) => {
 };
 
 renderAnimesList(animes);
+
+
+filterButton.click(function () {
+    mainPage.hide();
+    userPage.hide();
+    animePage.hide();
+    searchPage.show();
+  //   settingPopUp.hide();
+  });
+
+
+homeButton.click(function () {
+  mainPage.css("display", "flex");
+  userPage.hide();
+  animePage.hide();
+  searchPage.hide();
+//   settingPopUp.hide();
+});
+userButton.click(function () {
+  mainPage.hide();
+  userPage.show();
+  animePage.hide();
+  searchPage.hide();
+//   settingPopUp.hide();
+});
+topRatedButton.click(function () {
+  mainPage.hide();
+  userPage.hide();
+  animePage.show();
+  searchPage.hide();
+//   settingPopUp.hide();
+});
+settingButton.click(function () {
+  settingPopUp.toggle();
+});

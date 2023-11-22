@@ -14,21 +14,35 @@
   <body>
     <div id="container">
       <header id="header">
-        <!-- <label for="search">Search:</label> -->
-        <input type="search" name="search" id="search" placeholder="Search" />
-        <button id="filter">Filter</button>
+        <!-- <label for="filter-input">Filter:</label> -->
+        <input
+          type="text"
+          name="filter-input"
+          id="filter-input"
+          placeholder="Filter"
+        />
+        <button id="filter-button">Filter</button>
       </header>
       <main id="main-page"></main>
-      <div id="user-page"></div>
-      <div id="anime-page"></div>
-      <div id="search-page"></div>
+      <div id="user-page"><p id="test">USER USER USER USER</p></div>
+      <div id="anime-page">
+        <p id="test">anime-page anime-page anime-page</p>
+      </div>
+      <div id="search-page">
+        <p id="test">search-page search-page search-page</p>
+      </div>
+      <div id="setting-pop-up">
+        setting-pop-up setting-pop-up setting-pop-up
+      </div>
       <footer id="footer">
         <div id="home"><button id="home-button">Home</button></div>
         <div id="user"><button id="user-button">User</button></div>
         <div id="top-rated">
           <button id="top-rated-button">Top-rated</button>
         </div>
-        <div id="setting"><button id="setting-button">Setting</button></div>
+        <div id="setting">
+          <button id="setting-button">Setting</button>
+        </div>
       </footer>
     </div>
     <script src="main.js"></script>
