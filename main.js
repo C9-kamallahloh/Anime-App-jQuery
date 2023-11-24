@@ -228,6 +228,7 @@ const searchPage = $("#search-page");
 const settingPopUp = $("#setting-pop-up");
 const darkButton = $("#dark-button");
 const lightButton = $("#light-button");
+const theme0 = $("#theme-0");
 const theme1 = $("#theme-1");
 const theme2 = $("#theme-2");
 
@@ -414,11 +415,11 @@ settingButton.click(function () {
 darkButton.click(function () {
   //! edit with it ( style.css / :root)
   root.css({
-    "--main-color-1": "rgb(37, 41, 66)",
-    "--main-color-2": "rgb(66, 72, 116)",
-    "--main-color-3": "rgb(166, 177, 225)",
-    "--main-color-4": "rgb(220, 214, 247)",
-    "--main-color-5": "rgb(244, 238, 255)",
+    "--main-color-1": "var(--main-color-1-b)",
+    "--main-color-2": "var(--main-color-2-b)",
+    "--main-color-3": "var(--main-color-3-b)",
+    "--main-color-4": "var(--main-color-4-b)",
+    "--main-color-5": "var(--main-color-5-b)",
   });
   darkButton.hide();
   lightButton.show();
@@ -427,34 +428,45 @@ darkButton.click(function () {
 lightButton.click(function () {
   //! edit with it ( style.css / :root)
   root.css({
-    "--main-color-1": "rgb(244, 238, 255)",
-    "--main-color-2": "rgb(220, 214, 247)",
-    "--main-color-3": "rgb(166, 177, 225)",
-    "--main-color-4": "rgb(66, 72, 116)",
-    "--main-color-5": "rgb(37, 41, 66)",
+    "--main-color-1": "var(--main-color-1-a)",
+    "--main-color-2": "var(--main-color-2-a)",
+    "--main-color-3": "var(--main-color-3-a)",
+    "--main-color-4": "var(--main-color-4-a)",
+    "--main-color-5": "var(--main-color-5-a)",
   });
   darkButton.show();
   lightButton.hide();
 });
 
+theme0.click(function () {
+  //! edit with it ( style.css / :root)
+  root.css({
+    "--main-color-1-a": "rgb(244, 238, 255)",
+    "--main-color-2-a": "rgb(220, 214, 247)",
+    "--main-color-3-a": "rgb(166, 177, 225)",
+    "--main-color-4-a": "rgb(66, 72, 116)",
+    "--main-color-5-a": "rgb(37, 41, 66)"
+  });
+});
+
 theme1.click(function () {
   //! edit with it ( style.css / :root)
   root.css({
-    "--main-color-1": "rgb(253, 247, 228)",
-    "--main-color-2": "rgb(250, 238, 209)",
-    "--main-color-3": "rgb(222, 208, 182)",
-    "--main-color-4": "rgb(187, 171, 140)",
-    "--main-color-5": "rgb(104, 96, 81)",
+    "--main-color-1-a": "rgb(253, 247, 228)",
+    "--main-color-2-a": "rgb(250, 238, 209)",
+    "--main-color-3-a": "rgb(222, 208, 182)",
+    "--main-color-4-a": "rgb(187, 171, 140)",
+    "--main-color-5-a": "rgb(104, 96, 81)",
   });
 });
 
 theme2.click(function () {
   //! edit with it ( style.css / :root)
   root.css({
-    "--main-color-1": "rgb(245, 245, 245)",
-    "--main-color-2": "rgb(8, 217, 214)",
-    "--main-color-3": "rgb(190, 190, 190)",
-    "--main-color-4": "rgb(255, 46, 99)",
-    "--main-color-5": "rgb(37, 42, 52)",
+    "--main-color-1-a": "rgb(245, 245, 245)",
+    "--main-color-2-a": "rgb(8, 217, 214)",
+    "--main-color-3-a": "rgb(190, 190, 190)",
+    "--main-color-4-a": "rgb(255, 46, 99)",
+    "--main-color-5-a": "rgb(37, 42, 52)",
   });
 });
