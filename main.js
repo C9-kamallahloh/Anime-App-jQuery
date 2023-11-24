@@ -265,8 +265,11 @@ const renderAnimesList = (array) => {
     const animeType = $(`<p>${elem.type}</p>`);
     animeType.addClass("anime-type");
 
-    const animeFav = $(`<p class="anime-fav">FAV</p>`);
+    const animeFav = $(`<p>FAV</p>`);
     animeFav.addClass("anime-fav");
+
+    const animeRate = $(`<p>${elem.rate}</p>`);
+    animeRate.addClass("anime-rate");
 
     animeDiv.append(
       animeImage,
@@ -274,7 +277,8 @@ const renderAnimesList = (array) => {
       animeGenre,
       animeStudio,
       animeType,
-      animeFav
+      animeFav,
+      animeRate
     );
 
     mainPage.append(animeDiv);
