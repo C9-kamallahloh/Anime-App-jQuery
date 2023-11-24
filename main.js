@@ -223,6 +223,9 @@ const searchPage = $("#search-page");
 const settingPopUp = $("#setting-pop-up");
 const darkButton = $("#dark-button");
 const lightButton = $("#light-button");
+const theme1 = $("#theme-1");
+const theme2 = $("#theme-2");
+
 
 const footer = $("#footer");
 // console.log(header[0].innerHTML);
@@ -387,3 +390,50 @@ lightButton.click(function () { //! edit with it ( style.css / :root)
   lightButton.hide();
 });
 
+theme1.click(function () { //! edit with it ( style.css / :root)
+  root.css({
+    "--main-color-1": "rgb(253, 247, 228)",
+    "--main-color-1-85": "rgba(253, 247, 228, 0.85)",
+    "--main-color-2": "rgb(250, 238, 209)",
+    "--main-color-3": "rgb(222, 208, 182)",
+    "--main-color-4": "rgb(187, 171, 140)",
+    "--main-color-5": "rgb(104, 96, 81)",
+  });
+});
+
+theme2.click(function () { //! edit with it ( style.css / :root)
+  root.css({
+    "--main-color-1": "rgb(245, 245, 245)",
+    "--main-color-1-85": "rgba(245, 245, 245, 0.85)",
+    "--main-color-2": "rgb(8, 217, 214)",
+    "--main-color-3": "rgb(190, 190, 190)",
+    "--main-color-4": "rgb(255, 46, 99)",
+    "--main-color-5": "rgb(37, 42, 52)",
+  });
+});
+
+// darkButton.click(function () { //! edit with it ( style.css / :root)
+//   root.css({
+//     "--main-color-1": "var(--main-color-5)",
+//     "--main-color-1-85": "rgb(37, 41, 66, 0.85)",
+//     "--main-color-2": "var(--main-color-4)",
+//     "--main-color-3": "var(--main-color-3)",
+//     "--main-color-4": "var(--main-color-2)",
+//     "--main-color-5": "var(--main-color-1)",
+//   });
+//   darkButton.hide();
+//   lightButton.show();
+// });
+
+// lightButton.click(function () { //! edit with it ( style.css / :root)
+//   root.css({
+//     "--main-color-1": "var(--main-color-1)",
+//     "--main-color-1-85": "rgba(244, 238, 255, 0.85)",
+//     "--main-color-2": "var(--main-color-2)",
+//     "--main-color-3": "var(--main-color-3)",
+//     "--main-color-4": "var(--main-color-4)",
+//     "--main-color-5": "var(--main-color-5)",
+//   });
+//   darkButton.show();
+//   lightButton.hide();
+// });

@@ -186,8 +186,8 @@ button {
 #setting-pop-up {
   position: fixed;
   display: grid;
-  grid-template: 1fr 1fr / repeat(2,1fr);
-  grid-template-areas: "DarkLight DarkLightToggle" "Sound SoundToggle" ;
+  grid-template: repeat(4,1fr) / 1fr 1fr;
+  grid-template-areas: "DarkLight DarkLightToggle" "theme1 theme1Toggle" "theme2 theme2Toggle" "Sound SoundToggle" ;
   right: 10%;
   bottom: 15%;
   height: 50vh;
