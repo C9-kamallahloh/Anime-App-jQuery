@@ -6,12 +6,32 @@
 
 :root {
   /* ! edit with it (main.js / darkButton.click lightButton.click) */
-  --main-color-1: rgb(244, 238, 255);
-  --main-color-1-85: rgba(244, 238, 255, 0.85);
-  --main-color-2: rgb(220, 214, 247);
-  --main-color-3: rgb(166, 177, 225);
-  --main-color-4: rgb(66, 72, 116);
-  --main-color-5: rgb(37, 41, 66);
+  --main-color-1: var(--main-color-1-a);
+  /* --main-color-1-85: rgba(244, 238, 255, 0.85); */
+  --main-color-2: var(--main-color-2-a);
+  --main-color-3: var(--main-color-3-a);
+  --main-color-4: var(--main-color-4-a);
+  --main-color-5: var(--main-color-5-a);
+
+
+  /* ! The applied theme original colors */
+  --main-color-1-a: rgb(244, 238, 255);
+  /* --main-color-1-85-a: rgba(244, 238, 255, 0.85); */
+  --main-color-2-a: rgb(220, 214, 247);
+  --main-color-3-a: rgb(166, 177, 225);
+  --main-color-4-a: rgb(66, 72, 116);
+  --main-color-5-a: rgb(37, 41, 66);
+
+
+  /* ! The applied theme reversed colors */
+  --main-color-1-b: var(--main-color-5-a);
+  /* --main-color-1-85-b: rgba(37, 41, 66, 0.85); */
+  --main-color-2-b: var(--main-color-4-a);
+  --main-color-3-b: var(--main-color-3-a);
+  --main-color-4-b: var(--main-color-2-a);
+  --main-color-5-b: var(--main-color-1-a);
+
+  
 }
 
 html {
@@ -134,7 +154,8 @@ html {
   bottom: 5%;
   left: 10%;
   color: var(--main-color-4);
-  background-color: var(--main-color-1-85);
+  background-color: var(--main-color-1);
+  opacity: 0.85;
   padding: 1%;
   border-radius: 25%;
   font-weight: bold;
