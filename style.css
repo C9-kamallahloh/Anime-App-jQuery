@@ -126,6 +126,24 @@ html {
   display: none;
 }
 
+#user-image {
+  margin: 2%;
+  height: 20vh;
+  width: 20vh;
+}
+
+#user-fav-div {
+  margin: 2%;
+
+}
+
+li.added-to-fav-1 {
+  color: red;
+}
+
+
+
+
 #anime-page {
   display: none;
 }

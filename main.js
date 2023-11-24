@@ -203,15 +203,19 @@ const animes = [
 ];
 
 const body = $("body");
+
 const header = $("#header");
-
-
-
-const filterInput = $("#filter-input")
-const filterButton = $("#filter-button")
+const filterInput = $("#filter-input");
+const filterButton = $("#filter-button");
 
 const mainPage = $("#main-page");
+
 const userPage = $("#user-page");
+const userDiv = $("#user-div");
+const userImage = $("#user-image");
+const userFavDiv = $("#user-fav-div");
+const userFavUl = $("#user-fav-ul");
+
 const animePage = $("#anime-page");
 const searchPage = $("#search-page");
 const settingPopUp = $("#setting-pop-up");
@@ -241,6 +245,31 @@ animePage.hide();
 searchPage.hide();
 settingPopUp.hide();
 
+//* ///////////////// Add Anime To User Fav //////////////////////
+
+const removeFromFav = function () {
+  $(`li.added-to-fav-${$(this).parent()[0].id}`).remove();
+  $(this).html("FAV");
+  $(this).off();
+  $(this).click(addToFav);
+};
+
+const addToFav = function () {
+  // console.log($(this).parent()[0].id);
+  // console.log(animes[($(this).parent()[0].id-1)].animeName);
+  const newAddedToFav = $(
+    `<li>${animes[$(this).parent()[0].id - 1].animeName}</li>`
+  );
+  newAddedToFav.addClass(
+    `added-to-fav-${animes[$(this).parent()[0].id - 1].id}`
+  );
+
+  userFavUl.append(newAddedToFav);
+  $(this).html("FAVed");
+  $(this).off();
+  $(this).click(removeFromFav);
+};
+
 //* ///////////////////////////////////////////////////////////
 
 const renderAnimesList = (array) => {
@@ -267,6 +296,7 @@ const renderAnimesList = (array) => {
 
     const animeFav = $(`<p>FAV</p>`);
     animeFav.addClass("anime-fav");
+    animeFav.click(addToFav);
 
     const animeRate = $(`<p>${elem.rate}</p>`);
     animeRate.addClass("anime-rate");
@@ -287,36 +317,34 @@ const renderAnimesList = (array) => {
 
 renderAnimesList(animes);
 
-
 filterButton.click(function () {
-    mainPage.hide();
-    userPage.hide();
-    animePage.hide();
-    searchPage.show();
+  mainPage.hide();
+  userPage.hide();
+  animePage.hide();
+  searchPage.show();
   //   settingPopUp.hide();
-  });
-
+});
 
 homeButton.click(function () {
   mainPage.css("display", "flex");
   userPage.hide();
   animePage.hide();
   searchPage.hide();
-//   settingPopUp.hide();
+  //   settingPopUp.hide();
 });
 userButton.click(function () {
   mainPage.hide();
   userPage.show();
   animePage.hide();
   searchPage.hide();
-//   settingPopUp.hide();
+  //   settingPopUp.hide();
 });
 topRatedButton.click(function () {
   mainPage.hide();
   userPage.hide();
   animePage.show();
   searchPage.hide();
-//   settingPopUp.hide();
+  //   settingPopUp.hide();
 });
 settingButton.click(function () {
   settingPopUp.toggle();
