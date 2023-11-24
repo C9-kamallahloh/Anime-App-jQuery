@@ -226,7 +226,6 @@ const lightButton = $("#light-button");
 const theme1 = $("#theme-1");
 const theme2 = $("#theme-2");
 
-
 const footer = $("#footer");
 // console.log(header[0].innerHTML);
 
@@ -262,6 +261,7 @@ const removeFromFav = function () {
   $(this).html("FAV");
   $(this).off();
   $(this).click(addToFav);
+  $(this).click(returnToHome);
 };
 
 const addToFav = function () {
@@ -278,6 +278,17 @@ const addToFav = function () {
   $(this).html("FAVed");
   $(this).off();
   $(this).click(removeFromFav);
+  $(this).click(returnToHome);
+};
+
+
+const returnToHome = function () {
+  setTimeout(() => {
+    mainPage.css("display", "flex");
+    userPage.hide();
+    animePage.hide();
+    searchPage.hide();
+  }, 0);
 };
 
 //* ///////////////////////////////////////////////////////
@@ -309,6 +320,7 @@ const renderAnimesList = (array) => {
     const animeFav = $(`<p>FAV</p>`);
     animeFav.addClass("anime-fav");
     animeFav.click(addToFav);
+    animeFav.click(returnToHome); //! click on both FAV and animeDiv at the same time
 
     const animeRate = $(`<p>${elem.rate}</p>`);
     animeRate.addClass("anime-rate");
@@ -322,6 +334,13 @@ const renderAnimesList = (array) => {
       animeFav,
       animeRate
     );
+
+    animeDiv.click(function () {
+      mainPage.hide();
+      userPage.hide();
+      animePage.show();
+      searchPage.hide();
+    });
 
     mainPage.append(animeDiv);
   });
@@ -364,7 +383,8 @@ topRatedButton.click(function () {
 settingButton.click(function () {
   settingPopUp.toggle();
 });
-darkButton.click(function () { //! edit with it ( style.css / :root)
+darkButton.click(function () {
+  //! edit with it ( style.css / :root)
   root.css({
     "--main-color-1": "rgb(37, 41, 66)",
     "--main-color-1-85": "rgb(37, 41, 66, 0.85)",
@@ -377,7 +397,8 @@ darkButton.click(function () { //! edit with it ( style.css / :root)
   lightButton.show();
 });
 
-lightButton.click(function () { //! edit with it ( style.css / :root)
+lightButton.click(function () {
+  //! edit with it ( style.css / :root)
   root.css({
     "--main-color-1": "rgb(244, 238, 255)",
     "--main-color-1-85": "rgba(244, 238, 255, 0.85)",
@@ -390,7 +411,8 @@ lightButton.click(function () { //! edit with it ( style.css / :root)
   lightButton.hide();
 });
 
-theme1.click(function () { //! edit with it ( style.css / :root)
+theme1.click(function () {
+  //! edit with it ( style.css / :root)
   root.css({
     "--main-color-1": "rgb(253, 247, 228)",
     "--main-color-1-85": "rgba(253, 247, 228, 0.85)",
@@ -401,7 +423,8 @@ theme1.click(function () { //! edit with it ( style.css / :root)
   });
 });
 
-theme2.click(function () { //! edit with it ( style.css / :root)
+theme2.click(function () {
+  //! edit with it ( style.css / :root)
   root.css({
     "--main-color-1": "rgb(245, 245, 245)",
     "--main-color-1-85": "rgba(245, 245, 245, 0.85)",

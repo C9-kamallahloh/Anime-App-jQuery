@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-:root { /* ! edit with it (main.js / darkButton.click lightButton.click) */
+:root {
+  /* ! edit with it (main.js / darkButton.click lightButton.click) */
   --main-color-1: rgb(244, 238, 255);
   --main-color-1-85: rgba(244, 238, 255, 0.85);
   --main-color-2: rgb(220, 214, 247);
@@ -110,6 +111,9 @@ html {
   position: absolute;
   bottom: 5%;
   right: 5%;
+  /* z-index: 1;
+  background: url(Media/User-image-default.jpg);
+  border: 2px var(--main-color-5) solid */
 }
 
 .anime-rate {
@@ -186,8 +190,8 @@ button {
 #setting-pop-up {
   position: fixed;
   display: grid;
-  grid-template: repeat(4,1fr) / 1fr 1fr;
-  grid-template-areas: "DarkLight DarkLightToggle" "theme1 theme1Toggle" "theme2 theme2Toggle" "Sound SoundToggle" ;
+  grid-template: repeat(4, 1fr) / 1fr 1fr;
+  grid-template-areas: "DarkLight DarkLightToggle" "theme1 theme1Toggle" "theme2 theme2Toggle" "Sound SoundToggle";
   right: 10%;
   bottom: 15%;
   height: 50vh;
@@ -203,4 +207,3 @@ button {
 #light-button {
   grid-area: DarkLightToggle;
 } */
-
