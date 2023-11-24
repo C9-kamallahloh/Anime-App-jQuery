@@ -203,6 +203,8 @@ const animes = [
 ];
 
 const body = $("body");
+const container = $("#container");
+const root = $(":root");
 
 const header = $("#header");
 const filterInput = $("#filter-input");
@@ -219,6 +221,9 @@ const userFavUl = $("#user-fav-ul");
 const animePage = $("#anime-page");
 const searchPage = $("#search-page");
 const settingPopUp = $("#setting-pop-up");
+const darkButton = $("#dark-button");
+const lightButton = $("#light-button");
+
 const footer = $("#footer");
 // console.log(header[0].innerHTML);
 
@@ -243,9 +248,11 @@ mainPage.css("display", "flex");
 userPage.hide();
 animePage.hide();
 searchPage.hide();
+// topRated.hide();
 settingPopUp.hide();
+lightButton.hide();
 
-//* ///////////////// Add Anime To User Fav //////////////////////
+//* ///////////////// Add/remove Anime To User Fav ///////////////////
 
 const removeFromFav = function () {
   $(`li.added-to-fav-${$(this).parent()[0].id}`).remove();
@@ -270,7 +277,9 @@ const addToFav = function () {
   $(this).click(removeFromFav);
 };
 
-//* ///////////////////////////////////////////////////////////
+//* ///////////////////////////////////////////////////////
+//* ///////////////// Render main page ////////////////////
+//* ///////////////////////////////////////////////////////
 
 const renderAnimesList = (array) => {
   array.forEach((elem, i) => {
@@ -332,6 +341,7 @@ homeButton.click(function () {
   searchPage.hide();
   //   settingPopUp.hide();
 });
+
 userButton.click(function () {
   mainPage.hide();
   userPage.show();
@@ -339,6 +349,7 @@ userButton.click(function () {
   searchPage.hide();
   //   settingPopUp.hide();
 });
+
 topRatedButton.click(function () {
   mainPage.hide();
   userPage.hide();
@@ -346,6 +357,33 @@ topRatedButton.click(function () {
   searchPage.hide();
   //   settingPopUp.hide();
 });
+
 settingButton.click(function () {
   settingPopUp.toggle();
 });
+darkButton.click(function () { //! edit with it ( style.css / :root)
+  root.css({
+    "--main-color-1": "rgb(37, 41, 66)",
+    "--main-color-1-85": "rgb(37, 41, 66, 0.85)",
+    "--main-color-2": "rgb(66, 72, 116)",
+    "--main-color-3": "rgb(166, 177, 225)",
+    "--main-color-4": "rgb(220, 214, 247)",
+    "--main-color-5": "rgb(244, 238, 255)",
+  });
+  darkButton.hide();
+  lightButton.show();
+});
+
+lightButton.click(function () { //! edit with it ( style.css / :root)
+  root.css({
+    "--main-color-1": "rgb(244, 238, 255)",
+    "--main-color-1-85": "rgba(244, 238, 255, 0.85)",
+    "--main-color-2": "rgb(220, 214, 247)",
+    "--main-color-3": "rgb(166, 177, 225)",
+    "--main-color-4": "rgb(66, 72, 116)",
+    "--main-color-5": "rgb(37, 41, 66)",
+  });
+  darkButton.show();
+  lightButton.hide();
+});
+
