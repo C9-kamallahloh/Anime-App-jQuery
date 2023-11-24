@@ -27,6 +27,29 @@
   --main-color-5-b: var(--main-color-1-a);
 }
 
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--main-color-2);
+  box-shadow: inset 2px 2px 5px var(--main-color-3);
+  border-radius: 7.5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-color-4);
+  box-shadow: inset 1px 1px 5px var(--main-color-1);
+  border-radius: 7.5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main-color-5);
+}
+::-webkit-scrollbar-corner {
+  background: var(--main-color-1);
+}
+
 html {
   margin: 0px;
   height: 100%;
@@ -52,7 +75,23 @@ html {
   grid-template-columns: 5fr 1fr;
   /* align-items: end; */
   position: relative;
+  gap: 2%;
 }
+
+#filter-input {
+  border-radius: 20px;
+  font-size: large;
+  padding-left: 20px;
+}
+
+#filter-button {
+  /* background: linear-gradient(
+    to right,
+    var(--main-color-4),
+    var(--main-color-3)
+  ); */
+}
+
 #main-page {
   display: flex;
   flex-wrap: wrap;
@@ -154,6 +193,11 @@ html {
   font-weight: bold;
 }
 
+.anime-rate::first-letter{
+  color: var(--main-color-5);
+  font-size:x-large;
+}
+
 #user-page {
   display: none;
 }
@@ -166,35 +210,73 @@ html {
 
 #user-fav-div {
   margin: 2%;
+  padding: 5%;
+  font-size: x-large;
 }
 
+li:nth-child(2n) {
+  background-color: var(--main-color-2);
+}
+li::marker{
+  color: var(--main-color-3);
+}
 /* li.added-to-fav-1 {
   color: red;
 } */
 
 #anime-page {
   display: grid;
-  grid-template: 2fr 1fr / 1fr 3fr;
-  grid-template-areas: "animePageImage animePageDescription" "animePageDetails animePageTrailer";
+  grid-template: 30vh 15vh 15vh 15vh / 30vw 60vw;
+  grid-template-areas:
+    "animePageImage animePageDescription"
+    "animePageImage animePageDescription"
+    "animePageDetails animePageTrailer"
+    "animePageDetails animePageTrailer";
   padding: 2%;
   gap: 2%;
 }
 
 #anime-page-image-div {
-  grid-area:animePageImage ;
+  grid-area: animePageImage;
+  justify-self: center;
 }
 .anime-page-img {
-  width: 100%;
+  width: calc(100% - 15px);
+  max-width: 300px;
+  max-height: 100%;
 }
 
 #anime-page-details-div {
-  grid-area:animePageDetails ;
+  grid-area: animePageDetails;
+  justify-self: center;
+  font-weight: bold;
+  font-size: larger;
+  overflow-y: scroll;
+  width: calc(100% - 15px);
 }
+
 #anime-page-description-div {
-  grid-area:animePageDescription ;
+  grid-area: animePageDescription;
+  overflow-y: scroll;
 }
+.anime-page-description {
+  /* display: -webkit-box;
+  -webkit-line-clamp: 25;
+  -webkit-box-orient: vertical;
+  overflow-y: scroll; */
+  /* text-wrap: wrap; */
+  width: calc(100% - 15px);
+}
+
 #anime-page-trailer-div {
-  grid-area:animePageTrailer ;
+  grid-area: animePageTrailer;
+  /* overflow-y: scroll; */
+  justify-self: center;
+}
+
+.anime-trailer {
+  height: 90%;
+  aspect-ratio: 16/9;
 }
 
 #search-page {
@@ -210,11 +292,21 @@ html {
 button {
   width: 100%;
   max-height: 50px;
+  min-height: 50px;
   height: 100%;
   font-size: large;
   border-style: hidden;
   color: var(--main-color-1);
   background-color: var(--main-color-4);
+  border-radius: 20px;
+
+  background: linear-gradient(
+    to right,
+    var(--main-color-3) 0%,
+    var(--main-color-4) 20%,
+    var(--main-color-4) 80%,
+    var(--main-color-3) 100%
+  );
 }
 
 #footer button:hover {
@@ -226,11 +318,21 @@ button {
 }
 
 #home-button {
+  border-radius: 0px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 
+#user-button {
+  border-radius: 0px;
+}
+
+#top-rated-button {
+  border-radius: 0px;
+}
+
 #setting-button {
+  border-radius: 0px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -246,7 +348,6 @@ button {
   min-height: 160px;
   width: 50vw;
   max-width: 300px;
-  background-color: var(--main-color-2);
   border: 2px var(--main-color-5) solid;
   padding: 2%;
   gap: 2%;
@@ -254,6 +355,12 @@ button {
   font-size: large;
   font-weight: bold;
   /* text-align: end; */
+
+  /* background-color: var(--main-color-2); */
+  background: radial-gradient(
+    var(--main-color-2) 75%,
+    var(--main-color-3) 100%
+  );
 }
 
 /* #dark-button {

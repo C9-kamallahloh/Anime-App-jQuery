@@ -13,6 +13,7 @@ const animes = [
     Genres: ["Drama", "Sci-Fi", "Suspense"],
     type: "TV",
     Studios: "White Fox",
+    trailerSrc: `https://www.youtube.com/embed/LwcTi86cFeg`,
   },
   {
     id: 2,
@@ -26,6 +27,7 @@ const animes = [
     Genres: ["Action", "Adventure", "Drama"],
     type: "TV",
     Studios: "Wit Studio",
+    trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
   },
   {
     id: 3,
@@ -40,6 +42,7 @@ const animes = [
     Genres: ["Drama", "Romance", ""],
     type: "TV",
     Studios: "A-1 Pictures",
+    trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
   },
   {
     id: 4,
@@ -55,6 +58,7 @@ const animes = [
     Genres: ["Drama", "Fantasy"],
     type: "TV",
     Studios: "Kyoto Animation",
+    trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
   },
   {
     id: 5,
@@ -71,6 +75,7 @@ const animes = [
     Genres: ["Action", "Drama", "Sci-Fi"],
     type: "TV",
     Studios: "Production I.G",
+    trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
   },
   {
     id: 6,
@@ -87,6 +92,7 @@ const animes = [
     Genres: ["Action", "Fantasy", "Supernatural"],
     type: "TV",
     Studios: "ufotable",
+    trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
   },
   {
     id: 7,
@@ -103,6 +109,7 @@ const animes = [
     Genres: ["Action", "Fantasy", "Supernatural"],
     type: "TV",
     Studios: "ufotable",
+    trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
   },
   {
     id: 8,
@@ -119,6 +126,7 @@ const animes = [
     Genres: ["Action", "Fantasy", "Supernatural"],
     type: "TV",
     Studios: "ufotable",
+    trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
   },
   {
     id: 9,
@@ -135,6 +143,7 @@ const animes = [
     Genres: ["Action", "Fantasy", "Supernatural"],
     type: "TV",
     Studios: "ufotable",
+    trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
   },
   {
     id: 10,
@@ -151,6 +160,7 @@ const animes = [
     Genres: ["Action", "Fantasy", "Supernatural"],
     type: "TV",
     Studios: "ufotable",
+    trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
   },
   {
     id: 11,
@@ -167,6 +177,7 @@ const animes = [
     Genres: ["Action", "Fantasy", "Supernatural"],
     type: "TV",
     Studios: "ufotable",
+    trailerSrc: "https://www.youtube.com/embed/LwcTi86cFeg",
   },
   {
     id: 12,
@@ -183,6 +194,7 @@ const animes = [
     Genres: ["Action", "Fantasy", "Supernatural"],
     type: "TV",
     Studios: "ufotable",
+    trailerSrc: "https://www.youtube.com/embed/LwcTi86cFeg",
   },
   {
     id: 13,
@@ -199,8 +211,26 @@ const animes = [
     Genres: ["Action", "Fantasy", "Supernatural"],
     type: "TV",
     Studios: "ufotable",
+    trailerSrc: "https://www.youtube.com/embed/LwcTi86cFeg",
   },
 ];
+
+
+
+
+//(DONE) User should be able to view multiple movie posters.
+//(DONE) Each poster should be provided with an Image, Description, Rate, and Title.
+//(DONE) User should be able to view each poster.
+//(DONE) User should be able to add the movie to the favorite section.
+//(DONE) User should be able to view the favorite section.
+// Movies should be categorized.
+
+
+
+
+
+
+
 
 const body = $("body");
 const container = $("#container");
@@ -281,6 +311,7 @@ const addToFav = function () {
   );
 
   userFavUl.append(newAddedToFav);
+  // console.log(typeof userFavUl[0]);
   $(this).html("FAVed");
   $(this).off();
   $(this).click(removeFromFav);
@@ -309,7 +340,9 @@ const goToAnimePage = function () {
 
   const animePageImageDiv = $(`<div id="anime-page-image-div"></div>`);
   const animePageDetailsDiv = $(`<div id="anime-page-details-div"></div>`);
-  const animePageDescriptionDiv = $(`<div id="anime-page-description-div"></div>`);
+  const animePageDescriptionDiv = $(
+    `<div id="anime-page-description-div"></div>`
+  );
   const animePageTrailerDiv = $(`<div id="anime-page-trailer-div"></div>`);
 
   animePage.append(
@@ -352,6 +385,10 @@ const goToAnimePage = function () {
   animeRate.addClass("anime-page-rate");
 
   const animeDescription = $(`<p>${elem.description}</p>`);
+  animeDescription.addClass("anime-page-description");
+
+  const animeTrailer = $(`<iframe src=${elem.trailerSrc}></iframe>`);
+  animeTrailer.addClass("anime-trailer");
 
   //* ///////////
 
@@ -367,6 +404,7 @@ const goToAnimePage = function () {
   );
 
   animePageDescriptionDiv.append(animeDescription);
+  animePageTrailerDiv.append(animeTrailer);
 };
 
 //* ///////////////////////////////////////////////////////
