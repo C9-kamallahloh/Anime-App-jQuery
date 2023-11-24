@@ -12,7 +12,6 @@
   --main-color-4: var(--main-color-4-a);
   --main-color-5: var(--main-color-5-a);
 
-
   /* ! The applied theme original colors */
   --main-color-1-a: rgb(244, 238, 255);
   --main-color-2-a: rgb(220, 214, 247);
@@ -20,15 +19,12 @@
   --main-color-4-a: rgb(66, 72, 116);
   --main-color-5-a: rgb(37, 41, 66);
 
-
   /* ! The applied theme reversed colors */
   --main-color-1-b: var(--main-color-5-a);
   --main-color-2-b: var(--main-color-4-a);
   --main-color-3-b: var(--main-color-3-a);
   --main-color-4-b: var(--main-color-2-a);
   --main-color-5-b: var(--main-color-1-a);
-
-  
 }
 
 html {
@@ -178,8 +174,27 @@ html {
 
 #anime-page {
   display: grid;
-  grid-template: 1fr 1fr / 1fr 3fr;
+  grid-template: 2fr 1fr / 1fr 3fr;
   grid-template-areas: "animePageImage animePageDescription" "animePageDetails animePageTrailer";
+  padding: 2%;
+  gap: 2%;
+}
+
+#anime-page-image-div {
+  grid-area:animePageImage ;
+}
+.anime-page-img {
+  width: 100%;
+}
+
+#anime-page-details-div {
+  grid-area:animePageDetails ;
+}
+#anime-page-description-div {
+  grid-area:animePageDescription ;
+}
+#anime-page-trailer-div {
+  grid-area:animePageTrailer ;
 }
 
 #search-page {

@@ -219,10 +219,10 @@ const userFavDiv = $("#user-fav-div");
 const userFavUl = $("#user-fav-ul");
 
 const animePage = $("#anime-page");
-const animePageImage = $("#anime-page-image");
-const animePageDetails = $("#anime-page-details");
-const animePageDescription = $("#anime-page-description");
-const animePageTrailer = $("#anime-page-trailer");
+// const animePageImage = $("#anime-page-image");
+// const animePageDetails = $("#anime-page-details");
+// const animePageDescription = $("#anime-page-description");
+// const animePageTrailer = $("#anime-page-trailer");
 
 const searchPage = $("#search-page");
 const settingPopUp = $("#setting-pop-up");
@@ -287,7 +287,6 @@ const addToFav = function () {
   $(this).click(returnToHome);
 };
 
-
 const returnToHome = function () {
   setTimeout(() => {
     mainPage.css("display", "flex");
@@ -297,24 +296,78 @@ const returnToHome = function () {
   }, 0);
 };
 
-
 //* //////////////// go to anime page /////////////////////
-
 
 const goToAnimePage = function () {
   mainPage.hide();
   userPage.hide();
   animePage.show();
   searchPage.hide();
+  animePage.html("");
 
+  //* ///////////
 
+  const animePageImageDiv = $(`<div id="anime-page-image-div"></div>`);
+  const animePageDetailsDiv = $(`<div id="anime-page-details-div"></div>`);
+  const animePageDescriptionDiv = $(`<div id="anime-page-description-div"></div>`);
+  const animePageTrailerDiv = $(`<div id="anime-page-trailer-div"></div>`);
 
-  console.log(animes[$(this)[0].id-1]);
+  animePage.append(
+    animePageImageDiv,
+    animePageDetailsDiv,
+    animePageDescriptionDiv,
+    animePageTrailerDiv
+  );
 
-}
+  // console.log(animes[$(this)[0].id - 1]);
+  const elem = animes[$(this)[0].id - 1];
 
+  //* ///////////
 
+  const animeImage = $(`<img src="${elem.imageSrc}" alt="${elem.animeName}"/>`);
+  animeImage.addClass("anime-page-img");
 
+  const animeBg = $(`<img src="${elem.imageSrc}" alt="${elem.animeName}"/>`);
+  animeBg.addClass("anime-page-bg");
+
+  const animeName = $(`<p>${elem.animeName}</p>`);
+  animeName.addClass("anime-page-name");
+
+  const AnimeGenresArray = elem.Genres.join(" ");
+  const animeGenre = $(`<p>${AnimeGenresArray}</p>`);
+  animeGenre.addClass("anime-page-genre");
+
+  const animeStudio = $(`<p>${elem.Studios}</p>`);
+  animeStudio.addClass("anime-page-studio");
+
+  const animeType = $(`<p>${elem.type}</p>`);
+  animeType.addClass("anime-page-type");
+
+  const animeFav = $(`<p>FAV</p>`);
+  animeFav.addClass("anime-page-fav");
+  animeFav.click(addToFav);
+  animeFav.click(returnToHome); //! click on both FAV and animeDiv at the same time
+
+  const animeRate = $(`<p>${elem.rate}</p>`);
+  animeRate.addClass("anime-page-rate");
+
+  const animeDescription = $(`<p>${elem.description}</p>`);
+
+  //* ///////////
+
+  animePageImageDiv.append(animeImage);
+
+  animePageDetailsDiv.append(
+    animeFav,
+    animeName,
+    animeRate,
+    animeGenre,
+    animeStudio,
+    animeType
+  );
+
+  animePageDescriptionDiv.append(animeDescription);
+};
 
 //* ///////////////////////////////////////////////////////
 //* ///////////////// Render main page ////////////////////
@@ -324,18 +377,14 @@ const renderAnimesList = (array) => {
   array.forEach((elem, i) => {
     const animeDiv = $(`<div  id="${elem.id}"></div>`);
     animeDiv.addClass("anime-div");
+
     const animeImage = $(
       `<img src="${elem.imageSrc}" alt="${elem.animeName}"/>`
     );
     animeImage.addClass("anime-img");
 
-
-    const animeBg = $(
-      `<img src="${elem.imageSrc}" alt="${elem.animeName}"/>`
-    );
+    const animeBg = $(`<img src="${elem.imageSrc}" alt="${elem.animeName}"/>`);
     animeBg.addClass("anime-bg");
-
-
 
     const animeName = $(`<p>${elem.animeName}</p>`);
     animeName.addClass("anime-name");
@@ -445,7 +494,7 @@ theme0.click(function () {
     "--main-color-2-a": "rgb(220, 214, 247)",
     "--main-color-3-a": "rgb(166, 177, 225)",
     "--main-color-4-a": "rgb(66, 72, 116)",
-    "--main-color-5-a": "rgb(37, 41, 66)"
+    "--main-color-5-a": "rgb(37, 41, 66)",
   });
 });
 
