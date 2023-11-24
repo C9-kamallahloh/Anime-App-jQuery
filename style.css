@@ -58,11 +58,24 @@ html {
 }
 
 .anime-img {
-  width: 100%;
+  max-width: 100%;
   align-self: center;
   grid-area: Image;
   /* padding: 5%; */
   border-radius: inherit;
+  /* aspect-ratio: 3/4 ; */
+}
+.anime-bg {
+  max-width: 300%;
+  opacity: 0.1;
+  height: 100%;
+  align-self: center;
+  grid-area: name;
+  /* padding: 5%; */
+  border-radius: inherit;
+  /* aspect-ratio: 3/4 ; */
+  position: absolute;
+  right: 0;
 }
 
 .anime-name {
@@ -146,7 +159,9 @@ html {
 } */
 
 #anime-page {
-  display: none;
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 3fr;
+  grid-template-areas: "animePageImage animePageDescription" "animePageDetails animePageTrailer";
 }
 
 #search-page {
@@ -199,6 +214,12 @@ button {
   max-width: 300px;
   background-color: var(--main-color-2);
   border: 2px var(--main-color-5) solid;
+  padding: 2%;
+  gap: 2%;
+  border-radius: 20px;
+  font-size: large;
+  font-weight: bold;
+  /* text-align: end; */
 }
 
 /* #dark-button {

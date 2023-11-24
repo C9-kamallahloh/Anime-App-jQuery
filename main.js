@@ -219,6 +219,11 @@ const userFavDiv = $("#user-fav-div");
 const userFavUl = $("#user-fav-ul");
 
 const animePage = $("#anime-page");
+const animePageImage = $("#anime-page-image");
+const animePageDetails = $("#anime-page-details");
+const animePageDescription = $("#anime-page-description");
+const animePageTrailer = $("#anime-page-trailer");
+
 const searchPage = $("#search-page");
 const settingPopUp = $("#setting-pop-up");
 const darkButton = $("#dark-button");
@@ -254,7 +259,7 @@ searchPage.hide();
 settingPopUp.hide();
 lightButton.hide();
 
-//* ///////////////// Add/remove Anime To User Fav ///////////////////
+//* //////// Add/remove Anime To User Fav {from home page} ////////////
 
 const removeFromFav = function () {
   $(`li.added-to-fav-${$(this).parent()[0].id}`).remove();
@@ -291,6 +296,25 @@ const returnToHome = function () {
   }, 0);
 };
 
+
+//* //////////////// go to anime page /////////////////////
+
+
+const goToAnimePage = function () {
+  mainPage.hide();
+  userPage.hide();
+  animePage.show();
+  searchPage.hide();
+
+
+
+  console.log(animes[$(this)[0].id-1]);
+
+}
+
+
+
+
 //* ///////////////////////////////////////////////////////
 //* ///////////////// Render main page ////////////////////
 //* ///////////////////////////////////////////////////////
@@ -303,6 +327,14 @@ const renderAnimesList = (array) => {
       `<img src="${elem.imageSrc}" alt="${elem.animeName}"/>`
     );
     animeImage.addClass("anime-img");
+
+
+    const animeBg = $(
+      `<img src="${elem.imageSrc}" alt="${elem.animeName}"/>`
+    );
+    animeBg.addClass("anime-bg");
+
+
 
     const animeName = $(`<p>${elem.animeName}</p>`);
     animeName.addClass("anime-name");
@@ -326,6 +358,7 @@ const renderAnimesList = (array) => {
     animeRate.addClass("anime-rate");
 
     animeDiv.append(
+      animeBg,
       animeImage,
       animeName,
       animeGenre,
@@ -335,12 +368,7 @@ const renderAnimesList = (array) => {
       animeRate
     );
 
-    animeDiv.click(function () {
-      mainPage.hide();
-      userPage.hide();
-      animePage.show();
-      searchPage.hide();
-    });
+    animeDiv.click(goToAnimePage);
 
     mainPage.append(animeDiv);
   });
