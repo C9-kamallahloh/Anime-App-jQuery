@@ -71,17 +71,20 @@ html {
   color: var(--main-color-5);
 }
 #header {
-  display: grid;
-  grid-template-columns: 5fr 1fr;
+  /* display: grid;
+  grid-template-columns: 5fr 1fr; */
   /* align-items: end; */
   /* position: relative; */
-  gap: 2%;
+  /* gap: 2%; */
 }
 
 #search-input {
+  width: calc(100vw - 30px);
+  height: 5vh;
+  min-height: 5vh;
   border-radius: 15px;
   font-size: large;
-  padding-left: 15px;
+  padding: 0 15px 0 15px ;
 }
 
 #filter-button {
@@ -337,7 +340,10 @@ button {
   border-radius: 0px;
 }
 
-#top-rated-button {
+/* #top-rated-button {
+  border-radius: 0px;
+} */
+#filter-button {
   border-radius: 0px;
 }
 

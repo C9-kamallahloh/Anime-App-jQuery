@@ -217,7 +217,7 @@ const root = $(":root");
 
 const header = $("#header");
 const searchInput = $("#search-input");
-const filterButton = $("#filter-button");
+// const filterButton = $("#filter-button");
 
 const mainPage = $("#main-page");
 
@@ -233,7 +233,7 @@ const animePage = $("#anime-page");
 // const animePageDescription = $("#anime-page-description");
 // const animePageTrailer = $("#anime-page-trailer");
 
-const searchPage = $("#search-page");
+const filterPage = $("#filter-page");
 const settingPopUp = $("#setting-pop-up");
 const darkButton = $("#dark-button");
 const lightButton = $("#light-button");
@@ -250,8 +250,10 @@ const homeButton = $("#home-button");
 const user = $("#user");
 const userButton = $("#user-button");
 
-const topRated = $("#top-rated");
-const topRatedButton = $("#top-rated-button");
+// const topRated = $("#top-rated");
+// const topRatedButton = $("#top-rated-button");
+const filter = $("#filter");
+const filterButton = $("#filter-button");
 
 const setting = $("#setting");
 const settingButton = $("#setting-button");
@@ -262,10 +264,10 @@ const settingButton = $("#setting-button");
 mainPage.css("display", "flex");
 // userPage.css("display","none");
 // animePage.css("display","none");
-// searchPage.css("display","none");
+// filterPage.css("display","none");
 userPage.hide();
 animePage.hide();
-searchPage.hide();
+filterPage.hide();
 // topRated.hide();
 settingPopUp.hide();
 lightButton.hide();
@@ -320,7 +322,7 @@ const returnToHome = function () {
     mainPage.css("display", "flex");
     userPage.hide();
     animePage.hide();
-    searchPage.hide();
+    filterPage.hide();
   }, 0);
 };
 
@@ -331,7 +333,7 @@ const goToAnimePage = function () {
   mainPage.hide();
   userPage.hide();
   animePage.show();
-  searchPage.hide();
+  filterPage.hide();
   animePage.html("");
 
   //* ///////////
@@ -514,21 +516,21 @@ $("#myInput").on("keyup", function () {
   });
 });
 
-filterButton.click(function () {
-  // header.hide();
-  mainPage.hide();
-  userPage.hide();
-  animePage.hide();
-  searchPage.show();
-  //   settingPopUp.hide();
-});
+// filterButton.click(function () {
+//   // header.hide();
+//   mainPage.hide();
+//   userPage.hide();
+//   animePage.hide();
+//   filterPage.show();
+//   //   settingPopUp.hide();
+// });
 
 homeButton.click(function () {
   // header.css("display", "grid");
   mainPage.css("display", "flex");
   userPage.hide();
   animePage.hide();
-  searchPage.hide();
+  filterPage.hide();
   //   settingPopUp.hide();
 });
 
@@ -537,16 +539,24 @@ userButton.click(function () {
   mainPage.hide();
   userPage.css("display", "grid");
   animePage.hide();
-  searchPage.hide();
+  filterPage.hide();
   //   settingPopUp.hide();
 });
 
-topRatedButton.click(function () {
-  // header.hide();
+// topRatedButton.click(function () {
+filterButton.click(function () {
+
+  // // header.hide();
+  // mainPage.hide();
+  // userPage.hide();
+  // animePage.show();
+  // filterPage.hide();
+  // //   settingPopUp.hide();
+    // header.hide();
   mainPage.hide();
   userPage.hide();
-  animePage.show();
-  searchPage.hide();
+  animePage.hide();
+  filterPage.show();
   //   settingPopUp.hide();
 });
 
