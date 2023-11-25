@@ -587,10 +587,20 @@ filterButton.click(function () {
   //   settingPopUp.hide();
 });
 
-//! filterButtonAZ.click (function (){
+//! reached here ///////////////////////////////
+//! reached here ///////////////////////////////
+//! reached here ///////////////////////////////
+
+filterButtonAZ.click (function (){
 // homeButton.trigger("click")
 
-// })
+// console.log($(".anime-div"));
+
+animes.filter((elem,i)=>{
+  
+})
+
+})
 
 studiosArray = [];
 
@@ -621,9 +631,6 @@ filterButtonMovie.click(function () {
   searchInput.trigger("keyup");
 });
 
-//! reached here ///////////////////////////////
-//! reached here ///////////////////////////////
-//! reached here ///////////////////////////////
 
 let MinRatingRange = filterMinRatingRange.val() / 10;
 let MaxRatingRange = filterMaxRatingRange.val() / 10;
@@ -667,8 +674,6 @@ filterButtonApplyRatingRange.click(function () {
   //   console.log(elem.rate);
   // })
 });
-//! reached here ///////////////////////////////
-//! reached here ///////////////////////////////
 
 filterButtonTopFav.click(function () {
   homeButton.trigger("click");

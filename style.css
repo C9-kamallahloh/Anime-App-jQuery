@@ -110,6 +110,8 @@ html {
   grid-template: repeat(4, 0.5fr) / 1fr 2fr;
   grid-template-areas: "Image Name" "Image Genre" "Image Studio" "Image Type";
   position: relative;
+  box-shadow: 0 0 5px var(--main-color-5);
+  background-color: var(--main-color-2);
 }
 
 .anime-img {
