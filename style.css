@@ -193,9 +193,9 @@ html {
   font-weight: bold;
 }
 
-.anime-rate::first-letter{
+.anime-rate::first-letter {
   color: var(--main-color-5);
-  font-size:x-large;
+  font-size: x-large;
 }
 
 #user-page {
@@ -203,21 +203,31 @@ html {
 }
 
 #user-image {
-  margin: 2%;
+  margin: 2% 0 0 2%;
   height: 20vh;
-  width: 20vh;
+  aspect-ratio: 1/1;
 }
 
 #user-fav-div {
   margin: 2%;
-  padding: 5%;
+
   font-size: x-large;
+  height: 40vh;
+}
+
+#user-fav-ul {
+  height: calc(40vh - 50px);
+  overflow-y: scroll;
+}
+
+#user-fav-ul li::before {
+  content: "- ";
 }
 
 li:nth-child(2n) {
   background-color: var(--main-color-2);
 }
-li::marker{
+li::marker {
   color: var(--main-color-3);
 }
 /* li.added-to-fav-1 {

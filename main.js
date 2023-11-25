@@ -222,7 +222,7 @@ const animes = [
 //(DONE) User should be able to view the favorite section.
 // Movies should be categorized.
 
-// Local Storage Will Keep Favorite List
+//(DONE) Local Storage Will Keep Favorite List
 //(DONE) View/Show Multiple Items
 //(DONE) Page Show Item Details (Title, Description, Due Date/Time, Status, Likes Count, Price, Rate, Amount, etc)
 // Search Functionality (Title)
@@ -230,7 +230,7 @@ const animes = [
 //(DONE) Favorite Lis
 //(DONE) Add/t Add/RemoveCreate New Item (add to cart || add to favorite)
 //(DONE) Edit/Update an Item ( Edit cart ||  Edit favorite)
-// Remove/Delete an Item (Remove from cart || Remove from favorite)"
+//(DONE) Remove/Delete an Item (Remove from cart || Remove from favorite)"
 
 const favAnimesArray = JSON.parse(localStorage.getItem("favAnimesArray")) || [];
 
@@ -488,6 +488,7 @@ const renderAnimesList = (array) => {
 
       // console.log(indexOfFavedAnimes);
     }
+
     //* ////
 
     const animeRate = $(`<p>${elem.rate}</p>`);
@@ -530,7 +531,7 @@ homeButton.click(function () {
 
 userButton.click(function () {
   mainPage.hide();
-  userPage.show();
+  userPage.css("display", "grid");
   animePage.hide();
   searchPage.hide();
   //   settingPopUp.hide();
