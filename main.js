@@ -443,6 +443,8 @@ const goToAnimePage = function () {
 //* ///////////////////////////////////////////////////////
 
 const renderAnimesList = (array) => {
+  mainPage.html("")
+  
   array.forEach((elem, i) => {
     const animeDiv = $(`<div  id="${elem.id}"></div>`);
     animeDiv.addClass("anime-div");
@@ -591,16 +593,29 @@ filterButton.click(function () {
 //! reached here ///////////////////////////////
 //! reached here ///////////////////////////////
 
-filterButtonAZ.click (function (){
-// homeButton.trigger("click")
+filterButtonAZ.click(function () {
+  homeButton.trigger("click")
 
-// console.log($(".anime-div"));
+  // console.log($(".anime-div"));
+  // console.log(animes);
+  animes.sort((a, b) => {
+    // console.log("A", a.animeName);
+    // console.log("B", b.animeName);
+    const nameA = a.animeName.toLowerCase();
+    const nameB = b.animeName.toLowerCase();
+    // console.log(nameA > nameB);
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
 
-animes.filter((elem,i)=>{
-  
-})
-
-})
+  renderAnimesList(animes);
+  // console.log(animes);
+});
 
 studiosArray = [];
 
@@ -630,7 +645,6 @@ filterButtonMovie.click(function () {
   searchInput.val("Movie");
   searchInput.trigger("keyup");
 });
-
 
 let MinRatingRange = filterMinRatingRange.val() / 10;
 let MaxRatingRange = filterMaxRatingRange.val() / 10;
