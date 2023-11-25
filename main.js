@@ -558,6 +558,7 @@ homeButton.click(function () {
   $(".anime-div").filter(function () {
     $(this).toggle(true);
   });
+  searchInput.val("")
 });
 
 userButton.click(function () {
@@ -609,10 +610,8 @@ studiosArray.forEach((elem, i) => {
 
 filterSelectStudio.change(function () {
   homeButton.trigger("click");
-
-  console.log(filterSelectStudio.val());  //! reached here
-
-
+searchInput.val(studiosArray[filterSelectStudio.val()]);
+searchInput.trigger("keyup");
 });
 
 filterButtonMovie.click(function () {
