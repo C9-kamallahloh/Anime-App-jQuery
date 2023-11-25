@@ -23,6 +23,45 @@
         />
         <!-- <button id="filter-button">Filter</button> -->
       </header>
+      <div id="log-in-sign-up-page">
+        <div id="sign-up-div">
+          <label for="sign-up-user-name">New user name: </label>
+          <input type="text" name="sign-up-user-name" id="sign-up-user-name"  placeholder="New user name"/>
+          <br />
+          <label for="sign-up-password">New password: </label>
+          <input
+            type="password"
+            name="sign-up-password"
+            id="sign-up-password"
+          />
+          <br />
+          <label for="sign-up-password-again">Re-enter password: </label>
+          <input
+            type="password"
+            name="sign-up-password-again"
+            id="sign-up-password-again"
+          />
+          <br />
+          <button id="sign-up-button">Sign up</button>
+        </div>
+        <div id="log-in-div">
+          
+
+          <label for="log-in-user-name">User name: </label>
+          <input type="text" name="log-in-user-name" id="log-in-user-name" />
+          <br />
+          <label for="log-in-password">Password: </label>
+          <input
+            type="password"
+            name="log-in-password"
+            id="log-in-password"
+          />
+          <br />
+
+          <button id="log-in-button">Log in</button>
+
+        </div>
+      </div>
       <main id="main-page"></main>
       <div id="user-page">
         <div id="user-div">
@@ -61,16 +100,16 @@
           <button id="filter-button-movie">Movie</button>
         </div>
         <div id="filter-div-rating-range">
-            <label for="filter-min-rating-range">Min Rating:</label>
-            <input
-              type="range"
-              name="filter-min-rating-range"
-              id="filter-min-rating-range"
-              list="rating-values"
-              step="10"
-              value="0"
-            />
-          <datalist id="rating-values" >
+          <label for="filter-min-rating-range">Min Rating:</label>
+          <input
+            type="range"
+            name="filter-min-rating-range"
+            id="filter-min-rating-range"
+            list="rating-values"
+            step="10"
+            value="0"
+          />
+          <datalist id="rating-values">
             <option value="0" label="0"></option>
             <option value="10" label=""></option>
             <option value="20" label="2"></option>
@@ -84,16 +123,16 @@
             <option value="100" label="10"></option>
           </datalist>
 
-            <label for="filter-max-rating-range">Max Rating:</label>
-            <input
-              type="range"
-              name="filter-max-rating-range"
-              id="filter-max-rating-range"
-              list="rating-values"
-              step="10"
-              value="100"
-            />
-          <datalist id="rating-values" >
+          <label for="filter-max-rating-range">Max Rating:</label>
+          <input
+            type="range"
+            name="filter-max-rating-range"
+            id="filter-max-rating-range"
+            list="rating-values"
+            step="10"
+            value="100"
+          />
+          <datalist id="rating-values">
             <option value="0" label="0"></option>
             <option value="10" label=""></option>
             <option value="20" label="2"></option>

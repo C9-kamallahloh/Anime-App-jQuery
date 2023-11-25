@@ -203,7 +203,7 @@ const animes = [
 //(DONE) View/Show Multiple Items
 //(DONE) Page Show Item Details (Title, Description, Due Date/Time, Status, Likes Count, Price, Rate, Amount, etc)
 //(DONE) Search Functionality (Title)
-// Filter by Categories (Type, Status, Price, Rate, etc)
+//(DONE) Filter by Categories (Type, Status, Price, Rate, etc)
 //(DONE) Favorite Lis
 //(DONE) Add/t Add/RemoveCreate New Item (add to cart || add to favorite)
 //(DONE) Edit/Update an Item ( Edit cart ||  Edit favorite)
@@ -222,6 +222,8 @@ const animes = [
 
 // anime-div separate each elem and add filter to it.
 // change the pointer to finger if there is an event listener
+// move the filter section to main page under search bar.
+// add remove from fav button to user page ul li
 
 const favAnimesArray = JSON.parse(localStorage.getItem("favAnimesArray")) || [];
 
@@ -234,6 +236,7 @@ const header = $("#header");
 const searchInput = $("#search-input");
 // const filterButton = $("#filter-button");
 
+const logInSignUpPage = $("#log-in-sign-up-page");
 const mainPage = $("#main-page");
 
 const userPage = $("#user-page");
@@ -292,7 +295,8 @@ const settingButton = $("#setting-button");
 //* ///////////////////////////////////////////////////////////
 
 // header.css("display", "grid");
-mainPage.css("display", "flex");
+logInSignUpPage.css("display", "grid"); //! false for testing
+mainPage.hide(); //! mainPage.css("display", "flex"); for testing
 // userPage.css("display","none");
 // animePage.css("display","none");
 // filterPage.css("display","none");
@@ -350,6 +354,7 @@ const addToFav = function () {
 const returnToHome = function () {
   setTimeout(() => {
     // header.css("display", "grid");
+    logInSignUpPage.hide();
     mainPage.css("display", "flex");
     userPage.hide();
     animePage.hide();
@@ -361,6 +366,7 @@ const returnToHome = function () {
 
 const goToAnimePage = function () {
   // header.hide();
+  logInSignUpPage.hide();
   mainPage.hide();
   userPage.hide();
   animePage.show();
@@ -443,8 +449,8 @@ const goToAnimePage = function () {
 //* ///////////////////////////////////////////////////////
 
 const renderAnimesList = (array) => {
-  mainPage.html("")
-  
+  mainPage.html("");
+
   array.forEach((elem, i) => {
     const animeDiv = $(`<div  id="${elem.id}"></div>`);
     animeDiv.addClass("anime-div");
@@ -542,22 +548,12 @@ searchInput.on("keyup", function () {
   });
 });
 
-// filterButton.click(function () {
-//   // header.hide();
-//   mainPage.hide();
-//   userPage.hide();
-//   animePage.hide();
-//   filterPage.show();
-//   //   settingPopUp.hide();
-// });
-
 homeButton.click(function () {
-  // header.css("display", "grid");
+  logInSignUpPage.hide();
   mainPage.css("display", "flex");
   userPage.hide();
   animePage.hide();
   filterPage.hide();
-  //   settingPopUp.hide();
   $(".anime-div").filter(function () {
     $(this).toggle(true);
   });
@@ -565,36 +561,34 @@ homeButton.click(function () {
 });
 
 userButton.click(function () {
-  // header.hide();
-  mainPage.hide();
-  userPage.css("display", "grid");
-  animePage.hide();
-  filterPage.hide();
-  //   settingPopUp.hide();
+  if (/* "the user is logged in" */ false) { //! false for testing 
+    //! check if user is logged in
+    logInSignUpPage.hide();
+    mainPage.hide();
+    userPage.css("display", "grid");
+    animePage.hide();
+    filterPage.hide();
+  } else {
+    logInSignUpPage.css("display", "grid");
+    mainPage.hide();
+    userPage.hide();
+    animePage.hide();
+    filterPage.hide();
+  }
 });
 
-// topRatedButton.click(function () {
 filterButton.click(function () {
-  // // header.hide();
-  // mainPage.hide();
-  // userPage.hide();
-  // animePage.show();
-  // filterPage.hide();
-  // //   settingPopUp.hide();
-  // header.hide();
+  logInSignUpPage.hide();
   mainPage.hide();
   userPage.hide();
   animePage.hide();
   filterPage.show();
-  //   settingPopUp.hide();
 });
 
-//! reached here ///////////////////////////////
-//! reached here ///////////////////////////////
-//! reached here ///////////////////////////////
-
 filterButtonAZ.click(function () {
-  homeButton.trigger("click")
+  //! will sort the original anime array ascending only.
+
+  homeButton.trigger("click");
 
   // console.log($(".anime-div"));
   // console.log(animes);

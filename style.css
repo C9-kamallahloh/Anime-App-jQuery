@@ -87,12 +87,20 @@ html {
   padding: 0 15px 0 15px;
 }
 
-#filter-button {
-  /* background: linear-gradient(
-    to right,
-    var(--main-color-4),
-    var(--main-color-3)
-  ); */
+#log-in-sign-up-page {
+  display: grid;
+  grid-template: 1fr / 0.5fr 0.5fr;
+  gap: 5vw;
+  margin: 5vw;
+}
+
+#sign-up-div {
+  display: flex;
+  flex-direction: column;
+}
+#log-in-div {
+  display: flex;
+  flex-direction: column;
 }
 
 #main-page {
@@ -336,7 +344,7 @@ button {
   max-height: 50px;
   min-height: 50px;
   height: 100%;
-  font-size:x-large;
+  font-size: x-large;
   border-style: hidden;
   color: var(--main-color-1);
   border-radius: 15px;
@@ -420,7 +428,6 @@ input[type="range"] {
   border-radius: 0px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  
 }
 
 #setting-pop-up {
