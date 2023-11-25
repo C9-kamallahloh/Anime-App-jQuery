@@ -60,8 +60,54 @@
         <div id="filter-div-movie">
           <button id="filter-button-movie">Movie</button>
         </div>
-        <div id="filter-div-top-rated">
-          <button id="filter-button-top-rated">Top Rated</button>
+        <div id="filter-div-rating-range">
+            <label for="filter-min-rating-range">Min Rating:</label>
+            <input
+              type="range"
+              name="filter-min-rating-range"
+              id="filter-min-rating-range"
+              list="rating-values"
+              step="10"
+              value="0"
+            />
+          <datalist id="rating-values" >
+            <option value="0" label="0"></option>
+            <option value="10" label=""></option>
+            <option value="20" label="2"></option>
+            <option value="30" label=""></option>
+            <option value="40" label="4"></option>
+            <option value="50" label=""></option>
+            <option value="60" label="6"></option>
+            <option value="70" label=""></option>
+            <option value="80" label="8"></option>
+            <option value="90" label=""></option>
+            <option value="100" label="10"></option>
+          </datalist>
+
+            <label for="filter-max-rating-range">Max Rating:</label>
+            <input
+              type="range"
+              name="filter-max-rating-range"
+              id="filter-max-rating-range"
+              list="rating-values"
+              step="10"
+              value="100"
+            />
+          <datalist id="rating-values" >
+            <option value="0" label="0"></option>
+            <option value="10" label=""></option>
+            <option value="20" label="2"></option>
+            <option value="30" label=""></option>
+            <option value="40" label="4"></option>
+            <option value="50" label=""></option>
+            <option value="60" label="6"></option>
+            <option value="70" label=""></option>
+            <option value="80" label="8"></option>
+            <option value="90" label=""></option>
+            <option value="100" label="10"></option>
+          </datalist>
+
+          <button id="filter-button-apply-rating-range">Apply Rating</button>
         </div>
         <div id="filter-div-top-fav">
           <button id="filter-button-top-fav">Top Fav</button>

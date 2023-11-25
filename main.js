@@ -223,7 +223,6 @@ const animes = [
 // anime-div separate each elem and add filter to it.
 // change the pointer to finger if there is an event listener
 
-
 const favAnimesArray = JSON.parse(localStorage.getItem("favAnimesArray")) || [];
 
 // console.log(favAnimesArray);
@@ -257,8 +256,10 @@ const filterSelectStudio = $("#filter-select-studio");
 // const filterButtonStudio = $("#filter-button-studio");
 const filterDivMovie = $("#filter-div-movie");
 const filterButtonMovie = $("#filter-button-movie");
-const filterDivTopRated = $("#filter-div-top-rated");
-const filterButtonTopRated = $("#filter-button-top-rated");
+const filterDivRatingRange = $("#filter-div-rating-range");
+const filterMinRatingRange = $("#filter-min-rating-range");
+const filterMaxRatingRange = $("#filter-max-rating-range");
+const filterButtonApplyRatingRange = $("#filter-button-apply-rating-range");
 const filterDivTopFav = $("#filter-div-top-fav");
 const filterButtonTopFav = $("#filter-button-top-fav");
 const filterDivTV = $("#filter-div-tv");
@@ -558,7 +559,7 @@ homeButton.click(function () {
   $(".anime-div").filter(function () {
     $(this).toggle(true);
   });
-  searchInput.val("")
+  searchInput.val("");
 });
 
 userButton.click(function () {
@@ -586,7 +587,7 @@ filterButton.click(function () {
   //   settingPopUp.hide();
 });
 
-// filterButtonAZ.click (function (){
+//! filterButtonAZ.click (function (){
 // homeButton.trigger("click")
 
 // })
@@ -610,8 +611,8 @@ studiosArray.forEach((elem, i) => {
 
 filterSelectStudio.change(function () {
   homeButton.trigger("click");
-searchInput.val(studiosArray[filterSelectStudio.val()]);
-searchInput.trigger("keyup");
+  searchInput.val(studiosArray[filterSelectStudio.val()]);
+  searchInput.trigger("keyup");
 });
 
 filterButtonMovie.click(function () {
@@ -620,9 +621,54 @@ filterButtonMovie.click(function () {
   searchInput.trigger("keyup");
 });
 
-// filterButtonTopRated.click(function () {
-//   homeButton.trigger("click");
-// });
+//! reached here ///////////////////////////////
+//! reached here ///////////////////////////////
+//! reached here ///////////////////////////////
+
+let MinRatingRange = filterMinRatingRange.val() / 10;
+let MaxRatingRange = filterMaxRatingRange.val() / 10;
+
+filterMinRatingRange.change(function () {
+  // console.log(filterMinRatingRange.val()/10);
+  MinRatingRange = filterMinRatingRange.val() / 10;
+});
+// console.log(filterMaxRatingRange.val());
+filterMaxRatingRange.change(function () {
+  // console.log(filterMaxRatingRange.val()/10);
+  MaxRatingRange = filterMaxRatingRange.val() / 10;
+});
+
+filterButtonApplyRatingRange.click(function () {
+  homeButton.trigger("click");
+  // console.log("A",MinRatingRange);
+  // console.log("A",MaxRatingRange);
+  if (MinRatingRange > MaxRatingRange) {
+    let flipMaxMin = MaxRatingRange;
+    MaxRatingRange = MinRatingRange;
+    MinRatingRange = flipMaxMin;
+  }
+  console.log("B", MinRatingRange);
+  console.log("B", MaxRatingRange);
+
+  // const ratingRange =
+
+  // if(MinRatingRange < )
+
+  //   let toArray = $(`.anime-rate`).text()
+  // console.log(toArray);
+
+  $(".anime-div").filter(function (i) {
+    // console.log(Number($(`#${i+1} .anime-rate`)[0].innerText));
+    const rateValue = Number($(`#${i + 1} .anime-rate`)[0].innerText);
+    $(this).toggle(MinRatingRange <= rateValue && rateValue <= MaxRatingRange);
+  });
+
+  // animes.forEach((elem,i)=> {
+  //   console.log(elem.rate);
+  // })
+});
+//! reached here ///////////////////////////////
+//! reached here ///////////////////////////////
 
 filterButtonTopFav.click(function () {
   homeButton.trigger("click");
