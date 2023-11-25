@@ -234,13 +234,13 @@ const animes = [
 
 const favAnimesArray = JSON.parse(localStorage.getItem("favAnimesArray")) || [];
 
-console.log(favAnimesArray);
+// console.log(favAnimesArray);
 const body = $("body");
 const container = $("#container");
 const root = $(":root");
 
 const header = $("#header");
-const filterInput = $("#filter-input");
+const searchInput = $("#search-input");
 const filterButton = $("#filter-button");
 
 const mainPage = $("#main-page");
@@ -469,19 +469,18 @@ const renderAnimesList = (array) => {
       })
       .indexOf(elem.id);
     if (indexOfFavedAnimes >= 0) {
-      console.log("sss",indexOfFavedAnimes);
-
+      // console.log("sss", indexOfFavedAnimes);
       // console.log(animeFav[0].innerText);
       const addedAnime = animes[elem.id - 1];
       const newAddedToFav = $(`<li>${addedAnime.animeName}</li>`);
       newAddedToFav.addClass(`added-to-fav-${addedAnime.id}`);
       userFavUl.append(newAddedToFav);
-    
-      animeFav.text("FAVED")
+
+      animeFav.text("FAVED");
       animeFav.off();
       animeFav.click(removeFromFav);
       animeFav.click(returnToHome);
-      // $("p.anime-fav").trigger("click")
+      // $("p.anime-fav").trigger("click") //! Trigger now working
       // animeFav.trigger("click")
       // const checkIfInFav = animes[$(this).parent()[0].id - 1];
       // console.log(favAnimesArray);
@@ -512,6 +511,29 @@ const renderAnimesList = (array) => {
 };
 
 renderAnimesList(animes);
+
+//* ///////////////////////////////////////////////////////
+//* ///////////////////////////////////////////////////////
+//* ///////////////////////////////////////////////////////
+
+//* ////////////////// Events listeners ///////////////////
+
+searchInput.on("keyup", function () {
+  // console.log($(this).val());
+
+  let searchVal = $(this).val().toLowerCase();
+
+  $(".anime-div").filter(function () {
+    $(this).toggle($(this).text().toLowerCase().indexOf(searchVal) > -1);
+  });
+});
+
+$("#myInput").on("keyup", function () {
+  var value = $(this).val().toLowerCase();
+  $("#myTable tr").filter(function () {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+  });
+});
 
 filterButton.click(function () {
   mainPage.hide();
