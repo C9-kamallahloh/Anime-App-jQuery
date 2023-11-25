@@ -201,7 +201,7 @@ const animes = [
 //(DONE) Local Storage Will Keep Favorite List
 //(DONE) View/Show Multiple Items
 //(DONE) Page Show Item Details (Title, Description, Due Date/Time, Status, Likes Count, Price, Rate, Amount, etc)
-// Search Functionality (Title)
+//(DONE) Search Functionality (Title)
 // Filter by Categories (Type, Status, Price, Rate, etc)
 //(DONE) Favorite Lis
 //(DONE) Add/t Add/RemoveCreate New Item (add to cart || add to favorite)
@@ -234,6 +234,19 @@ const animePage = $("#anime-page");
 // const animePageTrailer = $("#anime-page-trailer");
 
 const filterPage = $("#filter-page");
+const filterDivAZ = $("#filter-div-a-z");
+const filterButtonAZ = $("#filter-button-a-z");
+const filterDivStudio = $("#filter-div-studio");
+const filterButtonStudio = $("#filter-button-studio");
+const filterDivMovie = $("#filter-div-movie");
+const filterButtonMovie = $("#filter-button-movie");
+const filterDivTopRated = $("#filter-div-top-rated");
+const filterButtonTopRated = $("#filter-button-top-rated");
+const filterDivTopFav = $("#filter-div-top-fav");
+const filterButtonTopFav = $("#filter-button-top-fav");
+const filterDivTV = $("#filter-div-tv");
+const filterButtonTV = $("#filter-button-tv");
+
 const settingPopUp = $("#setting-pop-up");
 const darkButton = $("#dark-button");
 const lightButton = $("#light-button");
@@ -545,14 +558,13 @@ userButton.click(function () {
 
 // topRatedButton.click(function () {
 filterButton.click(function () {
-
   // // header.hide();
   // mainPage.hide();
   // userPage.hide();
   // animePage.show();
   // filterPage.hide();
   // //   settingPopUp.hide();
-    // header.hide();
+  // header.hide();
   mainPage.hide();
   userPage.hide();
   animePage.hide();
