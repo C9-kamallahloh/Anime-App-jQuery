@@ -220,6 +220,10 @@ const animes = [
 // - Class based [ OOP ]
 //(DONE) Link to Trailer
 
+// anime-div separate each elem and add filter to it.
+// change the pointer to finger if there is an event listener
+
+
 const favAnimesArray = JSON.parse(localStorage.getItem("favAnimesArray")) || [];
 
 // console.log(favAnimesArray);
@@ -596,17 +600,19 @@ animes.forEach((elem, i) => {
 
 // console.log(studiosArray);
 
-
 studiosArray.forEach((elem, i) => {
-const addStudioToSelectList = $(`<option value=""></option>`);
+  const addStudioToSelectList = $(`<option value=""></option>`);
   addStudioToSelectList.text(`${elem}`);
-  addStudioToSelectList.val(`${i}`)
+  addStudioToSelectList.val(`${i}`);
   filterSelectStudio.append(addStudioToSelectList);
 });
 
-
 filterSelectStudio.change(function () {
   homeButton.trigger("click");
+
+  console.log(filterSelectStudio.val());  //! reached here
+
+
 });
 
 filterButtonMovie.click(function () {
