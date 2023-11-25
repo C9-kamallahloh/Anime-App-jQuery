@@ -215,9 +215,6 @@ const animes = [
   },
 ];
 
-
-
-
 //(DONE) User should be able to view multiple movie posters.
 //(DONE) Each poster should be provided with an Image, Description, Rate, and Title.
 //(DONE) User should be able to view each poster.
@@ -225,13 +222,19 @@ const animes = [
 //(DONE) User should be able to view the favorite section.
 // Movies should be categorized.
 
+// Local Storage Will Keep Favorite List
+//(DONE) View/Show Multiple Items
+//(DONE) Page Show Item Details (Title, Description, Due Date/Time, Status, Likes Count, Price, Rate, Amount, etc)
+// Search Functionality (Title)
+// Filter by Categories (Type, Status, Price, Rate, etc)
+//(DONE) Favorite Lis
+//(DONE) Add/t Add/RemoveCreate New Item (add to cart || add to favorite)
+//(DONE) Edit/Update an Item ( Edit cart ||  Edit favorite)
+// Remove/Delete an Item (Remove from cart || Remove from favorite)"
 
+const favAnimesArray = JSON.parse(localStorage.getItem("favAnimesArray")) || [];
 
-
-
-
-
-
+console.log(favAnimesArray);
 const body = $("body");
 const container = $("#container");
 const root = $(":root");
@@ -294,6 +297,22 @@ lightButton.hide();
 
 const removeFromFav = function () {
   $(`li.added-to-fav-${$(this).parent()[0].id}`).remove();
+  // console.log(favAnimesArray);
+  // favAnimesArray.splice()
+  const removedAnime = animes[$(this).parent()[0].id - 1];
+
+  let indexOfRemovedAnime = favAnimesArray
+    .map(function (e) {
+      return e.id;
+    })
+    .indexOf(removedAnime.id);
+
+  // console.log(typeof favAnimesArray);
+  favAnimesArray.splice(indexOfRemovedAnime, 1);
+
+  const favAnimeArrayToString = JSON.stringify(favAnimesArray);
+  localStorage.setItem("favAnimesArray", favAnimeArrayToString);
+
   $(this).html("FAV");
   $(this).off();
   $(this).click(addToFav);
@@ -303,15 +322,15 @@ const removeFromFav = function () {
 const addToFav = function () {
   // console.log($(this).parent()[0].id);
   // console.log(animes[($(this).parent()[0].id-1)].animeName);
-  const newAddedToFav = $(
-    `<li>${animes[$(this).parent()[0].id - 1].animeName}</li>`
-  );
-  newAddedToFav.addClass(
-    `added-to-fav-${animes[$(this).parent()[0].id - 1].id}`
-  );
-
+  const addedAnime = animes[$(this).parent()[0].id - 1];
+  const newAddedToFav = $(`<li>${addedAnime.animeName}</li>`);
+  newAddedToFav.addClass(`added-to-fav-${addedAnime.id}`);
   userFavUl.append(newAddedToFav);
-  // console.log(typeof userFavUl[0]);
+
+  favAnimesArray.push(addedAnime);
+  const favAnimeArrayToString = JSON.stringify(favAnimesArray);
+  localStorage.setItem("favAnimesArray", favAnimeArrayToString);
+
   $(this).html("FAVed");
   $(this).off();
   $(this).click(removeFromFav);
@@ -441,6 +460,35 @@ const renderAnimesList = (array) => {
     animeFav.addClass("anime-fav");
     animeFav.click(addToFav);
     animeFav.click(returnToHome); //! click on both FAV and animeDiv at the same time
+
+    //* //// check if the anime is in fav list ////
+
+    let indexOfFavedAnimes = favAnimesArray
+      .map(function (e) {
+        return e.id;
+      })
+      .indexOf(elem.id);
+    if (indexOfFavedAnimes >= 0) {
+      console.log("sss",indexOfFavedAnimes);
+
+      // console.log(animeFav[0].innerText);
+      const addedAnime = animes[elem.id - 1];
+      const newAddedToFav = $(`<li>${addedAnime.animeName}</li>`);
+      newAddedToFav.addClass(`added-to-fav-${addedAnime.id}`);
+      userFavUl.append(newAddedToFav);
+    
+      animeFav.text("FAVED")
+      animeFav.off();
+      animeFav.click(removeFromFav);
+      animeFav.click(returnToHome);
+      // $("p.anime-fav").trigger("click")
+      // animeFav.trigger("click")
+      // const checkIfInFav = animes[$(this).parent()[0].id - 1];
+      // console.log(favAnimesArray);
+
+      // console.log(indexOfFavedAnimes);
+    }
+    //* ////
 
     const animeRate = $(`<p>${elem.rate}</p>`);
     animeRate.addClass("anime-rate");

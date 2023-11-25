@@ -79,9 +79,9 @@ html {
 }
 
 #filter-input {
-  border-radius: 20px;
+  border-radius: 15px;
   font-size: large;
-  padding-left: 20px;
+  padding-left: 15px;
 }
 
 #filter-button {
@@ -298,7 +298,7 @@ button {
   border-style: hidden;
   color: var(--main-color-1);
   background-color: var(--main-color-4);
-  border-radius: 20px;
+  border-radius: 15px;
 
   background: linear-gradient(
     to right,
