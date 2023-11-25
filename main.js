@@ -191,12 +191,13 @@ const animes = [
   },
 ];
 
+//! Main Features [Version 1]
 //(DONE) User should be able to view multiple movie posters.
 //(DONE) Each poster should be provided with an Image, Description, Rate, and Title.
 //(DONE) User should be able to view each poster.
 //(DONE) User should be able to add the movie to the favorite section.
 //(DONE) User should be able to view the favorite section.
-// Movies should be categorized.
+//(Done) Movies should be categorized.
 
 //(DONE) Local Storage Will Keep Favorite List
 //(DONE) View/Show Multiple Items
@@ -207,6 +208,17 @@ const animes = [
 //(DONE) Add/t Add/RemoveCreate New Item (add to cart || add to favorite)
 //(DONE) Edit/Update an Item ( Edit cart ||  Edit favorite)
 //(DONE) Remove/Delete an Item (Remove from cart || Remove from favorite)"
+
+//! Extra Features [Version 2]
+// - Login & Register functionality
+// - Fetching data from API
+//(DONE) Use CSS custom properties
+//(DONE) Change website color theme [ Dark, Light ]
+// - Fully responsive design for both mobile and desktop using CSS media queries
+// - Deploy the website using Netlify
+// - Admin Dashboard
+// - Class based [ OOP ]
+//(DONE) Link to Trailer
 
 const favAnimesArray = JSON.parse(localStorage.getItem("favAnimesArray")) || [];
 
@@ -237,7 +249,8 @@ const filterPage = $("#filter-page");
 const filterDivAZ = $("#filter-div-a-z");
 const filterButtonAZ = $("#filter-button-a-z");
 const filterDivStudio = $("#filter-div-studio");
-const filterButtonStudio = $("#filter-button-studio");
+const filterSelectStudio = $("#filter-select-studio");
+// const filterButtonStudio = $("#filter-button-studio");
 const filterDivMovie = $("#filter-div-movie");
 const filterButtonMovie = $("#filter-button-movie");
 const filterDivTopRated = $("#filter-div-top-rated");
@@ -522,13 +535,6 @@ searchInput.on("keyup", function () {
   });
 });
 
-$("#myInput").on("keyup", function () {
-  var value = $(this).val().toLowerCase();
-  $("#myTable tr").filter(function () {
-    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-  });
-});
-
 // filterButton.click(function () {
 //   // header.hide();
 //   mainPage.hide();
@@ -545,6 +551,9 @@ homeButton.click(function () {
   animePage.hide();
   filterPage.hide();
   //   settingPopUp.hide();
+  $(".anime-div").filter(function () {
+    $(this).toggle(true);
+  });
 });
 
 userButton.click(function () {
@@ -572,9 +581,62 @@ filterButton.click(function () {
   //   settingPopUp.hide();
 });
 
+// filterButtonAZ.click (function (){
+// homeButton.trigger("click")
+
+// })
+
+studiosArray = [];
+
+animes.forEach((elem, i) => {
+  // console.log(elem.Studios);
+  // console.log(studiosArray.includes(elem.Studios));
+  if (!studiosArray.includes(elem.Studios)) studiosArray.push(elem.Studios);
+});
+
+// console.log(studiosArray);
+
+
+studiosArray.forEach((elem, i) => {
+const addStudioToSelectList = $(`<option value=""></option>`);
+  addStudioToSelectList.text(`${elem}`);
+  addStudioToSelectList.val(`${i}`)
+  filterSelectStudio.append(addStudioToSelectList);
+});
+
+
+filterSelectStudio.change(function () {
+  homeButton.trigger("click");
+});
+
+filterButtonMovie.click(function () {
+  homeButton.trigger("click");
+  searchInput.val("Movie");
+  searchInput.trigger("keyup");
+});
+
+// filterButtonTopRated.click(function () {
+//   homeButton.trigger("click");
+// });
+
+filterButtonTopFav.click(function () {
+  homeButton.trigger("click");
+
+  $(".anime-div").filter(function () {
+    $(this).toggle($(this).text().toLowerCase().indexOf("faved") > -1); //! must edit the string "faved" after changing the icon.
+  });
+});
+
+filterButtonTV.click(function () {
+  homeButton.trigger("click");
+  searchInput.val("TV");
+  searchInput.trigger("keyup");
+});
+
 settingButton.click(function () {
   settingPopUp.toggle();
 });
+
 darkButton.click(function () {
   //! edit with it ( style.css / :root)
   root.css({
