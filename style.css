@@ -64,7 +64,7 @@ html {
   justify-content: space-between;
   */
   display: grid;
-  grid-template: 0.35fr 7fr 1fr / 1fr;
+  grid-template: 0.25fr 7fr 1fr / 1fr;
   margin: 0px;
   padding: 15px;
   background-color: var(--main-color-1);
@@ -74,7 +74,7 @@ html {
   display: grid;
   grid-template-columns: 5fr 1fr;
   /* align-items: end; */
-  position: relative;
+  /* position: relative; */
   gap: 2%;
 }
 
