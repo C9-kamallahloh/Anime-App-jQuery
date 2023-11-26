@@ -28,19 +28,19 @@
 }
 
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 1rem; /*! related to border-radius of track, thumb  */
 }
 
 ::-webkit-scrollbar-track {
   background: var(--main-color-2);
   box-shadow: inset 2px 2px 5px var(--main-color-3);
-  border-radius: 7.5px;
+  border-radius: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--main-color-4);
   box-shadow: inset 1px 1px 5px var(--main-color-1);
-  border-radius: 7.5px;
+  border-radius: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -81,25 +81,38 @@ html {
 #search-input {
   width: calc(100vw - 30px);
   min-height: 5vh;
-  border-radius: 15px;
+  border-radius: 1rem;
   font-size: large;
   padding: 0 15px 0 15px;
 }
 
-#log-in-sign-up-page {
+#log-in-sign-up-page { /* have media query */
   display: grid;
+  width: 90%;
+  height: 75%;
   grid-template: 1fr / 0.5fr 0.5fr;
-  gap: 5vw;
-  margin: 5vw;
+  gap: 10vw;
+  justify-self: center;
+  align-self: center;
+  font-weight: bold;
+  line-height: 1.5;
 }
 
+#log-in-sign-up-page div{ 
+  /* box-sizing: content-box; */
+border: 1px var(--main-color-5) solid;
+padding: 10%;
+border-radius: 2rem;
+}
 #sign-up-div {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 #log-in-div {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 #main-page {
@@ -110,7 +123,7 @@ html {
 
 .anime-div {
   border: 2px var(--main-color-3) solid;
-  border-radius: 5%;
+  border-radius: 1rem;
   margin: 1%;
   width: 31%;
   display: grid;
@@ -201,7 +214,7 @@ html {
   background-color: var(--main-color-1);
   opacity: 0.85;
   padding: 1%;
-  border-radius: 25%;
+  border-radius: 0.5rem;
   font-weight: bold;
   box-shadow: 0 0 3px var(--main-color-5);
 }
@@ -350,7 +363,7 @@ button {
   font-size: x-large;
   border-style: hidden;
   color: var(--main-color-1);
-  border-radius: 15px;
+  border-radius: 1rem;
 
   /* background-color: var(--main-color-4); */
   background: linear-gradient(
@@ -386,8 +399,8 @@ button:active {
 
 #home-button {
   border-radius: 0px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }
 
 #user-button {
@@ -429,8 +442,8 @@ input[type="range"] {
 
 #setting-button {
   border-radius: 0px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 #setting-pop-up {
@@ -448,7 +461,7 @@ input[type="range"] {
   border: 2px var(--main-color-5) solid;
   padding: 2%;
   gap: 2%;
-  border-radius: 20px;
+  border-radius: 2rem;
   font-size: large;
   font-weight: bold;
   /* text-align: end; */
@@ -460,6 +473,12 @@ input[type="range"] {
   );
 }
 
+.setting-pop-up-des {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
 #setting-pop-up button {
   font-size: large;
 }
@@ -469,3 +488,30 @@ input[type="range"] {
 #light-button {
   grid-area: DarkLightToggle;
 } */
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+  #log-in-sign-up-page {
+    display: grid;
+    width: 50%;
+    grid-template: 1fr 1fr / 1fr;
+    gap: 5vw;
+    margin: 2vw;
+  }
+
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
