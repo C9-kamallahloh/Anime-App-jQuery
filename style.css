@@ -94,8 +94,6 @@ html {
   gap: 10vw;
   justify-self: center;
   align-self: center;
-  font-weight: bold;
-  line-height: 1.5;
 }
 
 #log-in-sign-up-page div{  /* have media query */
