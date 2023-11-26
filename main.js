@@ -246,6 +246,7 @@ const logInDiv = $("#log-in-div");
 const logInName = $("#log-in-user-name");
 const logInPassword = $("#log-in-password");
 const logInButton = $("#log-in-button");
+const logInRules = $("#log-in-rules");
 
 const mainPage = $("#main-page");
 
@@ -302,7 +303,7 @@ const filterButton = $("#filter-button");
 const setting = $("#setting");
 const settingButton = $("#setting-button");
 
-//* ///////////////////////////////////////////////////////////
+//* ////////////////////// HIDE / SHOW  //////////////////////////////
 
 // header.css("display", "grid");
 logInSignUpPage.css("display", "grid"); //! false for testing
@@ -400,27 +401,31 @@ const goToAnimePage = function () {
   );
 
   // console.log(animes[$(this)[0].id - 1]);
-  const elem = animes[$(this)[0].id - 1];
+  const animeInfo = animes[$(this)[0].id - 1];
 
   //* ///////////
 
-  const animeImage = $(`<img src="${elem.imageSrc}" alt="${elem.animeName}"/>`);
+  const animeImage = $(
+    `<img src="${animeInfo.imageSrc}" alt="${animeInfo.animeName}"/>`
+  );
   animeImage.addClass("anime-page-img");
 
-  const animeBg = $(`<img src="${elem.imageSrc}" alt="${elem.animeName}"/>`);
+  const animeBg = $(
+    `<img src="${animeInfo.imageSrc}" alt="${animeInfo.animeName}"/>`
+  );
   animeBg.addClass("anime-page-bg");
 
-  const animeName = $(`<p>${elem.animeName}</p>`);
+  const animeName = $(`<p>${animeInfo.animeName}</p>`);
   animeName.addClass("anime-page-name");
 
-  const AnimeGenresArray = elem.Genres.join(" ");
+  const AnimeGenresArray = animeInfo.Genres.join(" ");
   const animeGenre = $(`<p>${AnimeGenresArray}</p>`);
   animeGenre.addClass("anime-page-genre");
 
-  const animeStudio = $(`<p>${elem.Studios}</p>`);
+  const animeStudio = $(`<p>${animeInfo.Studios}</p>`);
   animeStudio.addClass("anime-page-studio");
 
-  const animeType = $(`<p>${elem.type}</p>`);
+  const animeType = $(`<p>${animeInfo.type}</p>`);
   animeType.addClass("anime-page-type");
 
   const animeFav = $(`<p>FAV</p>`);
@@ -428,13 +433,13 @@ const goToAnimePage = function () {
   animeFav.click(addToFav);
   animeFav.click(returnToHome); //! click on both FAV and animeDiv at the same time
 
-  const animeRate = $(`<p>${elem.rate}</p>`);
+  const animeRate = $(`<p>${animeInfo.rate}</p>`);
   animeRate.addClass("anime-page-rate");
 
-  const animeDescription = $(`<p>${elem.description}</p>`);
+  const animeDescription = $(`<p>${animeInfo.description}</p>`);
   animeDescription.addClass("anime-page-description");
 
-  const animeTrailer = $(`<iframe src=${elem.trailerSrc}></iframe>`);
+  const animeTrailer = $(`<iframe src=${animeInfo.trailerSrc}></iframe>`);
   animeTrailer.addClass("anime-trailer");
 
   //* ///////////
@@ -570,6 +575,8 @@ homeButton.click(function () {
   searchInput.val("");
 });
 
+//* ///////////////////////////////////////////////////////
+
 userButton.click(function () {
   if (/* "the user is logged in" */ false) {
     //! false for testing
@@ -588,6 +595,8 @@ userButton.click(function () {
   }
 });
 
+//* ///////////////////////////////////////////////////////
+
 filterButton.click(function () {
   logInSignUpPage.hide();
   mainPage.hide();
@@ -595,6 +604,8 @@ filterButton.click(function () {
   animePage.hide();
   filterPage.show();
 });
+
+//* ///////////////////////////////////////////////////////
 
 filterButtonAZ.click(function () {
   //! will sort the original anime array ascending only.
@@ -639,11 +650,15 @@ studiosArray.forEach((elem, i) => {
   filterSelectStudio.append(addStudioToSelectList);
 });
 
+//* ///////////////////////////////////////////////////////
+
 filterSelectStudio.change(function () {
   homeButton.trigger("click");
   searchInput.val(studiosArray[filterSelectStudio.val()]);
   searchInput.trigger("keyup");
 });
+
+//* ///////////////////////////////////////////////////////
 
 filterButtonMovie.click(function () {
   homeButton.trigger("click");
@@ -694,6 +709,8 @@ filterButtonApplyRatingRange.click(function () {
   // })
 });
 
+//* ///////////////////////////////////////////////////////
+
 filterButtonTopFav.click(function () {
   homeButton.trigger("click");
 
@@ -701,6 +718,8 @@ filterButtonTopFav.click(function () {
     $(this).toggle($(this).text().toLowerCase().indexOf("faved") > -1); //! must edit the string "faved" after changing the icon.
   });
 });
+
+//* ///////////////////////////////////////////////////////
 
 filterButtonTV.click(function () {
   homeButton.trigger("click");
@@ -711,6 +730,46 @@ filterButtonTV.click(function () {
 settingButton.click(function () {
   settingPopUp.toggle();
 });
+
+//! ///////////////////////////////////////////////////////
+//! ///////////////////Log-in Sign-up////////////////////////
+
+// const logInSignUpPage = $("#log-in-sign-up-page");
+// const signUpDiv = $("#sign-up-div");
+// const signUpUserName = $("#sign-up-user-name");
+// const signUpPassword = $("#sign-up-password");
+// const signUpPasswordAgain = $("#sign-up-password-again");
+// const signUpButton = $("#sign-up-button");
+// const logInDiv = $("#log-in-div");
+// const logInName = $("#log-in-user-name");
+// const logInPassword = $("#log-in-password");
+// const logInButton = $("#log-in-button");
+// const logInRules = $("#log-in-rules");
+
+let signUpUserNameNew;
+let signUpPasswordNew;
+let signUpPasswordAgainNew;
+
+signUpUserName.change(function () {
+  signUpUserNameNew = $(this).val().toLowerCase();
+});
+signUpPassword.change(function () {
+  signUpPasswordNew = $(this).val();
+});
+signUpPasswordAgain.change(function () {
+  signUpPasswordAgainNew = $(this).val();
+});
+
+let signUpInformation = 
+
+signUpButton.click(function () {
+
+
+
+
+});
+
+//* ///////////////////////////////////////////////////////
 
 darkButton.click(function () {
   //! edit with it ( style.css / :root)

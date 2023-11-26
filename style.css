@@ -89,9 +89,10 @@ html {
 #log-in-sign-up-page { /* have media query */
   display: grid;
   width: 90%;
-  height: 75%;
-  grid-template: 1fr / 0.5fr 0.5fr;
-  gap: 10vw;
+  /* height: 75%; */
+  grid-template: 1fr 0.25fr / 1fr 1fr;
+  grid-template-areas: "signUp logIn" "rules rules";
+  gap: 2vh 10vw;
   justify-self: center;
   align-self: center;
 }
@@ -104,14 +105,24 @@ border-radius: 2rem;
 }
 
 #sign-up-div {
+  grid-area: signUp;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 #log-in-div {
+  grid-area: logIn;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#log-in-rules {
+  grid-area: rules;
+  font-size:medium;
+  justify-self:auto;
+  align-self:auto;
 }
 
 #main-page {
