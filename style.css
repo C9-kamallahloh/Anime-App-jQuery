@@ -98,12 +98,13 @@ html {
   line-height: 1.5;
 }
 
-#log-in-sign-up-page div{ 
-  /* box-sizing: content-box; */
+#log-in-sign-up-page div{  /* have media query */
 border: 1px var(--main-color-5) solid;
+box-shadow: 0 0 1rem var(--main-color-5);
 padding: 10%;
 border-radius: 2rem;
 }
+
 #sign-up-div {
   display: flex;
   flex-direction: column;
@@ -447,7 +448,7 @@ input[type="range"] {
 }
 
 #setting-pop-up {
-  position: absolute;
+  position: fixed;
   right: 5%;
   bottom: calc(10px + 9vh); /*! related to footer height and container padding */
   display: grid;
@@ -498,7 +499,19 @@ input[type="range"] {
     width: 50%;
     grid-template: 1fr 1fr / 1fr;
     gap: 5vw;
-    margin: 2vw;
+    justify-self: center; 
+    align-self: flex-start;
+    margin-top: 1rem;
+    font-weight: bold;
+    line-height: 1.1;
+  }
+
+  
+  #log-in-sign-up-page div{  /* have media query */
+  border: 1px var(--main-color-5) solid;
+  box-shadow: 0 0 1rem var(--main-color-5);
+  padding: 10%;
+  border-radius: 2rem;
   }
 
 

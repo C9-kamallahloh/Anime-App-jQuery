@@ -237,6 +237,16 @@ const searchInput = $("#search-input");
 // const filterButton = $("#filter-button");
 
 const logInSignUpPage = $("#log-in-sign-up-page");
+const signUpDiv = $("#sign-up-div");
+const signUpUserName = $("#sign-up-user-name");
+const signUpPassword = $("#sign-up-password-again");
+const signUpPasswordAgain = $("#");
+const signUpButton = $("#sign-up-button");
+const logInDiv = $("#log-in-div");
+const logInName = $("#log-in-user-name");
+const logInPassword = $("#log-in-password");
+const logInButton = $("#log-in-button");
+
 const mainPage = $("#main-page");
 
 const userPage = $("#user-page");
@@ -561,7 +571,8 @@ homeButton.click(function () {
 });
 
 userButton.click(function () {
-  if (/* "the user is logged in" */ false) { //! false for testing 
+  if (/* "the user is logged in" */ false) {
+    //! false for testing
     //! check if user is logged in
     logInSignUpPage.hide();
     mainPage.hide();
