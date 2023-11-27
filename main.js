@@ -745,10 +745,15 @@ settingButton.click(function () {
 // const logInPassword = $("#log-in-password");
 // const logInButton = $("#log-in-button");
 // const logInRules = $("#log-in-rules");
+const allUsers = [
+  { username: "Jane", password: "123456" },
+  { username: "admin", password: "abc123" },
+];
+let signUpInformation = { username: "", password: "" };
 
-let signUpUserNameNew;
-let signUpPasswordNew;
-let signUpPasswordAgainNew;
+let signUpUserNameNew = "";
+let signUpPasswordNew = "";
+let signUpPasswordAgainNew = "";
 
 signUpUserName.change(function () {
   signUpUserNameNew = $(this).val().toLowerCase();
@@ -760,13 +765,45 @@ signUpPasswordAgain.change(function () {
   signUpPasswordAgainNew = $(this).val();
 });
 
-let signUpInformation = 
+const isValidUser = (infoObject) => {
+  if (infoObject.username.length < 6) {
+    // logInRules.remove($("div .usernameLength")); //! remove old data
+    // $("p").removeClass("usernameLength");
+
+    const usernameLength = $(`<p>User must be >= 6</p>`);
+    usernameLength.addClass("usernameLength");
+    return logInRules.append(usernameLength);
+  }
+
+  if (infoObject.password.length < 8) {
+    const passwordLength = $(`<p>Password must be > 8</p>`);
+    passwordLength.addClass("passwordLength");
+    return logInRules.append(passwordLength);
+  }
+
+
+  if (!Object.keys(allUsers).includes(infoObject.username)) {
+    const passwordLength = $(`<p> </p>`);
+    passwordLength.addClass("passwordLength");
+    return logInRules.append(passwordLength);
+    return false + "wrong user";
+
+  }
+
+  if (
+    usersOb.mrpotato.password === infoObject.password ||
+    usersOb.thewiseman.password === infoObject.password
+  )
+    return true;
+  return false + " wrong PW";
+};
 
 signUpButton.click(function () {
-
-
-
-
+  signUpInformation = {
+    username: signUpUserNameNew,
+    password: signUpPasswordNew,
+  };
+  isValidUser(signUpInformation);
 });
 
 //* ///////////////////////////////////////////////////////
@@ -774,11 +811,12 @@ signUpButton.click(function () {
 darkButton.click(function () {
   //! edit with it ( style.css / :root)
   root.css({
-    "--main-color-1": "var(--main-color-1-b)",
-    "--main-color-2": "var(--main-color-2-b)",
-    "--main-color-3": "var(--main-color-3-b)",
-    "--main-color-4": "var(--main-color-4-b)",
-    "--main-color-5": "var(--main-color-5-b)",
+    "--color-1": "var(--color-1-b)",
+    "--color-2": "var(--color-2-b)",
+    "--color-3": "var(--color-3-b)",
+    "--color-4": "var(--color-4-b)",
+    "--color-5": "var(--color-5-b)",
+    "--color-warning": "var(--color-warning-b)",
   });
   darkButton.hide();
   lightButton.show();
@@ -787,11 +825,12 @@ darkButton.click(function () {
 lightButton.click(function () {
   //! edit with it ( style.css / :root)
   root.css({
-    "--main-color-1": "var(--main-color-1-a)",
-    "--main-color-2": "var(--main-color-2-a)",
-    "--main-color-3": "var(--main-color-3-a)",
-    "--main-color-4": "var(--main-color-4-a)",
-    "--main-color-5": "var(--main-color-5-a)",
+    "--color-1": "var(-color-1-a)",
+    "--color-2": "var(-color-2-a)",
+    "--color-3": "var(-color-3-a)",
+    "--color-4": "var(-color-4-a)",
+    "--color-5": "var(-color-5-a)",
+    "--color-warning": "var(--color-warning-a)",
   });
   darkButton.show();
   lightButton.hide();
@@ -800,32 +839,35 @@ lightButton.click(function () {
 theme0.click(function () {
   //! edit with it ( style.css / :root)
   root.css({
-    "--main-color-1-a": "rgb(244, 238, 255)",
-    "--main-color-2-a": "rgb(220, 214, 247)",
-    "--main-color-3-a": "rgb(166, 177, 225)",
-    "--main-color-4-a": "rgb(66, 72, 116)",
-    "--main-color-5-a": "rgb(37, 41, 66)",
+    "--color-1-a": "rgb(244, 238, 255)",
+    "--color-2-a": "rgb(220, 214, 247)",
+    "--color-3-a": "rgb(166, 177, 225)",
+    "--color-4-a": "rgb(66, 72, 116)",
+    "--color-5-a": "rgb(37, 41, 66)",
+    "--color-warning-a": "red",
   });
 });
 
 theme1.click(function () {
   //! edit with it ( style.css / :root)
   root.css({
-    "--main-color-1-a": "rgb(253, 247, 228)",
-    "--main-color-2-a": "rgb(250, 238, 209)",
-    "--main-color-3-a": "rgb(222, 208, 182)",
-    "--main-color-4-a": "rgb(187, 171, 140)",
-    "--main-color-5-a": "rgb(104, 96, 81)",
+    "--color-1-a": "rgb(253, 247, 228)",
+    "--color-2-a": "rgb(250, 238, 209)",
+    "--color-3-a": "rgb(222, 208, 182)",
+    "--color-4-a": "rgb(187, 171, 140)",
+    "--color-5-a": "rgb(104, 96, 81)",
+    "--color-warning-a": "red",
   });
 });
 
 theme2.click(function () {
   //! edit with it ( style.css / :root)
   root.css({
-    "--main-color-1-a": "rgb(245, 245, 245)",
-    "--main-color-2-a": "rgb(8, 217, 214)",
-    "--main-color-3-a": "rgb(190, 190, 190)",
-    "--main-color-4-a": "rgb(255, 46, 99)",
-    "--main-color-5-a": "rgb(37, 42, 52)",
+    "--color-1-a": "rgb(245, 245, 245)",
+    "--color-2-a": "rgb(8, 217, 214)",
+    "--color-3-a": "rgb(190, 190, 190)",
+    "--color-4-a": "rgb(255, 46, 99)",
+    "--color-5-a": "rgb(37, 42, 52)",
+    "--color-warning-a": "red",
   });
 });
