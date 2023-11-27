@@ -224,6 +224,7 @@ const animes = [
 // change the pointer to finger if there is an event listener
 // move the filter section to main page under search bar.
 // add remove from fav button to user page ul li
+// remove old sign-up log-in errors (create new div for errors) //! remove old errors
 
 const favAnimesArray = JSON.parse(localStorage.getItem("favAnimesArray")) || [];
 const allUsers = JSON.parse(localStorage.getItem("allUsersArray")) || [
@@ -249,7 +250,7 @@ const signUpPassword = $("#sign-up-password");
 const signUpPasswordAgain = $("#sign-up-password-again");
 const signUpButton = $("#sign-up-button");
 const logInDiv = $("#log-in-div");
-const logInName = $("#log-in-user-name");
+const logInUserName = $("#log-in-user-name");
 const logInPassword = $("#log-in-password");
 const logInButton = $("#log-in-button");
 const logInRules = $("#log-in-rules");
@@ -753,10 +754,13 @@ settingButton.click(function () {
 // const logInRules = $("#log-in-rules");
 
 let signUpInformation = { username: "", password: "" };
+let logInInformation = { username: "", password: "" };
 
 let signUpUserNameNew = "";
 let signUpPasswordNew = "";
 let signUpPasswordAgainNew = "";
+let logInUserNameNew = "";
+let logInPasswordNew = "";
 
 signUpUserName.change(function () {
   signUpUserNameNew = $(this).val().toLowerCase();
@@ -767,26 +771,34 @@ signUpPassword.change(function () {
 signUpPasswordAgain.change(function () {
   signUpPasswordAgainNew = $(this).val();
 });
+logInUserName.change(function () {
+  logInUserNameNew = $(this).val().toLowerCase();
+});
+logInPassword.change(function () {
+  logInPasswordNew = $(this).val();
+});
 
 const isValidSignUp = (infoObject) => {
-  
-  if (infoObject.username.length < 6) {
-    // logInRules.remove($("div .usernameLength")); //! remove old data
-    // $("p").removeClass("usernameLength");
+  // if (infoObject.username.length < 6) {  //! comment for testing
+  //    logInRules.remove($("div .usernameLength")); //! remove old errors
+  //    $("p").removeClass("usernameLength"); //! remove old errors
 
-    const usernameLength = $(`<p>User must be >= 6</p>`);
-    usernameLength.addClass("username-length");
-    return logInRules.append(usernameLength);
-  }
+  //   const usernameLength = $(`<p>User must be >= 6</p>`);
+  //   usernameLength.addClass("username-length");
+  //   return logInRules.append(usernameLength);
+  // }
 
-  if (infoObject.password.length < 8) {
-    const passwordLength = $(`<p>Password must be > 8</p>`);
-    passwordLength.addClass("password-length");
-    return logInRules.append(passwordLength);
-  }
+  // if (infoObject.password.length < 8) {
+  //   const passwordLength = $(`<p>Password must be > 8</p>`);
+  //   passwordLength.addClass("password-length");
+  //   return logInRules.append(passwordLength);
+  // }
 
-
-  if (allUsers.some(ele => ele.username.toLowerCase() === infoObject.username.toLowerCase())) {
+  if (
+    allUsers.some(
+      (ele) => ele.username.toLowerCase() === infoObject.username.toLowerCase()
+    )
+  ) {
     const userNameTaken = $(`<p>User name already taken</p>`);
     userNameTaken.addClass("user-name-taken");
     return logInRules.append(userNameTaken);
@@ -811,6 +823,42 @@ const isValidSignUp = (infoObject) => {
   localStorage.setItem("allUsersArray", allUsersArrayToString);
 };
 
+const isValidLogIn = (infoObject) => {
+  if (
+    !allUsers.some(
+      (ele) => ele.username.toLowerCase() === infoObject.username.toLowerCase()
+    )
+  ) {
+    const userNameNotFound = $(`<p>User name not found in our database</p>`);
+    userNameNotFound.addClass("user-name-not-found");
+    return logInRules.append(userNameNotFound);
+  }
+
+
+  let indexOfLogInName = allUsers
+  .map(function (e) {
+    return e.username;
+  })
+  .indexOf(infoObject.username);
+
+  if (infoObject.password !== allUsers[indexOfLogInName].password) {
+    const passwordWrong = $(
+      `<p>Wrong password</p>`
+    );
+    passwordWrong.addClass("password-wrong");
+    return logInRules.append(passwordWrong);
+  }
+
+  const logInSuccessful = $(
+    `<p>log-in Successful for user : ${infoObject.username.toLowerCase()}</p>`
+  );
+  logInSuccessful.addClass("log-in-successful");
+  logInRules.append(logInSuccessful);
+
+console.log("log-in-successful");
+
+};
+
 signUpButton.click(function () {
   signUpInformation = {
     username: signUpUserNameNew,
@@ -818,6 +866,14 @@ signUpButton.click(function () {
   };
   isValidSignUp(signUpInformation);
   console.log(allUsers);
+});
+
+logInButton.click(function () {
+  logInInformation = {
+    username: logInUserNameNew,
+    password: logInPasswordNew,
+  };
+  isValidLogIn(logInInformation);
 });
 
 //* ///////////////////////////////////////////////////////
