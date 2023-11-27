@@ -210,7 +210,7 @@ const animes = [
 //(DONE) Remove/Delete an Item (Remove from cart || Remove from favorite)"
 
 //! Extra Features [Version 2]
-// - Login & Register functionality
+//(DONE) Login & Register functionality
 // - Fetching data from API
 //(DONE) Use CSS custom properties
 //(DONE) Change website color theme [ Dark, Light ]
@@ -231,6 +231,9 @@ const allUsers = JSON.parse(localStorage.getItem("allUsersArray")) || [
   { username: "jane123", password: "12345678" },
   { username: "admin123", password: "abcd1234" },
 ];
+const successfulLogIn = localStorage.getItem("successfulLogIn") || false;
+
+console.log(successfulLogIn);
 
 console.log(allUsers);
 
@@ -313,8 +316,8 @@ const settingButton = $("#setting-button");
 //* ////////////////////// HIDE / SHOW  //////////////////////////////
 
 // header.css("display", "grid");
-logInSignUpPage.css("display", "grid"); //! false for testing
-mainPage.hide(); //! mainPage.css("display", "flex"); for testing
+logInSignUpPage.hide();
+mainPage.css("display", "flex");
 // userPage.css("display","none");
 // animePage.css("display","none");
 // filterPage.css("display","none");
@@ -585,9 +588,7 @@ homeButton.click(function () {
 //* ///////////////////////////////////////////////////////
 
 userButton.click(function () {
-  if (/* "the user is logged in" */ false) {
-    //! false for testing
-    //! check if user is logged in
+  if (successfulLogIn) {
     logInSignUpPage.hide();
     mainPage.hide();
     userPage.css("display", "grid");
@@ -779,20 +780,20 @@ logInPassword.change(function () {
 });
 
 const isValidSignUp = (infoObject) => {
-  // if (infoObject.username.length < 6) {  //! comment for testing
-  //    logInRules.remove($("div .usernameLength")); //! remove old errors
-  //    $("p").removeClass("usernameLength"); //! remove old errors
+  if (infoObject.username.length < 6) { 
+     logInRules.remove($("div .usernameLength")); //! remove old errors
+     $("p").removeClass("usernameLength"); //! remove old errors
 
-  //   const usernameLength = $(`<p>User must be >= 6</p>`);
-  //   usernameLength.addClass("username-length");
-  //   return logInRules.append(usernameLength);
-  // }
+    const usernameLength = $(`<p>User must be >= 6</p>`);
+    usernameLength.addClass("username-length");
+    return logInRules.append(usernameLength);
+  }
 
-  // if (infoObject.password.length < 8) {
-  //   const passwordLength = $(`<p>Password must be > 8</p>`);
-  //   passwordLength.addClass("password-length");
-  //   return logInRules.append(passwordLength);
-  // }
+  if (infoObject.password.length < 8) {
+    const passwordLength = $(`<p>Password must be > 8</p>`);
+    passwordLength.addClass("password-length");
+    return logInRules.append(passwordLength);
+  }
 
   if (
     allUsers.some(
@@ -834,17 +835,14 @@ const isValidLogIn = (infoObject) => {
     return logInRules.append(userNameNotFound);
   }
 
-
   let indexOfLogInName = allUsers
-  .map(function (e) {
-    return e.username;
-  })
-  .indexOf(infoObject.username);
+    .map(function (e) {
+      return e.username;
+    })
+    .indexOf(infoObject.username);
 
   if (infoObject.password !== allUsers[indexOfLogInName].password) {
-    const passwordWrong = $(
-      `<p>Wrong password</p>`
-    );
+    const passwordWrong = $(`<p>Wrong password</p>`);
     passwordWrong.addClass("password-wrong");
     return logInRules.append(passwordWrong);
   }
@@ -855,8 +853,9 @@ const isValidLogIn = (infoObject) => {
   logInSuccessful.addClass("log-in-successful");
   logInRules.append(logInSuccessful);
 
-console.log("log-in-successful");
-
+  console.log("log-in-successful");
+  localStorage.setItem("successfulLogIn",true)
+  userButton.trigger(click)
 };
 
 signUpButton.click(function () {
