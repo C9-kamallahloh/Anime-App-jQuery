@@ -231,9 +231,9 @@ const allUsers = JSON.parse(localStorage.getItem("allUsersArray")) || [
   { username: "jane123", password: "12345678" },
   { username: "admin123", password: "abcd1234" },
 ];
-const successfulLogIn = localStorage.getItem("successfulLogIn") || false;
+let successfulLogIn = !!(localStorage.getItem("successfulLogIn")) || false;
 
-console.log(successfulLogIn);
+// console.log(typeof successfulLogIn);
 
 console.log(allUsers);
 
@@ -854,9 +854,12 @@ const isValidLogIn = (infoObject) => {
 
   console.log("log-in-successful");
   localStorage.setItem("successfulLogIn", true);
+  successfulLogIn = true
 
-  // logInUserName.text(logInUserNameNew)
-  // logInPassword.text(logInPasswordNew)
+  console.log(logInUserName);
+
+  logInUserName.val("")
+  logInPassword.val("")
   // userButton.trigger("click")
   //! edit the userButton event click
   logInSignUpPage.hide();
@@ -884,7 +887,8 @@ logInButton.click(function () {
 });
 
 logOutButton.click(function () {
-  localStorage.setItem("successfulLogIn", false);
+  localStorage.setItem("successfulLogIn", "");
+  successfulLogIn = false
   //! edit the userButton event click
   logInSignUpPage.css("display", "grid");
   mainPage.hide();
