@@ -11,8 +11,7 @@
   --color-3: var(--color-3-a);
   --color-4: var(--color-4-a);
   --color-5: var(--color-5-a);
-  --color-warning : var(--color-warning-a);
-
+  --color-warning: var(--color-warning-a);
 
   /* ! The applied theme original colors */
   --color-1-a: rgb(244, 238, 255);
@@ -20,7 +19,7 @@
   --color-3-a: rgb(166, 177, 225);
   --color-4-a: rgb(66, 72, 116);
   --color-5-a: rgb(37, 41, 66);
-  --color-warning-a : red;
+  --color-warning-a: red;
 
   /* ! The applied theme reversed colors */
   --color-1-b: var(--color-5-a);
@@ -28,8 +27,7 @@
   --color-3-b: var(--color-3-a);
   --color-4-b: var(--color-2-a);
   --color-5-b: var(--color-1-a);
-  --color-warning-b : var(--color-warning-a);
-
+  --color-warning-b: var(--color-warning-a);
 }
 
 ::-webkit-scrollbar {
@@ -91,7 +89,8 @@ html {
   padding: 0 15px 0 15px;
 }
 
-#log-in-sign-up-page { /* have media query */
+#log-in-sign-up-page {
+  /* have media query */
   display: grid;
   width: 90%;
   /* height: 75%; */
@@ -102,11 +101,12 @@ html {
   align-self: center;
 }
 
-#log-in-sign-up-page div{  /* have media query */
-border: 1px var(--color-5) solid;
-box-shadow: 0 0 1rem var(--color-5);
-padding: 10%;
-border-radius: 2rem;
+#log-in-sign-up-page div {
+  /* have media query */
+  border: 1px var(--color-5) solid;
+  box-shadow: 0 0 1rem var(--color-5);
+  padding: 10%;
+  border-radius: 2rem;
 }
 
 #sign-up-div {
@@ -125,9 +125,9 @@ border-radius: 2rem;
 
 #log-in-rules {
   grid-area: rules;
-  font-size:medium;
-  justify-self:auto;
-  align-self:auto;
+  font-size: medium;
+  justify-self: auto;
+  align-self: auto;
 }
 
 #log-in-rules p {
@@ -467,7 +467,9 @@ input[type="range"] {
 #setting-pop-up {
   position: fixed;
   right: 5%;
-  bottom: calc(10px + 9vh); /*! related to footer height and container padding */
+  bottom: calc(
+    10px + 9vh
+  ); /*! related to footer height and container padding */
   display: grid;
   grid-template: repeat(4, 1fr) / 1fr 1fr;
   grid-template-areas: "DarkLight DarkLightToggle" "theme0 theme0Toggle" "theme1 theme1Toggle" "theme2 theme2Toggle";
@@ -485,10 +487,7 @@ input[type="range"] {
   /* text-align: end; */
 
   /* background-color: var(--color-2); */
-  background: radial-gradient(
-    var(--color-2) 75%,
-    var(--color-3) 100%
-  );
+  background: radial-gradient(var(--color-2) 75%, var(--color-3) 100%);
 }
 
 .setting-pop-up-des {
@@ -507,41 +506,41 @@ input[type="range"] {
   grid-area: DarkLightToggle;
 } */
 
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-
   #log-in-sign-up-page {
     display: grid;
     width: 50%;
     grid-template: 1fr 1fr / 1fr;
     gap: 5vw;
-    justify-self: center; 
+    justify-self: center;
     align-self: flex-start;
     margin-top: 1rem;
     font-weight: bold;
     line-height: 1.1;
   }
 
-  
-  #log-in-sign-up-page div{  /* have media query */
-  border: 1px var(--color-5) solid;
-  box-shadow: 0 0 1rem var(--color-5);
-  padding: 10%;
-  border-radius: 2rem;
+  #log-in-sign-up-page div {
+    /* have media query */
+    border: 1px var(--color-5) solid;
+    box-shadow: 0 0 1rem var(--color-5);
+    padding: 10%;
+    border-radius: 2rem;
   }
-
-
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {}
+@media only screen and (min-width: 600px) {
+}
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 768px) {
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {}
+@media only screen and (min-width: 992px) {
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {}
+@media only screen and (min-width: 1200px) {
+}

@@ -226,6 +226,12 @@ const animes = [
 // add remove from fav button to user page ul li
 
 const favAnimesArray = JSON.parse(localStorage.getItem("favAnimesArray")) || [];
+const allUsers = JSON.parse(localStorage.getItem("allUsersArray")) || [
+  { username: "jane123", password: "12345678" },
+  { username: "admin123", password: "abcd1234" },
+];
+
+console.log(allUsers);
 
 // console.log(favAnimesArray);
 const body = $("body");
@@ -745,10 +751,7 @@ settingButton.click(function () {
 // const logInPassword = $("#log-in-password");
 // const logInButton = $("#log-in-button");
 // const logInRules = $("#log-in-rules");
-const allUsers = [
-  { username: "jane123", password: "12345678" },
-  { username: "admin123", password: "abcd1234" },
-];
+
 let signUpInformation = { username: "", password: "" };
 
 let signUpUserNameNew = "";
@@ -766,6 +769,7 @@ signUpPasswordAgain.change(function () {
 });
 
 const isValidSignUp = (infoObject) => {
+  
   if (infoObject.username.length < 6) {
     // logInRules.remove($("div .usernameLength")); //! remove old data
     // $("p").removeClass("usernameLength");
@@ -781,10 +785,8 @@ const isValidSignUp = (infoObject) => {
     return logInRules.append(passwordLength);
   }
 
-  console.log();
-  // const allUsersNameList = allUsers.forEach
 
-  if (allUsers.includes(infoObject.username.toLowerCase())) {
+  if (allUsers.some(ele => ele.username.toLowerCase() === infoObject.username.toLowerCase())) {
     const userNameTaken = $(`<p>User name already taken</p>`);
     userNameTaken.addClass("user-name-taken");
     return logInRules.append(userNameTaken);
@@ -801,11 +803,12 @@ const isValidSignUp = (infoObject) => {
   const registerSuccessful = $(
     `<p>Register Successful for user : ${infoObject.username.toLowerCase()}</p>`
   );
-  registerSuccessful.addClass("register-successful")
-  logInRules.append(registerSuccessful)
-  allUsers.push(infoObject)
-  
-console.log(allUsers);
+  registerSuccessful.addClass("register-successful");
+  logInRules.append(registerSuccessful);
+  allUsers.push(infoObject);
+
+  const allUsersArrayToString = JSON.stringify(allUsers);
+  localStorage.setItem("allUsersArray", allUsersArrayToString);
 };
 
 signUpButton.click(function () {
@@ -814,6 +817,7 @@ signUpButton.click(function () {
     password: signUpPasswordNew,
   };
   isValidSignUp(signUpInformation);
+  console.log(allUsers);
 });
 
 //* ///////////////////////////////////////////////////////
