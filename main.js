@@ -588,7 +588,7 @@ homeButton.click(function () {
 //* ///////////////////////////////////////////////////////
 
 userButton.click(function () {
-  if (successfulLogIn) {
+  if (successfulLogIn) { //! change it with isValidLogIn function
     logInSignUpPage.hide();
     mainPage.hide();
     userPage.css("display", "grid");
@@ -855,7 +855,17 @@ const isValidLogIn = (infoObject) => {
 
   console.log("log-in-successful");
   localStorage.setItem("successfulLogIn",true)
-  userButton.trigger(click)
+
+  // logInUserName.text(logInUserNameNew)
+  // logInPassword.text(logInPasswordNew)
+  // userButton.trigger("click")
+  //! edit the userButton event click
+  logInSignUpPage.hide();
+  mainPage.hide();
+  userPage.css("display", "grid");
+  animePage.hide();
+  filterPage.hide();
+
 };
 
 signUpButton.click(function () {
