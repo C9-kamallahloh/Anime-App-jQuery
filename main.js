@@ -746,8 +746,8 @@ settingButton.click(function () {
 // const logInButton = $("#log-in-button");
 // const logInRules = $("#log-in-rules");
 const allUsers = [
-  { username: "Jane", password: "123456" },
-  { username: "admin", password: "abc123" },
+  { username: "jane123", password: "12345678" },
+  { username: "admin123", password: "abcd1234" },
 ];
 let signUpInformation = { username: "", password: "" };
 
@@ -765,37 +765,47 @@ signUpPasswordAgain.change(function () {
   signUpPasswordAgainNew = $(this).val();
 });
 
-const isValidUser = (infoObject) => {
+const isValidSignUp = (infoObject) => {
   if (infoObject.username.length < 6) {
     // logInRules.remove($("div .usernameLength")); //! remove old data
     // $("p").removeClass("usernameLength");
 
     const usernameLength = $(`<p>User must be >= 6</p>`);
-    usernameLength.addClass("usernameLength");
+    usernameLength.addClass("username-length");
     return logInRules.append(usernameLength);
   }
 
   if (infoObject.password.length < 8) {
     const passwordLength = $(`<p>Password must be > 8</p>`);
-    passwordLength.addClass("passwordLength");
+    passwordLength.addClass("password-length");
     return logInRules.append(passwordLength);
   }
 
+  console.log();
+  // const allUsersNameList = allUsers.forEach
 
-  if (!Object.keys(allUsers).includes(infoObject.username)) {
-    const passwordLength = $(`<p> </p>`);
-    passwordLength.addClass("passwordLength");
-    return logInRules.append(passwordLength);
-    return false + "wrong user";
-
+  if (allUsers.includes(infoObject.username.toLowerCase())) {
+    const userNameTaken = $(`<p>User name already taken</p>`);
+    userNameTaken.addClass("user-name-taken");
+    return logInRules.append(userNameTaken);
   }
 
-  if (
-    usersOb.mrpotato.password === infoObject.password ||
-    usersOb.thewiseman.password === infoObject.password
-  )
-    return true;
-  return false + " wrong PW";
+  if (signUpPasswordNew !== signUpPasswordAgainNew) {
+    const passwordNotMatch = $(
+      `<p>the re-entered password don't match the new password</p>`
+    );
+    passwordNotMatch.addClass("password-not-match");
+    return logInRules.append(passwordNotMatch);
+  }
+
+  const registerSuccessful = $(
+    `<p>Register Successful for user : ${infoObject.username.toLowerCase()}</p>`
+  );
+  registerSuccessful.addClass("register-successful")
+  logInRules.append(registerSuccessful)
+  allUsers.push(infoObject)
+  
+console.log(allUsers);
 };
 
 signUpButton.click(function () {
@@ -803,7 +813,7 @@ signUpButton.click(function () {
     username: signUpUserNameNew,
     password: signUpPasswordNew,
   };
-  isValidUser(signUpInformation);
+  isValidSignUp(signUpInformation);
 });
 
 //* ///////////////////////////////////////////////////////
