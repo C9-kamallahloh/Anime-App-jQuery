@@ -1,7 +1,7 @@
 //* /////////////////////// data from API ////////////////////
 
 $.ajax({
-  url: "https://kitsu.io/api/edg/anime?filter[categories]=adventure",
+  url: "https://kitsu.io/api/edge/anime?filter[categories]=adventure",
   success: (data) => {
     dataFromApi(data.data);
   },
@@ -239,6 +239,8 @@ const dataFromApi = (animesFromApi) => {
   // - Class based [ OOP ]
   //(DONE) Link to Trailer
 
+
+  //! my extra ideas and bugs.
   // anime-div separate each elem and add filter to it.
   // change the pointer to finger if there is an event listener
   // move the filter section to main page under search bar.
@@ -246,6 +248,7 @@ const dataFromApi = (animesFromApi) => {
   // remove old sign-up log-in errors (create new div for errors) //! remove old errors
   // add the user name, AVATAR, and any other info to the user page.
   // filter by id ascending or descending
+  // gave every new user his own fav list.
 
   //* /////////////////////// localStorage //////////////////////
 
@@ -262,11 +265,11 @@ const dataFromApi = (animesFromApi) => {
   // console.log(allUsers);
   //* ////////////////// Fetching data from API ///////////////
 
-//   let animesArray;
+  //   let animesArray;
 
-// if (animesFromApi === "error") { //! skipped for now to switch back to anime test array if API failed.
+  // if (animesFromApi === "error") { //! skipped for now to switch back to anime test array if API failed.
 
-// }
+  // }
   //* ///////////////////////////////////////////////////////////
 
   // console.log(favAnimesArray);
