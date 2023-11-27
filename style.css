@@ -245,7 +245,11 @@ html {
 #user-page {
   display: none;
 }
-
+#user-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 #user-image {
   margin: 2% 0 0 2%;
   height: 20vh;

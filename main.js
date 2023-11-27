@@ -257,7 +257,7 @@ const logInUserName = $("#log-in-user-name");
 const logInPassword = $("#log-in-password");
 const logInButton = $("#log-in-button");
 const logInRules = $("#log-in-rules");
-
+const logOutButton = $("#log-out-button");
 const mainPage = $("#main-page");
 
 const userPage = $("#user-page");
@@ -588,7 +588,8 @@ homeButton.click(function () {
 //* ///////////////////////////////////////////////////////
 
 userButton.click(function () {
-  if (successfulLogIn) { //! change it with isValidLogIn function
+  if (successfulLogIn) {
+    //! change it with isValidLogIn function
     logInSignUpPage.hide();
     mainPage.hide();
     userPage.css("display", "grid");
@@ -689,15 +690,13 @@ filterMaxRatingRange.change(function () {
 
 filterButtonApplyRatingRange.click(function () {
   homeButton.trigger("click");
-  // console.log("A",MinRatingRange);
-  // console.log("A",MaxRatingRange);
+
   if (MinRatingRange > MaxRatingRange) {
     let flipMaxMin = MaxRatingRange;
     MaxRatingRange = MinRatingRange;
     MinRatingRange = flipMaxMin;
   }
-  console.log("B", MinRatingRange);
-  console.log("B", MaxRatingRange);
+  console.log(`Rating range : ( ${MinRatingRange} - ${MaxRatingRange} ) `);
 
   // const ratingRange =
 
@@ -780,9 +779,9 @@ logInPassword.change(function () {
 });
 
 const isValidSignUp = (infoObject) => {
-  if (infoObject.username.length < 6) { 
-     logInRules.remove($("div .usernameLength")); //! remove old errors
-     $("p").removeClass("usernameLength"); //! remove old errors
+  if (infoObject.username.length < 6) {
+    logInRules.remove($("div .usernameLength")); //! remove old errors
+    $("p").removeClass("usernameLength"); //! remove old errors
 
     const usernameLength = $(`<p>User must be >= 6</p>`);
     usernameLength.addClass("username-length");
@@ -854,7 +853,7 @@ const isValidLogIn = (infoObject) => {
   logInRules.append(logInSuccessful);
 
   console.log("log-in-successful");
-  localStorage.setItem("successfulLogIn",true)
+  localStorage.setItem("successfulLogIn", true);
 
   // logInUserName.text(logInUserNameNew)
   // logInPassword.text(logInPasswordNew)
@@ -865,7 +864,6 @@ const isValidLogIn = (infoObject) => {
   userPage.css("display", "grid");
   animePage.hide();
   filterPage.hide();
-
 };
 
 signUpButton.click(function () {
@@ -883,6 +881,16 @@ logInButton.click(function () {
     password: logInPasswordNew,
   };
   isValidLogIn(logInInformation);
+});
+
+logOutButton.click(function () {
+  localStorage.setItem("successfulLogIn", false);
+  //! edit the userButton event click
+  logInSignUpPage.css("display", "grid");
+  mainPage.hide();
+  userPage.hide();
+  animePage.hide();
+  filterPage.hide();
 });
 
 //* ///////////////////////////////////////////////////////
