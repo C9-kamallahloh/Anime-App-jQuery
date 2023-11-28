@@ -562,7 +562,9 @@ const dataFromApi = (animesFromApi) => {
 
       const animeName = $(`<p>${elem.attributes.canonicalTitle}</p>`);
       animeName.addClass("anime-name");
-
+      // animeName.css({
+      //   "overflow": "hidden",
+      // });
       // const AnimeGenresArray = elem.Genres.join(" ");
       // const animeGenre = $(`<p>${AnimeGenresArray}</p>`);
       // animeGenre.addClass("anime-genre");

@@ -150,7 +150,7 @@ html {
   width: 31.3%;
   /* height: 31%; */
   display: grid;
-  grid-template: repeat(4, 0.5fr) / 1fr 2fr;
+  grid-template: repeat(4, 0.25fr) / 1fr 2fr;
   grid-template-areas: "Image Name" "Image Genre" "Image Studio" "Image Type";
   position: relative;
   box-shadow: 0 0 5px var(--color-5);
@@ -182,12 +182,21 @@ html {
   padding-top: 5%;
   padding-left: 5%;
   grid-area: Name;
-  overflow-wrap: break-word;
   color: var(--color-4);
   font-family: sans-serif, Arial, Helvetica;
   font-size: 1rem;
   font-weight: bolder;
+
+  /* overflow-wrap: break-word; */
+  /* overflow:hidden; */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
+
 }
+
+
 
 .anime-genre {
   padding-top: 5%;
@@ -195,6 +204,11 @@ html {
   grid-area: Genre;
   overflow-wrap: break-word;
   font-size: medium;
+  /* overflow:hidden; */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
 }
 
 .anime-studio {
@@ -205,8 +219,12 @@ html {
   color: var(--color-4);
   font-family: sans-serif, Arial, Helvetica;
   font-size: medium;
-
   font-weight: bold;
+  /* overflow:hidden; */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
 }
 
 .anime-type {
@@ -218,6 +236,11 @@ html {
   font-family: sans-serif, Arial, Helvetica;
   font-size: medium;
   font-weight: bold;
+  /* overflow:hidden; */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
 }
 
 .anime-fav {
