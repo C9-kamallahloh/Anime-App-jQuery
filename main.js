@@ -367,12 +367,12 @@ const dataFromApi = (animesFromApi) => {
     // console.log(favAnimesArray);
     // favAnimesArray.splice()
     // const removedAnime = animesFromApi[$(this).parent()[0].id - 1];
-    let removedAnime = animesFromApi.filter((elem, i) => elem.id * 1 === $(this).parent()[0].id * 1
+    let removedAnime = animesFromApi.filter(
+      (elem, i) => elem.id * 1 === $(this).parent()[0].id * 1
     );
-    removedAnime = removedAnime[0]
+    removedAnime = removedAnime[0];
 
     // console.log(removedAnime);
-
 
     // console.log($(this).parent()[0].id);
 
@@ -406,9 +406,10 @@ const dataFromApi = (animesFromApi) => {
     //     return animesFromApi[i];
     //   }
     // });
-    let addedAnime = animesFromApi.filter((elem, i) => elem.id * 1 === $(this).parent()[0].id * 1
+    let addedAnime = animesFromApi.filter(
+      (elem, i) => elem.id * 1 === $(this).parent()[0].id * 1
     );
-    addedAnime = addedAnime[0]
+    addedAnime = addedAnime[0];
 
     // console.log(addedAnime);
 
@@ -467,13 +468,13 @@ const dataFromApi = (animesFromApi) => {
     // console.log(animes[$(this)[0].id - 1]);
     // const animeInfo = animesFromApi[$(this)[0].id - 1];
     // console.log($(this)[0]);
-    let animeInfo = animesFromApi.filter((elem, i) => elem.id * 1 === $(this)[0].id * 1
+    let animeInfo = animesFromApi.filter(
+      (elem, i) => elem.id * 1 === $(this)[0].id * 1
     );
 
-    animeInfo = animeInfo[0]
+    animeInfo = animeInfo[0];
 
     // console.log(animeInfo);
-
 
     //* ///////////
 
@@ -579,7 +580,7 @@ const dataFromApi = (animesFromApi) => {
           return e.id;
         })
         .indexOf(elem.id);
-        // console.log(indexOfFavedAnimes);
+      // console.log(indexOfFavedAnimes);
       if (indexOfFavedAnimes >= 0) {
         // console.log("sss", indexOfFavedAnimes);
         // console.log(animeFav[0].innerText);
@@ -588,11 +589,8 @@ const dataFromApi = (animesFromApi) => {
         // console.log(elem);
         // let addedAnime = animesFromApi[indexOfFavedAnimes]
         // console.log(addedAnime); //! elem === addedAnime
-    
+
         const newAddedToFav = $(`<li>${elem.attributes.titles.en}</li>`);
-
-
-
 
         newAddedToFav.addClass(`added-to-fav-${elem.id}`);
         userFavUl.append(newAddedToFav);
@@ -704,8 +702,8 @@ const dataFromApi = (animesFromApi) => {
     animesFromApi.sort((a, b) => {
       // console.log("A", a.animeName);
       // console.log("B", b.animeName);
-      const nameA = a.animeName.toLowerCase();
-      const nameB = b.animeName.toLowerCase();
+      const nameA = a.attributes.titles.en.toLowerCase();
+      const nameB = b.attributes.titles.en.toLowerCase();
       // console.log(nameA > nameB);
       if (nameA < nameB) {
         return -1;
@@ -783,10 +781,16 @@ const dataFromApi = (animesFromApi) => {
     //   let toArray = $(`.anime-rate`).text()
     // console.log(toArray);
 
-    $(".anime-div").filter(function (i) {
+    $(".anime-div").filter((elem, index) => {
       // console.log(Number($(`#${i+1} .anime-rate`)[0].innerText));
-      const rateValue = Number($(`#${i + 1} .anime-rate`)[0].innerText);
-      $(this).toggle(
+
+// console.log(elem,index);
+
+      const rateValue = Number($(`#${index.id} .anime-rate`)[0].innerText);
+
+// console.log('rateValue', rateValue)
+// console.log($(this));
+$(".anime-div").toggle(
         MinRatingRange <= rateValue && rateValue <= MaxRatingRange
       );
     });
@@ -998,11 +1002,11 @@ const dataFromApi = (animesFromApi) => {
   lightButton.click(function () {
     //! edit with it ( style.css / :root)
     root.css({
-      "--color-1": "var(-color-1-a)",
-      "--color-2": "var(-color-2-a)",
-      "--color-3": "var(-color-3-a)",
-      "--color-4": "var(-color-4-a)",
-      "--color-5": "var(-color-5-a)",
+      "--color-1": "var(--color-1-a)",
+      "--color-2": "var(--color-2-a)",
+      "--color-3": "var(--color-3-a)",
+      "--color-4": "var(--color-4-a)",
+      "--color-5": "var(--color-5-a)",
       "--color-warning": "var(--color-warning-a)",
     });
     darkButton.show();
