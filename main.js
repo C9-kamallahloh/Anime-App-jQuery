@@ -8,9 +8,11 @@ $(function () {
   const apiLast = $(".api-last");
 
   let apiPageCounter = parseInt(localStorage.getItem("apiPageCounter")) || 0;
+let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
+
 
   $.ajax({
-    url: `https://kitsu.io/api/edge/anime?page[limit]=18&page[offset]=${apiPageCounter}`,
+    url: `https://kitsu.io/api/edge/anime?page[limit]=18&page[offset]=${apiPageCounter}&filter[text]=${apiSearchWord}`,
     success: (data) => {
       dataFromApi(data.data);
     },
@@ -657,14 +659,17 @@ $(function () {
 
     //* ////////////////// Events listeners ///////////////////
 
-    searchInput.on("keyup", function () {
+    searchInput.on(/* "keyup" */"change", function () {
       // console.log($(this).val());
 
       let searchVal = $(this).val().toLowerCase();
 
-      $(".anime-div").filter(function () {
-        $(this).toggle($(this).text().toLowerCase().indexOf(searchVal) > -1);
-      });
+      localStorage.setItem("apiSearchWord",searchVal)
+      location.reload();
+      // $(".anime-div").filter(function () {
+      //   $(this).toggle($(this).text().toLowerCase().indexOf(searchVal) > -1);
+      // });
+
     });
 
     homeButton.click(function () {
