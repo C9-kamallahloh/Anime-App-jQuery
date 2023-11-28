@@ -274,6 +274,8 @@ const dataFromApi = (animesFromApi) => {
   const container = $("#container");
   const root = $(":root");
 
+  const mainPageDiv = $("#main-page-div");
+
   const header = $("#header");
   const searchInput = $("#search-input");
   // const filterButton = $("#filter-button");
@@ -348,6 +350,7 @@ const dataFromApi = (animesFromApi) => {
   //* ////////////////////// HIDE / SHOW  //////////////////////////////
 
   // header.css("display", "grid");
+  mainPageDiv.show();
   logInSignUpPage.hide();
   mainPage.css("display", "flex");
   // userPage.css("display","none");
@@ -430,6 +433,7 @@ const dataFromApi = (animesFromApi) => {
   const returnToHome = function () {
     setTimeout(() => {
       // header.css("display", "grid");
+      mainPageDiv.show();
       logInSignUpPage.hide();
       mainPage.css("display", "flex");
       userPage.hide();
@@ -442,6 +446,7 @@ const dataFromApi = (animesFromApi) => {
 
   const goToAnimePage = function () {
     // header.hide();
+    mainPageDiv.hide();
     logInSignUpPage.hide();
     mainPage.hide();
     userPage.hide();
@@ -650,6 +655,7 @@ const dataFromApi = (animesFromApi) => {
   });
 
   homeButton.click(function () {
+    mainPageDiv.show();
     logInSignUpPage.hide();
     mainPage.css("display", "flex");
     userPage.hide();
@@ -666,12 +672,14 @@ const dataFromApi = (animesFromApi) => {
   userButton.click(function () {
     if (successfulLogIn) {
       //! change it with isValidLogIn function
+      mainPageDiv.hide();
       logInSignUpPage.hide();
       mainPage.hide();
       userPage.css("display", "grid");
       animePage.hide();
       filterPage.hide();
     } else {
+      mainPageDiv.hide();
       logInSignUpPage.css("display", "grid");
       mainPage.hide();
       userPage.hide();
@@ -683,6 +691,7 @@ const dataFromApi = (animesFromApi) => {
   //* ///////////////////////////////////////////////////////
 
   filterButton.click(function () {
+    mainPageDiv.hide();
     logInSignUpPage.hide();
     mainPage.hide();
     userPage.hide();
@@ -707,10 +716,10 @@ const dataFromApi = (animesFromApi) => {
         ? (nameA = "undefined")
         : (nameA = a.attributes.canonicalTitle.toLowerCase());
 
-        let nameB;
-        b.attributes.canonicalTitle === undefined
-          ? (nameB = "undefined")
-          : (nameB = b.attributes.canonicalTitle.toLowerCase());
+      let nameB;
+      b.attributes.canonicalTitle === undefined
+        ? (nameB = "undefined")
+        : (nameB = b.attributes.canonicalTitle.toLowerCase());
       // console.log(nameA > nameB);
       if (nameA < nameB) {
         return -1;
@@ -795,7 +804,7 @@ const dataFromApi = (animesFromApi) => {
 
       const rateValue = Number($(`#${index.id} .anime-rate`)[0].innerText);
 
-      console.log('rateValue', rateValue)
+      console.log("rateValue", rateValue);
       // console.log($(this));
       $(`#${index.id}.anime-div`).toggle(
         MinRatingRange <= rateValue && rateValue <= MaxRatingRange
@@ -955,6 +964,7 @@ const dataFromApi = (animesFromApi) => {
     logInPassword.val("");
     // userButton.trigger("click")
     //! edit the userButton event click
+    mainPageDiv.hide();
     logInSignUpPage.hide();
     mainPage.hide();
     userPage.css("display", "grid");
@@ -983,6 +993,7 @@ const dataFromApi = (animesFromApi) => {
     localStorage.setItem("successfulLogIn", "");
     successfulLogIn = false;
     //! edit the userButton event click
+    mainPageDiv.hide();
     logInSignUpPage.css("display", "grid");
     mainPage.hide();
     userPage.hide();

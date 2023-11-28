@@ -57,21 +57,24 @@ html {
   margin: 0px;
   height: 100%;
   max-width: 100%;
+  background-color: var(--color-1);
 }
 
 #container {
-  height: 100vh;
+  height: 91vh;
   /* 
   display: flex;
   flex-direction: column; 
   justify-content: space-between;
   */
-  display: grid;
-  grid-template: 0.25fr 7fr 0.65fr / 1fr;
-  margin: 0px;
+  /* display: grid;
+  grid-template: 7fr 1fr / 1fr; */
+  display: flex;
+  justify-content: space-around;
   padding: 10px;
   background-color: var(--color-1);
   color: var(--color-5);
+  overflow: auto;
 }
 #header {
   /* display: grid;
@@ -82,7 +85,7 @@ html {
 }
 
 #search-input {
-  width: calc(100vw - 30px);
+  width: calc(100vw - 40px);
   min-height: 5vh;
   border-radius: 1rem;
   font-size: large;
@@ -131,19 +134,21 @@ html {
 }
 
 #log-in-rules p {
-  color: red;
+  color: var(--color-warning);
 }
 #main-page {
   display: flex;
   flex-wrap: wrap;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+
 }
 
 .anime-div {
   border: 2px var(--color-3) solid;
   border-radius: 1rem;
   margin: 1%;
-  width: 31%;
+  width: 31.3%;
+  /* height: 31%; */
   display: grid;
   grid-template: repeat(4, 0.5fr) / 1fr 2fr;
   grid-template-areas: "Image Name" "Image Genre" "Image Studio" "Image Type";
@@ -161,10 +166,10 @@ html {
   /* aspect-ratio: 3/4 ; */
 }
 .anime-bg {
-  max-width: 300%;
-  opacity: 0.1;
+  max-width: 100%;
+  opacity: 0.15;
   height: 100%;
-  align-self: center;
+  /* align-self: center; */
   grid-area: name;
   /* padding: 5%; */
   border-radius: inherit;
@@ -243,7 +248,11 @@ html {
 }
 
 #user-page {
-  display: none;
+  display: grid;
+grid-template: 30vh 70vh / 95vw;
+/* justify-self: center; */
+/* align-self: center; */
+/* align-items:baseline; */
 }
 #user-div {
   display: flex;
@@ -260,11 +269,11 @@ html {
   margin: 2%;
 
   font-size: x-large;
-  height: 40vh;
+  height: 55vh;
 }
 
 #user-fav-ul {
-  height: calc(40vh - 50px);
+  height: calc(60vh - 50px);
   overflow-y: scroll;
 }
 
@@ -371,7 +380,7 @@ li::marker {
 #footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  position: absolute;
+  position: fixed;
   right: 2.5vw;
   bottom: 10px; /* ! related to container padding */
   width: 95vw;
@@ -512,25 +521,7 @@ input[type="range"] {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  #log-in-sign-up-page {
-    display: grid;
-    width: 50%;
-    grid-template: 1fr 1fr / 1fr;
-    gap: 5vw;
-    justify-self: center;
-    align-self: flex-start;
-    margin-top: 1rem;
-    font-weight: bold;
-    line-height: 1.1;
-  }
 
-  #log-in-sign-up-page div {
-    /* have media query */
-    border: 1px var(--color-5) solid;
-    box-shadow: 0 0 1rem var(--color-5);
-    padding: 10%;
-    border-radius: 2rem;
-  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
