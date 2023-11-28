@@ -1,7 +1,7 @@
 //* /////////////////////// data from API ////////////////////
 
 $.ajax({
-  url: "https://kitsu.io/api/edge/anime?filter[categories]=adventure",
+  url: "https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=0",
   success: (data) => {
     dataFromApi(data.data);
   },
@@ -228,7 +228,7 @@ const dataFromApi = (animesFromApi) => {
 
   //! Extra Features [Version 2]
   //(DONE) Login & Register functionality
-  // - Fetching data from API
+  //(DONE) Fetching data from API
   //(DONE) Use CSS custom properties
   //(DONE) Change website color theme [ Dark, Light ]
   // - Fully responsive design for both mobile and desktop using CSS media queries
@@ -702,8 +702,15 @@ const dataFromApi = (animesFromApi) => {
     animesFromApi.sort((a, b) => {
       // console.log("A", a.animeName);
       // console.log("B", b.animeName);
-      const nameA = a.attributes.titles.en.toLowerCase();
-      const nameB = b.attributes.titles.en.toLowerCase();
+      let nameA;
+      a.attributes.titles.en === undefined
+        ? (nameA = "undefined")
+        : (nameA = a.attributes.titles.en.toLowerCase());
+
+        let nameB;
+        b.attributes.titles.en === undefined
+          ? (nameB = "undefined")
+          : (nameB = b.attributes.titles.en.toLowerCase());
       // console.log(nameA > nameB);
       if (nameA < nameB) {
         return -1;
@@ -784,13 +791,13 @@ const dataFromApi = (animesFromApi) => {
     $(".anime-div").filter((elem, index) => {
       // console.log(Number($(`#${i+1} .anime-rate`)[0].innerText));
 
-// console.log(elem,index);
+      // console.log(elem,index);
 
       const rateValue = Number($(`#${index.id} .anime-rate`)[0].innerText);
 
-// console.log('rateValue', rateValue)
-// console.log($(this));
-$(".anime-div").toggle(
+      console.log('rateValue', rateValue)
+      // console.log($(this));
+      $(`#${index.id}.anime-div`).toggle(
         MinRatingRange <= rateValue && rateValue <= MaxRatingRange
       );
     });
