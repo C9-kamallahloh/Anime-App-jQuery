@@ -140,7 +140,7 @@ html {
   display: flex;
   flex-wrap: wrap;
   /* overflow-y: scroll; */
-justify-content: center;
+  justify-content: center;
 }
 
 .anime-div {
@@ -155,6 +155,12 @@ justify-content: center;
   position: relative;
   box-shadow: 0 0 5px var(--color-5);
   background-color: var(--color-2);
+}
+
+.anime-div > p:hover {
+  overflow-y: visible;
+  background-color: var(--color-2);
+  border-radius: inherit;
 }
 
 .anime-img {
@@ -193,10 +199,7 @@ justify-content: center;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow-y: hidden;
-
 }
-
-
 
 .anime-genre {
   padding-top: 5%;
@@ -272,10 +275,10 @@ justify-content: center;
 
 #user-page {
   display: grid;
-grid-template: 30vh 70vh / 95vw;
-/* justify-self: center; */
-/* align-self: center; */
-/* align-items:baseline; */
+  grid-template: 30vh 70vh / 95vw;
+  /* justify-self: center; */
+  /* align-self: center; */
+  /* align-items:baseline; */
 }
 #user-div {
   display: flex;
@@ -541,6 +544,12 @@ input[type="range"] {
 #light-button {
   grid-area: DarkLightToggle;
 } */
+
+.api-div {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
