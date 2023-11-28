@@ -413,7 +413,7 @@ const dataFromApi = (animesFromApi) => {
 
     // console.log(addedAnime);
 
-    const newAddedToFav = $(`<li>${addedAnime.attributes.titles.en}</li>`);
+    const newAddedToFav = $(`<li>${addedAnime.attributes.canonicalTitle}</li>`);
     newAddedToFav.addClass(`added-to-fav-${addedAnime.id}`);
     userFavUl.append(newAddedToFav);
 
@@ -479,16 +479,16 @@ const dataFromApi = (animesFromApi) => {
     //* ///////////
 
     const animeImage = $(
-      `<img src="${animeInfo.attributes.posterImage.small}" alt="${animeInfo.attributes.titles.en}"/>`
+      `<img src="${animeInfo.attributes.posterImage.small}" alt="${animeInfo.attributes.canonicalTitle}"/>`
     );
     animeImage.addClass("anime-page-img");
 
     const animeBg = $(
-      `<img src="${animeInfo.attributes.posterImage.small}" alt="${animeInfo.attributes.titles.en}"/>`
+      `<img src="${animeInfo.attributes.posterImage.small}" alt="${animeInfo.attributes.canonicalTitle}"/>`
     );
     animeBg.addClass("anime-page-bg");
 
-    const animeName = $(`<p>${animeInfo.attributes.titles.en}</p>`);
+    const animeName = $(`<p>${animeInfo.attributes.canonicalTitle}</p>`);
     animeName.addClass("anime-page-name");
 
     // const AnimeGenresArray = animeInfo.Genres.join(" ");
@@ -546,16 +546,16 @@ const dataFromApi = (animesFromApi) => {
       animeDiv.addClass("anime-div");
 
       const animeImage = $(
-        `<img src="${elem.attributes.posterImage.small}" alt="${elem.attributes.titles.en}"/>`
+        `<img src="${elem.attributes.posterImage.small}" alt="${elem.attributes.canonicalTitle}"/>`
       );
       animeImage.addClass("anime-img");
 
       const animeBg = $(
-        `<img src="${elem.attributes.posterImage.small}" alt="${elem.attributes.titles.en}"/>`
+        `<img src="${elem.attributes.posterImage.small}" alt="${elem.attributes.canonicalTitle}"/>`
       );
       animeBg.addClass("anime-bg");
 
-      const animeName = $(`<p>${elem.attributes.titles.en}</p>`);
+      const animeName = $(`<p>${elem.attributes.canonicalTitle}</p>`);
       animeName.addClass("anime-name");
 
       // const AnimeGenresArray = elem.Genres.join(" ");
@@ -590,7 +590,7 @@ const dataFromApi = (animesFromApi) => {
         // let addedAnime = animesFromApi[indexOfFavedAnimes]
         // console.log(addedAnime); //! elem === addedAnime
 
-        const newAddedToFav = $(`<li>${elem.attributes.titles.en}</li>`);
+        const newAddedToFav = $(`<li>${elem.attributes.canonicalTitle}</li>`);
 
         newAddedToFav.addClass(`added-to-fav-${elem.id}`);
         userFavUl.append(newAddedToFav);
@@ -703,14 +703,14 @@ const dataFromApi = (animesFromApi) => {
       // console.log("A", a.animeName);
       // console.log("B", b.animeName);
       let nameA;
-      a.attributes.titles.en === undefined
+      a.attributes.canonicalTitle === undefined
         ? (nameA = "undefined")
-        : (nameA = a.attributes.titles.en.toLowerCase());
+        : (nameA = a.attributes.canonicalTitle.toLowerCase());
 
         let nameB;
-        b.attributes.titles.en === undefined
+        b.attributes.canonicalTitle === undefined
           ? (nameB = "undefined")
-          : (nameB = b.attributes.titles.en.toLowerCase());
+          : (nameB = b.attributes.canonicalTitle.toLowerCase());
       // console.log(nameA > nameB);
       if (nameA < nameB) {
         return -1;
