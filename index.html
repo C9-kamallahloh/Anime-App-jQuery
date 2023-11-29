@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MERAKI_Academy_Project_2</title>
+    <title>Anime Wiki</title>
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -21,15 +21,18 @@
     <div id="container">
       <div id="main-page-div">
         <header id="header">
-          <!-- <label for="search-input">search:</label> -->
-          <input
-            type="text"
-            name="search-input"
-            id="search-input"
-            placeholder="Search ..."
-          />
-          <!-- <button id="filter-button">Filter</button> -->
+          <div>
+            <!-- <label for="search-input">search:</label> -->
+            <input
+              type="text"
+              name="search-input"
+              id="search-input"
+              placeholder="Search ..."
+            />
+          </div>
+          <div><button id="filter-pop-up-button">Filter</button></div>
         </header>
+        <div id="filter-pop-up-div"></div>
         <div class="api-div">
           <button class="api-first">First</button>
           <button class="api-back">Back</button>
@@ -38,6 +41,7 @@
         </div>
 
         <main id="main-page"></main>
+        
         <div class="api-div">
           <button class="api-first">First</button>
           <button class="api-back">Back</button>

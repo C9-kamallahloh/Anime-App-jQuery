@@ -95,6 +95,8 @@ $(function () {
     const header = $("#header");
     const searchInput = $("#search-input");
     // const filterButton = $("#filter-button");
+    const filterPopUpButton = $("#filter-pop-up-button");
+    const filterPopUpDiv = $("#filter-pop-up-div");
 
     const logInSignUpPage = $("#log-in-sign-up-page");
     const signUpDiv = $("#sign-up-div");
@@ -165,10 +167,11 @@ $(function () {
     const setting = $("#setting");
     const settingButton = $("#setting-button");
 
-    //* ////////////////////// HIDE / SHOW  //////////////////////////////
+    //* /////////////// HIDE / SHOW  ///////////////////////
 
     // header.css("display", "grid");
     mainPageDiv.show();
+    filterPopUpDiv.hide();
     logInSignUpPage.hide();
     mainPage.css("display", "flex");
     // userPage.css("display","none");
@@ -181,7 +184,7 @@ $(function () {
     settingPopUp.hide();
     lightButton.hide();
 
-    //* //////// Add/remove Anime To User Fav {from home page} ////////////
+    //* //////// Add/remove Anime To User Fav {from home page} //////////
 
     const removeFromFavFromList = function () {
       // console.log($(this));
@@ -297,6 +300,7 @@ $(function () {
       setTimeout(() => {
         // header.css("display", "grid");
         mainPageDiv.show();
+        filterPopUpDiv.hide();
         logInSignUpPage.hide();
         mainPage.css("display", "flex");
         userPage.hide();
@@ -531,6 +535,7 @@ $(function () {
 
     homeButton.click(function () {
       mainPageDiv.show();
+      filterPopUpDiv.hide();
       logInSignUpPage.hide();
       mainPage.css("display", "flex");
       userPage.hide();
@@ -575,7 +580,19 @@ $(function () {
       filterPage.show();
     });
 
-    //* ///////////////////////////////////////////////////////
+
+    filterPopUpButton.click(function(){
+      mainPageDiv.show();
+      filterPopUpDiv.css("display", "flex");
+      logInSignUpPage.hide();
+      mainPage.css("display", "flex");
+      userPage.hide();
+      animePage.hide();
+      filterPage.show();
+    })
+    //* /////////////////////// Filters ////////////////////////
+
+
 
     filterButtonAZ.click(function () {
       //! will sort the original anime array ascending only.
@@ -842,33 +859,33 @@ $(function () {
         }
       }
 
-        if (errorsCounter === 0) {
-          logInSignUpErrors.html("");
-          const logInSuccessful = $(
-            `<p>log-in Successful for user : ${infoObject.username.toLowerCase()}</p>`
-          );
-          logInSuccessful.addClass("log-in-successful");
-          logInSignUpErrors.append(logInSuccessful);
+      if (errorsCounter === 0) {
+        logInSignUpErrors.html("");
+        const logInSuccessful = $(
+          `<p>log-in Successful for user : ${infoObject.username.toLowerCase()}</p>`
+        );
+        logInSuccessful.addClass("log-in-successful");
+        logInSignUpErrors.append(logInSuccessful);
 
-          console.log("log-in-successful");
-          localStorage.setItem("successfulLogIn", true);
-          successfulLogIn = true;
+        console.log("log-in-successful");
+        localStorage.setItem("successfulLogIn", true);
+        successfulLogIn = true;
 
-          // console.log(logInUserName);
+        // console.log(logInUserName);
 
-          logInUserName.val("");
-          logInPassword.val("");
-          // userButton.trigger("click")
-          //! edit the userButton event click
-          mainPageDiv.hide();
-          logInSignUpPage.hide();
-          mainPage.hide();
-          userPage.css("display", "grid");
-          animePage.hide();
-          filterPage.hide();
-        } else {
-          logInSignUpErrors.append(errorsList);
-        }
+        logInUserName.val("");
+        logInPassword.val("");
+        // userButton.trigger("click")
+        //! edit the userButton event click
+        mainPageDiv.hide();
+        logInSignUpPage.hide();
+        mainPage.hide();
+        userPage.css("display", "grid");
+        animePage.hide();
+        filterPage.hide();
+      } else {
+        logInSignUpErrors.append(errorsList);
+      }
     };
 
     signUpButton.click(function () {

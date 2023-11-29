@@ -77,21 +77,22 @@ html {
   overflow: auto;
 }
 #header {
-  /* display: grid;
-  grid-template-columns: 5fr 1fr; */
-  /* align-items: end; */
-  /* position: relative; */
-  /* gap: 2%; */
+  display: grid;
+  grid-template-columns: 5fr 1fr; 
+  gap: 2%;
+  margin-inline: 2vw;
 }
 
 #search-input {
-  width: calc(100vw - 40px);
+  width: 100%;
   min-height: 5vh;
   border-radius: 1rem;
   font-size: large;
   padding: 0 15px 0 15px;
 }
-
+#filter-pop-up-div {
+  display: flex;
+}
 /* #log-in-sign-up-page {
   display: grid;
   width: 90%;
