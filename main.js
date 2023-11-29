@@ -59,7 +59,7 @@ $(function () {
     //(working on functions) move the filter section to main page under search bar.
     //(DONE) add remove from fav button to user page ul li
     //(DONE) remove old sign-up log-in errors (create new div for errors) //! remove old errors
-    // add the user name, AVATAR, and any other info to the user page.
+    // (DONE) add the user name, AVATAR, and any other info to the user page.
     // filter by id ascending or descending
     // gave every new user his own fav list.
 
@@ -995,24 +995,24 @@ $(function () {
     theme1.click(function () {
       //! edit with it ( style.css / :root)
       root.css({
-        "--color-1-a": "rgb(253, 247, 228)",
-        "--color-2-a": "rgb(250, 238, 209)",
-        "--color-3-a": "rgb(222, 208, 182)",
-        "--color-4-a": "rgb(187, 171, 140)",
-        "--color-5-a": "rgb(104, 96, 81)",
-        "--color-warning-a": "red",
+        "--color-1-a": "rgba(248, 248, 247, 1)",
+        "--color-2-a": "rgba(248, 200, 164, 1)",
+        "--color-3-a": "rgba(95, 80, 64, 1)",
+        "--color-4-a": "rgba(165, 96, 3, 1)",
+        "--color-5-a": "rgba(0, 0, 0, 1)",
+        "--color-warning-a": "rgba(53, 110, 45, 1)",
       });
     });
 
     theme2.click(function () {
       //! edit with it ( style.css / :root)
       root.css({
-        "--color-1-a": "rgb(245, 245, 245)",
-        "--color-2-a": "rgb(8, 217, 214)",
-        "--color-3-a": "rgb(190, 190, 190)",
-        "--color-4-a": "rgb(255, 46, 99)",
-        "--color-5-a": "rgb(37, 42, 52)",
-        "--color-warning-a": "red",
+        "--color-1-a": "rgba(252, 252, 252, 1)",
+        "--color-2-a": "rgba(217, 227, 240, 1)",
+        "--color-3-a": "rgba(214, 180, 182, 1)",
+        "--color-4-a": "rgba(20, 13, 47, 1)",
+        "--color-5-a": "rgba(68, 59, 98, 1)",
+        "--color-warning-a": "rgba(254, 68, 72, 1)",
       });
     });
 

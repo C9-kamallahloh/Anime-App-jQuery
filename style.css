@@ -58,8 +58,11 @@ html {
   height: 100%;
   max-width: 100%;
   background-color: var(--color-1);
-}
 
+}
+body {
+  cursor: url(./Media/animeMouseCursors.png), default;
+}
 #container {
   height: 91vh;
   /* 
