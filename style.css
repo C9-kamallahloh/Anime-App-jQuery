@@ -92,50 +92,97 @@ html {
   padding: 0 15px 0 15px;
 }
 
-#log-in-sign-up-page {
-  /* have media query */
+/* #log-in-sign-up-page {
   display: grid;
   width: 90%;
-  /* height: 75%; */
+  height: 90%;
   grid-template: 1fr 0.25fr / 1fr 1fr;
   grid-template-areas: "signUp logIn" "rules rules";
   gap: 2vh 10vw;
   justify-self: center;
   align-self: center;
+} */
+
+#log-in-sign-up-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+  flex-grow: 1;
+  margin: 5%;
+  font-size: larger;
 }
 
 #log-in-sign-up-page div {
   /* have media query */
   border: 1px var(--color-5) solid;
   box-shadow: 0 0 1rem var(--color-5);
-  padding: 10%;
+  padding: 2% 5%;
   border-radius: 2rem;
+  flex-grow: 1;
+}
+
+#log-in-sign-up-page input {
+  padding: 1% 5%;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
+}
+
+#user-section {
+  display: flex;
+  min-height: 55%;
+  width: 100%;
+  gap: 5%;
+  flex-grow: 1;
 }
 
 #sign-up-div {
-  grid-area: signUp;
+  /* grid-area: signUp; */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-y: auto;
 }
 
 #log-in-div {
-  grid-area: logIn;
+  /* grid-area: logIn; */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-y: auto;
+}
+
+#rules-section {
+  display: flex;
+  width: 100%;
+  gap: 5%;
+}
+
+#log-in-sign-up-errors {
+  width: 100%;
+  align-items: center;
+  height: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow-y: auto;
 }
 
 #log-in-rules {
-  grid-area: rules;
-  font-size: medium;
-  justify-self: auto;
-  align-self: auto;
+  width: 100%;
+  align-items: center;
+  height: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow-y: auto;
 }
 
 #log-in-rules p {
   color: var(--color-warning);
 }
+
 #main-page {
   display: flex;
   flex-wrap: wrap;
@@ -248,8 +295,9 @@ html {
 
 .anime-fav {
   position: absolute;
-  bottom: 5%;
+  bottom: 0%;
   right: 5%;
+  color: var(--color-warning);
   /* z-index: 1;
   background: url(Media/User-image-default.jpg);
   border: 2px var(--color-5) solid */
@@ -307,9 +355,31 @@ html {
   content: "- ";
 }
 
-li:nth-child(2n) {
+#user-fav-ul li {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
+}
+
+#user-fav-ul li:hover {
+  -webkit-line-clamp: 50;
+  overflow-y: visible;
+}
+#user-fav-ul > div {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 5%;
+}
+
+ul div:nth-child(2n) {
   background-color: var(--color-2);
 }
+
+/* svg {
+  width: 32;
+  height: 32;
+} */
 li::marker {
   color: var(--color-3);
 }
@@ -555,6 +625,14 @@ input[type="range"] {
 @media only screen and (max-width: 600px) {
   .anime-div {
     width: 85%;
+  }
+  #user-section {
+    flex-direction: column;
+    height: 100%;
+  }
+  #rules-section {
+    flex-direction: column;
+    min-height: 70%;
   }
 }
 

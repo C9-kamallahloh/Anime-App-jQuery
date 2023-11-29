@@ -8,8 +8,7 @@ $(function () {
   const apiLast = $(".api-last");
 
   let apiPageCounter = parseInt(localStorage.getItem("apiPageCounter")) || 0;
-let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
-
+  let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
 
   $.ajax({
     url: `https://kitsu.io/api/edge/anime?page[limit]=18&page[offset]=${apiPageCounter}&filter[text]=${apiSearchWord}`,
@@ -26,200 +25,6 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
     // animesFromApi = data;
 
     console.log("animesFromApi", animesFromApi);
-    //* ////////////////// anime test array of objects ///////////////
-
-    const animes = [
-      {
-        id: 1,
-        animeName: "Steins;Gate",
-        Characters: ["Okabe Rintarou", "Makise, Kurisu"],
-        imageSrc: "https://cdn.myanimelist.net/images/anime/1935/127974l.jpg",
-        description: `Eccentric scientist Rintarou Okabe has a never-ending thirst for scientific exploration. Together with his ditzy but well-meaning friend Mayuri Shiina and his roommate Itaru Hashida, Rintarou founds the Future Gadget Laboratory in the hopes of creating technological innovations that baffle the human psyche. Despite claims of grandeur, the only notable "gadget" the trio have created is a microwave that has the mystifying power to turn bananas into green goo.
-    
-        However, when Rintarou decides to attend neuroscientist Kurisu Makise's conference on time travel, he experiences a series of strange events that lead him to believe that there is more to the "Phone Microwave" gadget than meets the eye. Apparently able to send text messages into the past using the microwave, Rintarou dabbles further with the "time machine," attracting the ire and attention of the mysterious organization SERN.
-        
-        Due to the novel discovery, Rintarou and his friends find themselves in an ever-present danger. As he works to mitigate the damage his invention has caused to the timeline, he is not only fighting a battle to save his loved ones, but also one against his degrading sanity.`,
-        rate: 9.07,
-        Genres: ["Drama", "Sci-Fi", "Suspense"],
-        type: "TV",
-        Studios: "White Fox",
-        trailerSrc: `https://www.youtube.com/embed/LwcTi86cFeg`,
-      },
-      {
-        id: 2,
-        animeName: "Vinland Saga",
-        Characters: ["Thorfinn", "Askeladd"],
-        imageSrc: "https://cdn.myanimelist.net/images/anime/1500/103005l.jpg",
-        description: `Young Thorfinn grew up listening to the stories of old sailors that had traveled the ocean and reached the place of legend, Vinland. It's said to be warm and fertile, a place where there would be no need for fighting—not at all like the frozen village in Iceland where he was born, and certainly not like his current life as a mercenary. War is his home now. Though his father once told him, "You have no enemies, nobody does. There is nobody who it's okay to hurt," as he grew, Thorfinn knew that nothing was further from the truth.
-
-    The war between England and the Danes grows worse with each passing year. Death has become commonplace, and the viking mercenaries are loving every moment of it. Allying with either side will cause a massive swing in the balance of power, and the vikings are happy to make names for themselves and take any spoils they earn along the way. Among the chaos, Thorfinn must take his revenge and kill Askeladd, the man who murdered his father. The only paradise for the vikings, it seems, is the era of war and death that rages on.`,
-        rate: 8.75,
-        Genres: ["Action", "Adventure", "Drama"],
-        type: "TV",
-        Studios: "Wit Studio",
-        trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
-      },
-      {
-        id: 3,
-        animeName: "Shigatsu wa Kimi no Uso",
-        Characters: ["Miyazono, Kaori", "Arima, Kousei"],
-        imageSrc: "https://cdn.myanimelist.net/images/anime/3/67177l.jpg",
-        description: `Kousei Arima is a child prodigy known as the "Human Metronome" for playing the piano with precision and perfection. Guided by a strict mother and rigorous training, Kousei dominates every competition he enters, earning the admiration of his musical peers and praise from audiences. When his mother suddenly passes away, the subsequent trauma makes him unable to hear the sound of a piano, and he never takes the stage thereafter.
-
-    Nowadays, Kousei lives a quiet and unassuming life as a junior high school student alongside his friends Tsubaki Sawabe and Ryouta Watari. While struggling to get over his mother's death, he continues to cling to music. His monochrome life turns upside down the day he encounters the eccentric violinist Kaori Miyazono, who thrusts him back into the spotlight as her accompanist. Through a little lie, these two young musicians grow closer together as Kaori tries to fill Kousei's world with color.
-    `,
-        rate: 8.65,
-        Genres: ["Drama", "Romance", ""],
-        type: "TV",
-        Studios: "A-1 Pictures",
-        trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
-      },
-      {
-        id: 4,
-        animeName: "Violet Evergarden",
-        Characters: ["Evergarden, Violet", "Bougainvillea, Gilbert"],
-        imageSrc:
-          "https://cdn.myanimelist.net/images/anime/1795/95088l.jpg?_gl=1*81trfa*_ga*MjU0NDY1OTIzLjE2NzkzMDQ2NzY.*_ga_26FEP9527K*MTcwMDY3NDIxNi4xMy4xLjE3MDA2NzU1MzQuNjAuMC4w",
-        description: `The Great War finally came to an end after four long years of conflict; fractured in two, the continent of Telesis slowly began to flourish once again. Caught up in the bloodshed was Violet Evergarden, a young girl raised for the sole purpose of decimating enemy lines. Hospitalized and maimed in a bloody skirmish during the War's final leg, she was left with only words from the person she held dearest, but with no understanding of their meaning.
-
-    Recovering from her wounds, Violet starts a new life working at CH Postal Services after a falling out with her new intended guardian family. There, she witnesses by pure chance the work of an "Auto Memory Doll," amanuenses that transcribe people's thoughts and feelings into words on paper. Moved by the notion, Violet begins work as an Auto Memory Doll, a trade that will take her on an adventure, one that will reshape the lives of her clients and hopefully lead to self-discovery.
-    `,
-        rate: 8.67,
-        Genres: ["Drama", "Fantasy"],
-        type: "TV",
-        Studios: "Kyoto Animation",
-        trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
-      },
-      {
-        id: 5,
-        animeName: "Guilty Crown",
-        Characters: ["Yuzuriha, Inori", "Ouma, Shuu"],
-        imageSrc: "https://cdn.myanimelist.net/images/anime/1566/133912l.jpg",
-        description: `On December 24, 2029—the day colloquially known as the "Lost Christmas"—the Apocalypse Virus spread across Japan, bringing death to its citizens and plunging the country into utter chaos. In an effort to establish order, the United Nations sends the GHQ to assist with the crisis by containing the outbreak while removing all political autonomy in the process. A decade later, the country still lives under their control, unable to break free from their draconian rule.
-
-    Frustrated with the state of the nation, a resistance group named the Funeral Parlor aims to liberate Japan from the GHQ. Led by the charismatic Gai Tsutsugami, the group plots to steal a vial containing the "Void Genome" to further their goals. The vial falls into the hands of internet vocalist Inori Yuzuriha, who ends up being hunted by the GHQ's Anti-Bodies forces. Having nowhere to go, she seeks refuge in a warehouse where she meets Shuu Ouma—a socially awkward high school student who is a huge fan of her music.
-    
-    Shuu gets dragged into the conflict the moment he rescues Inori, and the Void Genome shatters in his hand, granting him the "Power of the Kings." While learning how to control his grand new ability, Shuu must now fight to liberate Japan from its cruel oppressors.
-    `,
-        rate: 7.41,
-        Genres: ["Action", "Drama", "Sci-Fi"],
-        type: "TV",
-        Studios: "Production I.G",
-        trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
-      },
-      {
-        id: 6,
-        animeName: "Fate/Zero",
-        Characters: ["Saber", "Emiya, Kiritsugu"],
-        imageSrc: "https://cdn.myanimelist.net/images/anime/1345/98624l.jpg",
-        description: `With the promise of granting any wish, the omnipotent Holy Grail triggered three wars in the past, each too cruel and fierce to leave a victor. In spite of that, the wealthy Einzbern family is confident that the Fourth Holy Grail War will be different; namely, with a vessel of the Holy Grail now in their grasp. Solely for this reason, the much hated "Magus Killer" Kiritsugu Emiya is hired by the Einzberns, with marriage to their only daughter Irisviel as binding contract.
-
-    Kiritsugu now stands at the center of a cutthroat game of survival, facing off against six other participants, each armed with an ancient familiar, and fueled by unique desires and ideals. Accompanied by his own familiar, Saber, the notorious mercenary soon finds his greatest opponent in Kirei Kotomine, a priest who seeks salvation from the emptiness within himself in pursuit of Kiritsugu.
-    
-    Based on the light novel written by Gen Urobuchi, Fate/Zero depicts the events of the Fourth Holy Grail War—10 years prior to Fate/stay night. Witness a battle royale in which no one is guaranteed to survive.
-    `,
-        rate: 8.28,
-        Genres: ["Action", "Fantasy", "Supernatural"],
-        type: "TV",
-        Studios: "ufotable",
-        trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
-      },
-      {
-        id: 7,
-        animeName: "Steins;Gate Movie",
-        Characters: ["Okabe Rintarou", "Makise, Kurisu"],
-        imageSrc: "https://cdn.myanimelist.net/images/anime/1935/127974l.jpg",
-        description: `Eccentric scientist Rintarou Okabe has a never-ending thirst for scientific exploration. Together with his ditzy but well-meaning friend Mayuri Shiina and his roommate Itaru Hashida, Rintarou founds the Future Gadget Laboratory in the hopes of creating technological innovations that baffle the human psyche. Despite claims of grandeur, the only notable "gadget" the trio have created is a microwave that has the mystifying power to turn bananas into green goo.
-    
-        However, when Rintarou decides to attend neuroscientist Kurisu Makise's conference on time travel, he experiences a series of strange events that lead him to believe that there is more to the "Phone Microwave" gadget than meets the eye. Apparently able to send text messages into the past using the microwave, Rintarou dabbles further with the "time machine," attracting the ire and attention of the mysterious organization SERN.
-        
-        Due to the novel discovery, Rintarou and his friends find themselves in an ever-present danger. As he works to mitigate the damage his invention has caused to the timeline, he is not only fighting a battle to save his loved ones, but also one against his degrading sanity.`,
-        rate: 9.07,
-        Genres: ["Drama", "Sci-Fi", "Suspense"],
-        type: "Movie",
-        Studios: "White Fox",
-        trailerSrc: `https://www.youtube.com/embed/LwcTi86cFeg`,
-      },
-      {
-        id: 8,
-        animeName: "Vinland Saga Movie",
-        Characters: ["Thorfinn", "Askeladd"],
-        imageSrc: "https://cdn.myanimelist.net/images/anime/1500/103005l.jpg",
-        description: `Young Thorfinn grew up listening to the stories of old sailors that had traveled the ocean and reached the place of legend, Vinland. It's said to be warm and fertile, a place where there would be no need for fighting—not at all like the frozen village in Iceland where he was born, and certainly not like his current life as a mercenary. War is his home now. Though his father once told him, "You have no enemies, nobody does. There is nobody who it's okay to hurt," as he grew, Thorfinn knew that nothing was further from the truth.
-
-    The war between England and the Danes grows worse with each passing year. Death has become commonplace, and the viking mercenaries are loving every moment of it. Allying with either side will cause a massive swing in the balance of power, and the vikings are happy to make names for themselves and take any spoils they earn along the way. Among the chaos, Thorfinn must take his revenge and kill Askeladd, the man who murdered his father. The only paradise for the vikings, it seems, is the era of war and death that rages on.`,
-        rate: 8.75,
-        Genres: ["Action", "Adventure", "Drama"],
-        type: "Movie",
-        Studios: "Wit Studio",
-        trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
-      },
-      {
-        id: 9,
-        animeName: "Shigatsu wa Kimi no Uso Movie",
-        Characters: ["Miyazono, Kaori", "Arima, Kousei"],
-        imageSrc: "https://cdn.myanimelist.net/images/anime/3/67177l.jpg",
-        description: `Kousei Arima is a child prodigy known as the "Human Metronome" for playing the piano with precision and perfection. Guided by a strict mother and rigorous training, Kousei dominates every competition he enters, earning the admiration of his musical peers and praise from audiences. When his mother suddenly passes away, the subsequent trauma makes him unable to hear the sound of a piano, and he never takes the stage thereafter.
-
-    Nowadays, Kousei lives a quiet and unassuming life as a junior high school student alongside his friends Tsubaki Sawabe and Ryouta Watari. While struggling to get over his mother's death, he continues to cling to music. His monochrome life turns upside down the day he encounters the eccentric violinist Kaori Miyazono, who thrusts him back into the spotlight as her accompanist. Through a little lie, these two young musicians grow closer together as Kaori tries to fill Kousei's world with color.
-    `,
-        rate: 8.65,
-        Genres: ["Drama", "Romance", ""],
-        type: "Movie",
-        Studios: "A-1 Pictures",
-        trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
-      },
-      {
-        id: 10,
-        animeName: "Violet Evergarden Movie",
-        Characters: ["Evergarden, Violet", "Bougainvillea, Gilbert"],
-        imageSrc:
-          "https://cdn.myanimelist.net/images/anime/1795/95088l.jpg?_gl=1*81trfa*_ga*MjU0NDY1OTIzLjE2NzkzMDQ2NzY.*_ga_26FEP9527K*MTcwMDY3NDIxNi4xMy4xLjE3MDA2NzU1MzQuNjAuMC4w",
-        description: `The Great War finally came to an end after four long years of conflict; fractured in two, the continent of Telesis slowly began to flourish once again. Caught up in the bloodshed was Violet Evergarden, a young girl raised for the sole purpose of decimating enemy lines. Hospitalized and maimed in a bloody skirmish during the War's final leg, she was left with only words from the person she held dearest, but with no understanding of their meaning.
-
-    Recovering from her wounds, Violet starts a new life working at CH Postal Services after a falling out with her new intended guardian family. There, she witnesses by pure chance the work of an "Auto Memory Doll," amanuenses that transcribe people's thoughts and feelings into words on paper. Moved by the notion, Violet begins work as an Auto Memory Doll, a trade that will take her on an adventure, one that will reshape the lives of her clients and hopefully lead to self-discovery.
-    `,
-        rate: 8.67,
-        Genres: ["Drama", "Fantasy"],
-        type: "Movie",
-        Studios: "Kyoto Animation",
-        trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
-      },
-      {
-        id: 11,
-        animeName: "Guilty Crown Movie",
-        Characters: ["Yuzuriha, Inori", "Ouma, Shuu"],
-        imageSrc: "https://cdn.myanimelist.net/images/anime/1566/133912l.jpg",
-        description: `On December 24, 2029—the day colloquially known as the "Lost Christmas"—the Apocalypse Virus spread across Japan, bringing death to its citizens and plunging the country into utter chaos. In an effort to establish order, the United Nations sends the GHQ to assist with the crisis by containing the outbreak while removing all political autonomy in the process. A decade later, the country still lives under their control, unable to break free from their draconian rule.
-
-    Frustrated with the state of the nation, a resistance group named the Funeral Parlor aims to liberate Japan from the GHQ. Led by the charismatic Gai Tsutsugami, the group plots to steal a vial containing the "Void Genome" to further their goals. The vial falls into the hands of internet vocalist Inori Yuzuriha, who ends up being hunted by the GHQ's Anti-Bodies forces. Having nowhere to go, she seeks refuge in a warehouse where she meets Shuu Ouma—a socially awkward high school student who is a huge fan of her music.
-    
-    Shuu gets dragged into the conflict the moment he rescues Inori, and the Void Genome shatters in his hand, granting him the "Power of the Kings." While learning how to control his grand new ability, Shuu must now fight to liberate Japan from its cruel oppressors.
-    `,
-        rate: 7.41,
-        Genres: ["Action", "Drama", "Sci-Fi"],
-        type: "Movie",
-        Studios: "Production I.G",
-        trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
-      },
-      {
-        id: 12,
-        animeName: "Fate/Zero Movie",
-        Characters: ["Saber", "Emiya, Kiritsugu"],
-        imageSrc: "https://cdn.myanimelist.net/images/anime/1345/98624l.jpg",
-        description: `With the promise of granting any wish, the omnipotent Holy Grail triggered three wars in the past, each too cruel and fierce to leave a victor. In spite of that, the wealthy Einzbern family is confident that the Fourth Holy Grail War will be different; namely, with a vessel of the Holy Grail now in their grasp. Solely for this reason, the much hated "Magus Killer" Kiritsugu Emiya is hired by the Einzberns, with marriage to their only daughter Irisviel as binding contract.
-
-    Kiritsugu now stands at the center of a cutthroat game of survival, facing off against six other participants, each armed with an ancient familiar, and fueled by unique desires and ideals. Accompanied by his own familiar, Saber, the notorious mercenary soon finds his greatest opponent in Kirei Kotomine, a priest who seeks salvation from the emptiness within himself in pursuit of Kiritsugu.
-    
-    Based on the light novel written by Gen Urobuchi, Fate/Zero depicts the events of the Fourth Holy Grail War—10 years prior to Fate/stay night. Witness a battle royale in which no one is guaranteed to survive.
-    `,
-        rate: 8.28,
-        Genres: ["Action", "Fantasy", "Supernatural"],
-        type: "Movie",
-        Studios: "ufotable",
-        trailerSrc: "https://www.youtube.com/embed/watch?v=LwcTi86cFeg",
-      },
-    ];
 
     //! Main Features [Version 1]
     //(DONE) User should be able to view multiple movie posters.
@@ -242,7 +47,7 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
     //(DONE) Fetching data from API
     //(DONE) Use CSS custom properties
     //(DONE) Change website color theme [ Dark, Light ]
-    // - Fully responsive design for both mobile and desktop using CSS media queries
+    //(DONE) Fully responsive design for both mobile and desktop using CSS media queries
     // - Deploy the website using Netlify
     //(skipped) Admin Dashboard
     //(skipped) Class based [ OOP ]
@@ -301,6 +106,8 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
     const logInUserName = $("#log-in-user-name");
     const logInPassword = $("#log-in-password");
     const logInButton = $("#log-in-button");
+    const logInSignUpErrors = $("#log-in-sign-up-errors");
+
     const logInRules = $("#log-in-rules");
     const logOutButton = $("#log-out-button");
     const mainPage = $("#main-page");
@@ -376,8 +183,42 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
 
     //* //////// Add/remove Anime To User Fav {from home page} ////////////
 
+    const removeFromFavFromList = function () {
+      // console.log($(this));
+      // console.log(this);
+      // console.log('$(this)[0].className', $(this)[0].className)
+      let removedAnime = animesFromApi.filter(
+        (elem, i) => `added-to-fav-${elem.id}` === $(this)[0].className
+      );
+      // console.log("removedAnime", removedAnime);
+      removedAnime = removedAnime[0];
+
+      let indexOfRemovedAnime = favAnimesArray
+        .map(function (e) {
+          return e.id;
+        })
+        .indexOf(removedAnime.id);
+      // console.log("indexOfRemovedAnime", indexOfRemovedAnime);
+      favAnimesArray.splice(indexOfRemovedAnime, 1);
+
+      const favAnimeArrayToString = JSON.stringify(favAnimesArray);
+      localStorage.setItem("favAnimesArray", favAnimeArrayToString);
+
+      // console.log('$(`#${indexOfRemovedAnime}`)', $(`#${indexOfRemovedAnime} .anime-div`))
+
+      //       $(`#${indexOfRemovedAnime} .anime-fav`)
+      //         .html(`<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+      //       <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+      //     </svg>`);
+
+      
+      console.log(favAnimesArray);
+      $(this).remove();
+    };
+
     const removeFromFav = function () {
-      $(`li.added-to-fav-${$(this).parent()[0].id}`).remove();
+      console.log(this);
+      $(`ul div.added-to-fav-${$(this).parent()[0].id}`).remove();
       // console.log(favAnimesArray);
       // favAnimesArray.splice()
       // const removedAnime = animesFromApi[$(this).parent()[0].id - 1];
@@ -402,7 +243,10 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
       const favAnimeArrayToString = JSON.stringify(favAnimesArray);
       localStorage.setItem("favAnimesArray", favAnimeArrayToString);
 
-      $(this).html("FAV");
+      $(this)
+        .html(`<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+    </svg>`);
       $(this).off();
       $(this).click(addToFav);
       $(this).click(returnToHome);
@@ -412,7 +256,7 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
       // console.log($(this).parent()[0].id);
       // console.log(animes[($(this).parent()[0].id-1)].animeName);
 
-      console.log($(this).parent()[0].id);
+      // console.log($(this).parent()[0].id);
 
       // const addedAnime = animesFromApi[$(this).parent()[0].id - 1];
       // const addedAnime = animesFromApi.some((ele, i) => {
@@ -428,16 +272,23 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
       // console.log(addedAnime);
 
       const newAddedToFav = $(
-        `<li>${addedAnime.attributes.canonicalTitle}</li>`
+        `<div><li>${addedAnime.attributes.canonicalTitle}</li><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart-half" viewBox="0 0 16 16">
+        <path d="M8 2.748v11.047c3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+      </svg></div>`
       );
       newAddedToFav.addClass(`added-to-fav-${addedAnime.id}`);
+      newAddedToFav.click(removeFromFavFromList);
+      // newAddedToFav.click(returnToHome)
       userFavUl.append(newAddedToFav);
 
       favAnimesArray.push(addedAnime);
       const favAnimeArrayToString = JSON.stringify(favAnimesArray);
       localStorage.setItem("favAnimesArray", favAnimeArrayToString);
 
-      $(this).html("FAVed");
+      $(this)
+        .html(`<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+    </svg>`);
       $(this).off();
       $(this).click(removeFromFav);
       $(this).click(returnToHome);
@@ -519,10 +370,13 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
       const animeType = $(`<p>${animeInfo.attributes.showType}</p>`);
       animeType.addClass("anime-page-type");
 
-      const animeFav = $(`<p>FAV</p>`);
-      animeFav.addClass("anime-page-fav");
-      animeFav.click(addToFav);
-      animeFav.click(returnToHome); //! click on both FAV and animeDiv at the same time
+    //   const animeFav =
+    //     $(`<p><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+    //   <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+    // </svg></p>`);
+    //   animeFav.addClass("anime-page-fav");
+    //   animeFav.click(addToFav);
+    //   animeFav.click(returnToHome); //! click on both FAV and animeDiv at the same time
 
       const animeRate = $(
         `<p>${Math.floor(animeInfo.attributes.averageRating * 10) / 100}</p>`
@@ -540,7 +394,7 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
       animePageImageDiv.append(animeImage);
 
       animePageDetailsDiv.append(
-        animeFav,
+        // animeFav,
         animeName,
         animeRate,
         // animeGenre,
@@ -588,7 +442,10 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
         const animeType = $(`<p>${elem.attributes.showType}</p>`);
         animeType.addClass("anime-type");
 
-        const animeFav = $(`<p>FAV</p>`);
+        const animeFav =
+          $(`<p><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+      </svg></p>`);
         animeFav.addClass("anime-fav");
         animeFav.click(addToFav);
         animeFav.click(returnToHome); //! click on both FAV and animeDiv at the same time
@@ -615,7 +472,9 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
           newAddedToFav.addClass(`added-to-fav-${elem.id}`);
           userFavUl.append(newAddedToFav);
 
-          animeFav.text("FAVED");
+          animeFav.html(`<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+        </svg>`);
           animeFav.off();
           animeFav.click(removeFromFav);
           animeFav.click(returnToHome);
@@ -659,17 +518,16 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
 
     //* ////////////////// Events listeners ///////////////////
 
-    searchInput.on(/* "keyup" */"change", function () {
+    searchInput.on(/* "keyup" */ "change", function () {
       // console.log($(this).val());
 
       let searchVal = $(this).val().toLowerCase();
 
-      localStorage.setItem("apiSearchWord",searchVal)
+      localStorage.setItem("apiSearchWord", searchVal);
       location.reload();
       // $(".anime-div").filter(function () {
       //   $(this).toggle($(this).text().toLowerCase().indexOf(searchVal) > -1);
       // });
-
     });
 
     homeButton.click(function () {
@@ -698,7 +556,8 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
         filterPage.hide();
       } else {
         mainPageDiv.hide();
-        logInSignUpPage.css("display", "grid");
+        // logInSignUpPage.css("display", "grid");
+        logInSignUpPage.css("display", "flex");
         mainPage.hide();
         userPage.hide();
         animePage.hide();
@@ -978,7 +837,7 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
       localStorage.setItem("successfulLogIn", true);
       successfulLogIn = true;
 
-      console.log(logInUserName);
+      // console.log(logInUserName);
 
       logInUserName.val("");
       logInPassword.val("");
@@ -1014,7 +873,8 @@ let apiSearchWord = localStorage.getItem("apiSearchWord") || "";
       successfulLogIn = false;
       //! edit the userButton event click
       mainPageDiv.hide();
-      logInSignUpPage.css("display", "grid");
+        // logInSignUpPage.css("display", "grid");
+        logInSignUpPage.css("display", "flex");
       mainPage.hide();
       userPage.hide();
       animePage.hide();
