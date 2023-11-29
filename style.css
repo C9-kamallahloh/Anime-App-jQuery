@@ -58,21 +58,12 @@ html {
   height: 100%;
   max-width: 100%;
   background-color: var(--color-1);
-
 }
 body {
   cursor: url(./Media/animeMouseCursors.png), default;
 }
 #container {
   height: 91vh;
-  /* 
-  display: flex;
-  flex-direction: column; 
-  justify-content: space-between;
-  */
-  /* display: grid;
-  grid-template: 7fr 1fr / 1fr; */
-  /* display: flex; */
   justify-content: space-around;
   padding: 10px;
   background-color: var(--color-1);
@@ -105,16 +96,6 @@ body {
 #filter-pop-up-div div {
   width: 100%;
 }
-/* #log-in-sign-up-page {
-  display: grid;
-  width: 90%;
-  height: 90%;
-  grid-template: 1fr 0.25fr / 1fr 1fr;
-  grid-template-areas: "signUp logIn" "rules rules";
-  gap: 2vh 10vw;
-  justify-self: center;
-  align-self: center;
-} */
 
 #log-in-sign-up-page {
   display: flex;
@@ -126,7 +107,6 @@ body {
 }
 
 #log-in-sign-up-page div {
-  /* have media query */
   border: 1px var(--color-5) solid;
   box-shadow: 0 0 1rem var(--color-5);
   padding: 2% 5%;
@@ -151,7 +131,6 @@ body {
 }
 
 #sign-up-div {
-  /* grid-area: signUp; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -159,7 +138,6 @@ body {
 }
 
 #log-in-div {
-  /* grid-area: logIn; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -199,7 +177,6 @@ body {
 #main-page {
   display: flex;
   flex-wrap: wrap;
-  /* overflow-y: scroll; */
   justify-content: center;
 }
 
@@ -208,7 +185,6 @@ body {
   border-radius: 1rem;
   margin: 1%;
   width: 31.3%;
-  /* height: 31%; */
   display: grid;
   grid-template: repeat(4, 0.25fr) / 1fr 2fr;
   grid-template-areas: "Image Name" "Image Genre" "Image Studio" "Image Type";
@@ -228,19 +204,14 @@ body {
   max-width: 100%;
   align-self: center;
   grid-area: Image;
-  /* padding: 5%; */
   border-radius: inherit;
-  /* aspect-ratio: 3/4 ; */
 }
 .anime-bg {
   max-width: 100%;
   opacity: 0.15;
   height: 100%;
-  /* align-self: center; */
   grid-area: name;
-  /* padding: 5%; */
   border-radius: inherit;
-  /* aspect-ratio: 3/4 ; */
   position: absolute;
   right: 0;
 }
@@ -253,12 +224,6 @@ body {
   font-family: sans-serif, Arial, Helvetica;
   font-size: 1rem;
   font-weight: bolder;
-
-  /* overflow-wrap: break-word; */
-  /* overflow:hidden; */
-  /* display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical; */
   overflow-y: hidden;
   z-index: 1;
 }
@@ -269,10 +234,6 @@ body {
   grid-area: Genre;
   overflow-wrap: break-word;
   font-size: medium;
-  /* overflow:hidden; */
-  /* display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical; */
   overflow-y: hidden;
   z-index: 1;
 }
@@ -286,10 +247,6 @@ body {
   font-family: sans-serif, Arial, Helvetica;
   font-size: medium;
   font-weight: bold;
-  /* overflow:hidden; */
-  /* display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical; */
   overflow-y: hidden;
   z-index: 1;
 }
@@ -304,10 +261,6 @@ body {
   font-size: medium;
   font-weight: bold;
   overflow: hidden;
-  /* display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-y: hidden; */
   z-index: 0;
   width: 50%;
 }
@@ -317,9 +270,6 @@ body {
   bottom: 0%;
   right: 5%;
   color: var(--color-warning);
-  /* z-index: 1;
-  background: url(Media/User-image-default.jpg);
-  border: 2px var(--color-5) solid */
   cursor: copy;
 }
 
@@ -345,9 +295,6 @@ body {
 #user-page {
   display: grid;
   grid-template: 30vh 70vh / 95vw;
-  /* justify-self: center; */
-  /* align-self: center; */
-  /* align-items:baseline; */
 }
 #user-div {
   display: flex;
@@ -367,24 +314,19 @@ body {
 }
 .avatar-pic {
   width: 8vw;
-  /* max-width: 15vw; */
   aspect-ratio: 1/1;
   border-radius: 50%;
 }
 .avatar-pic:hover {
-  /* aspect-ratio: 1/1; */
   border-radius: 50%;
   border: 2px var(--color-warning) solid;
 }
 #user-info {
   display: flex;
-  /* align-items: flex-start; */
   font-size: xx-large;
   font-weight: bolder;
 }
 #log-out-div button {
-  /* justify-self: right; 
-  */
   max-height: 100%;
   width: 10vw;
   padding: 0.5rem;
@@ -428,43 +370,16 @@ ul div:nth-child(2n) {
   background-color: var(--color-2);
 }
 
-/* svg {
-  width: 32;
-  height: 32;
-} */
 li::marker {
   color: var(--color-3);
 }
-/* li.added-to-fav-1 {
-  color: red;
-} */
 
 #filter-page {
   display: grid;
   grid-template: 1fr 2fr / 1fr 1fr 1fr;
   margin: 5%;
   gap: 5vh;
-  /* display: flex;
-  flex-wrap: wrap;
-  margin: 5%;
-  gap: 5vh; */
 }
-
-/* #filter-page div{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20%;
-  height: 20%;
-} */
-
-/* #filter-page button {
-  width: 100%;
-  height: 100%;
-  max-height: 1000px;
-  max-width: 1000px;
-  font-size: xx-large;
-} */
 
 #anime-page {
   display: grid;
@@ -502,17 +417,11 @@ li::marker {
   overflow-y: scroll;
 }
 .anime-page-description {
-  /* display: -webkit-box;
-  -webkit-line-clamp: 25;
-  -webkit-box-orient: vertical;
-  overflow-y: scroll; */
-  /* text-wrap: wrap; */
   width: calc(100% - 15px);
 }
 
 #anime-page-trailer-div {
   grid-area: animePageTrailer;
-  /* overflow-y: scroll; */
   justify-self: center;
 }
 
@@ -520,10 +429,6 @@ li::marker {
   height: 90%;
   aspect-ratio: 16/9;
 }
-
-/* #search-page {
-  display: none;
-} */
 
 #footer {
   display: grid;
@@ -543,8 +448,6 @@ button {
   border-style: hidden;
   color: var(--color-1);
   border-radius: 1rem;
-
-  /* background-color: var(--color-4); */
   background: linear-gradient(
     to right,
     var(--color-3) 0%,
@@ -555,7 +458,6 @@ button {
 }
 
 button:hover {
-  /* background-color: var(--color-5); */
   background: linear-gradient(
     to right,
     var(--color-3) 0%,
@@ -566,7 +468,6 @@ button:hover {
 }
 
 button:active {
-  /* background-color: var(--color-3); */
   background: linear-gradient(
     to right,
     var(--color-4) 0%,
@@ -586,9 +487,6 @@ button:active {
   border-radius: 0px;
 }
 
-/* #top-rated-button {
-  border-radius: 0px;
-} */
 #filter-button {
   border-radius: 0px;
 }
@@ -613,11 +511,6 @@ input[type="range"] {
   width: 100%;
   margin: 0;
 }
-/* !/////////////// */
-/* #filter-button-apply-rating-range {
-  width: min-content;
-  height: min-content;
-} */
 
 #setting-button {
   border-radius: 0px;
@@ -645,9 +538,6 @@ input[type="range"] {
   border-radius: 2rem;
   font-size: large;
   font-weight: bold;
-  /* text-align: end; */
-
-  /* background-color: var(--color-2); */
   background: radial-gradient(var(--color-2) 75%, var(--color-3) 100%);
   z-index: 1;
 }
@@ -661,12 +551,6 @@ input[type="range"] {
 #setting-pop-up button {
   font-size: large;
 }
-/* #dark-button {
-  grid-area: DarkLightToggle;
-}
-#light-button {
-  grid-area: DarkLightToggle;
-} */
 
 .api-div {
   display: flex;
@@ -688,7 +572,8 @@ input[type="range"] {
     min-height: 70%;
   }
   .avatar-pic {
-    width: 8vh;}
+    width: 8vh;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
