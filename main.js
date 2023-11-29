@@ -117,6 +117,14 @@ $(function () {
     const userPage = $("#user-page");
     const userDiv = $("#user-div");
     const userImage = $("#user-image");
+    const avatarList = $(".avatar-list");
+    // const avatarPic = $(".avatar-pic");
+    // const avatar1 = $("#avatar-1");
+    // const avatar2 = $("#avatar-2");
+    // const avatar3 = $("#avatar-3");
+    // const avatar4 = $("#avatar-4");
+    // const avatar5 = $("#avatar-5");
+
     const userInfo = $("#user-info");
 
     const userFavDiv = $("#user-fav-div");
@@ -770,6 +778,11 @@ $(function () {
     let logInUserNameNew = "";
     let logInPasswordNew = "";
 
+    let avatarSelectedId;
+    avatarList.click(function () {
+      avatarSelectedId = $(this).val();
+    });
+
     signUpUserName.change(function () {
       signUpUserNameNew = $(this).val().toLowerCase();
     });
@@ -876,6 +889,7 @@ $(function () {
 
       if (errorsCounter === 0) {
         logInSignUpErrors.html("");
+        userImage.attr("src", `Media/avatar-${avatarSelectedId}.jpg`);
         const logInSuccessful = $(
           `<p>log-in Successful for user : ${infoObject.username.toLowerCase()}</p>`
         );
@@ -929,6 +943,7 @@ $(function () {
       mainPageDiv.hide();
       // logInSignUpPage.css("display", "grid");
       logInSignUpPage.css("display", "flex");
+      container.css("display", "flex");
       mainPage.hide();
       userPage.hide();
       animePage.hide();

@@ -357,6 +357,22 @@ html {
   height: 20vh;
   aspect-ratio: 1/1;
 }
+#avatar-div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.avatar-pic {
+  width: 8vw;
+  /* max-width: 15vw; */
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+.avatar-pic:hover {
+  /* aspect-ratio: 1/1; */
+  border-radius: 50%;
+  border: 2px var(--color-warning) solid;
+}
 #user-info {
   display: flex;
   /* align-items: flex-start; */
@@ -668,6 +684,8 @@ input[type="range"] {
     flex-direction: column;
     min-height: 70%;
   }
+  .avatar-pic {
+    width: 8vh;}
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
