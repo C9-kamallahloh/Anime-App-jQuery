@@ -55,10 +55,10 @@ $(function () {
 
     //! my extra ideas and bugs.
     // anime-div separate each elem and add filter to it.
-    // change the pointer to finger if there is an event listener
-    // move the filter section to main page under search bar.
-    // add remove from fav button to user page ul li
-    // remove old sign-up log-in errors (create new div for errors) //! remove old errors
+    //(DONE) change the pointer to finger if there is an event listener
+    //(working on functions) move the filter section to main page under search bar.
+    //(DONE) add remove from fav button to user page ul li
+    //(DONE) remove old sign-up log-in errors (create new div for errors) //! remove old errors
     // add the user name, AVATAR, and any other info to the user page.
     // filter by id ascending or descending
     // gave every new user his own fav list.
@@ -117,6 +117,8 @@ $(function () {
     const userPage = $("#user-page");
     const userDiv = $("#user-div");
     const userImage = $("#user-image");
+    const userInfo = $("#user-info");
+
     const userFavDiv = $("#user-fav-div");
     const userFavUl = $("#user-fav-ul");
 
@@ -562,6 +564,7 @@ $(function () {
         mainPageDiv.hide();
         // logInSignUpPage.css("display", "grid");
         logInSignUpPage.css("display", "flex");
+        container.css("display", "flex");
         mainPage.hide();
         userPage.hide();
         animePage.hide();
@@ -878,8 +881,9 @@ $(function () {
         );
         logInSuccessful.addClass("log-in-successful");
         logInSignUpErrors.append(logInSuccessful);
-
+        userInfo.append(`<p>Welcome ${infoObject.username.toLowerCase()}</p>`);
         console.log("log-in-successful");
+
         localStorage.setItem("successfulLogIn", true);
         successfulLogIn = true;
 
