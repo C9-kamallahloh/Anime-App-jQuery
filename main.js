@@ -1,4 +1,3 @@
-// Shorthand for $( document ).ready()
 $(function () {
   //* /////////////////////// data from API ////////////////////
   const apiDiv = $(".api-div");
@@ -20,10 +19,7 @@ $(function () {
     },
   });
 
-  // let animesFromApi;
   const dataFromApi = (animesFromApi) => {
-    // animesFromApi = data;
-
     console.log("animesFromApi", animesFromApi);
 
     //! Main Features [Version 1]
@@ -58,8 +54,8 @@ $(function () {
     //(DONE) change the pointer to finger if there is an event listener
     //(working on functions) move the filter section to main page under search bar.
     //(DONE) add remove from fav button to user page ul li
-    //(DONE) remove old sign-up log-in errors (create new div for errors) //! remove old errors
-    // (DONE) add the user name, AVATAR, and any other info to the user page.
+    //(DONE) remove old sign-up log-in errors (create new div for errors)
+    //(DONE) add the user name, AVATAR, and any other info to the user page.
     // filter by id ascending or descending
     // gave every new user his own fav list.
 
@@ -73,19 +69,8 @@ $(function () {
     ];
     let successfulLogIn = !!localStorage.getItem("successfulLogIn") || false;
 
-    // console.log(typeof successfulLogIn);
-
-    // console.log(allUsers);
-    //* ////////////////// Fetching data from API ///////////////
-
-    //   let animesArray;
-
-    // if (animesFromApi === "error") { //! skipped for now to switch back to anime test array if API failed.
-
-    // }
     //* ///////////////////////////////////////////////////////////
 
-    // console.log(favAnimesArray);
     const body = $("body");
     const container = $("#container");
     const root = $(":root");
@@ -94,7 +79,6 @@ $(function () {
 
     const header = $("#header");
     const searchInput = $("#search-input");
-    // const filterButton = $("#filter-button");
     const filterPopUpButton = $("#filter-pop-up-button");
     const filterPopUpDiv = $("#filter-pop-up-div");
 
@@ -118,12 +102,6 @@ $(function () {
     const userDiv = $("#user-div");
     const userImage = $("#user-image");
     const avatarList = $(".avatar-list");
-    // const avatarPic = $(".avatar-pic");
-    // const avatar1 = $("#avatar-1");
-    // const avatar2 = $("#avatar-2");
-    // const avatar3 = $("#avatar-3");
-    // const avatar4 = $("#avatar-4");
-    // const avatar5 = $("#avatar-5");
 
     const userInfo = $("#user-info");
 
@@ -131,17 +109,12 @@ $(function () {
     const userFavUl = $("#user-fav-ul");
 
     const animePage = $("#anime-page");
-    // const animePageImage = $("#anime-page-image");
-    // const animePageDetails = $("#anime-page-details");
-    // const animePageDescription = $("#anime-page-description");
-    // const animePageTrailer = $("#anime-page-trailer");
 
     const filterPage = $("#filter-page");
     const filterDivAZ = $("#filter-div-a-z");
     const filterButtonAZ = $("#filter-button-a-z");
     const filterDivStudio = $("#filter-div-studio");
     const filterSelectStudio = $("#filter-select-studio");
-    // const filterButtonStudio = $("#filter-button-studio");
     const filterDivMovie = $("#filter-div-movie");
     const filterButtonMovie = $("#filter-button-movie");
     const filterDivRatingRange = $("#filter-div-rating-range");
@@ -161,7 +134,6 @@ $(function () {
     const theme2 = $("#theme-2");
 
     const footer = $("#footer");
-    // console.log(header[0].innerHTML);
 
     const home = $("#home");
     const homeButton = $("#home-button");
@@ -169,8 +141,6 @@ $(function () {
     const user = $("#user");
     const userButton = $("#user-button");
 
-    // const topRated = $("#top-rated");
-    // const topRatedButton = $("#top-rated-button");
     const filter = $("#filter");
     const filterButton = $("#filter-button");
 
@@ -179,31 +149,22 @@ $(function () {
 
     //* /////////////// HIDE / SHOW  ///////////////////////
 
-    // header.css("display", "grid");
     mainPageDiv.show();
     filterPopUpDiv.hide();
     logInSignUpPage.hide();
     mainPage.css("display", "flex");
-    // userPage.css("display","none");
-    // animePage.css("display","none");
-    // filterPage.css("display","none");
     userPage.hide();
     animePage.hide();
     filterPage.hide();
-    // topRated.hide();
     settingPopUp.hide();
     lightButton.hide();
 
     //* //////// Add/remove Anime To User Fav {from home page} //////////
 
     const removeFromFavFromList = function () {
-      // console.log($(this));
-      // console.log(this);
-      // console.log('$(this)[0].className', $(this)[0].className)
       let removedAnime = animesFromApi.filter(
         (elem, i) => `added-to-fav-${elem.id}` === $(this)[0].className
       );
-      // console.log("removedAnime", removedAnime);
       removedAnime = removedAnime[0];
 
       let indexOfRemovedAnime = favAnimesArray
@@ -211,37 +172,21 @@ $(function () {
           return e.id;
         })
         .indexOf(removedAnime.id);
-      // console.log("indexOfRemovedAnime", indexOfRemovedAnime);
       favAnimesArray.splice(indexOfRemovedAnime, 1);
 
       const favAnimeArrayToString = JSON.stringify(favAnimesArray);
       localStorage.setItem("favAnimesArray", favAnimeArrayToString);
-
-      // console.log('$(`#${indexOfRemovedAnime}`)', $(`#${indexOfRemovedAnime} .anime-div`))
-
-      //       $(`#${indexOfRemovedAnime} .anime-fav`)
-      //         .html(`<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-      //       <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
-      //     </svg>`);
 
       console.log(favAnimesArray);
       $(this).remove();
     };
 
     const removeFromFav = function () {
-      console.log(this);
       $(`ul div.added-to-fav-${$(this).parent()[0].id}`).remove();
-      // console.log(favAnimesArray);
-      // favAnimesArray.splice()
-      // const removedAnime = animesFromApi[$(this).parent()[0].id - 1];
       let removedAnime = animesFromApi.filter(
         (elem, i) => elem.id * 1 === $(this).parent()[0].id * 1
       );
       removedAnime = removedAnime[0];
-
-      // console.log(removedAnime);
-
-      // console.log($(this).parent()[0].id);
 
       let indexOfRemovedAnime = favAnimesArray
         .map(function (e) {
@@ -249,7 +194,6 @@ $(function () {
         })
         .indexOf(removedAnime.id);
 
-      // console.log(typeof favAnimesArray);
       favAnimesArray.splice(indexOfRemovedAnime, 1);
 
       const favAnimeArrayToString = JSON.stringify(favAnimesArray);
@@ -265,24 +209,10 @@ $(function () {
     };
 
     const addToFav = function () {
-      // console.log($(this).parent()[0].id);
-      // console.log(animes[($(this).parent()[0].id-1)].animeName);
-
-      // console.log($(this).parent()[0].id);
-
-      // const addedAnime = animesFromApi[$(this).parent()[0].id - 1];
-      // const addedAnime = animesFromApi.some((ele, i) => {
-      //   if (ele.id * 1 === $(this).parent()[0].id * 1) {
-      //     return animesFromApi[i];
-      //   }
-      // });
       let addedAnime = animesFromApi.filter(
         (elem, i) => elem.id * 1 === $(this).parent()[0].id * 1
       );
       addedAnime = addedAnime[0];
-
-      // console.log(addedAnime);
-
       const newAddedToFav = $(
         `<div><li>${addedAnime.attributes.canonicalTitle}</li><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart-half" viewBox="0 0 16 16">
         <path d="M8 2.748v11.047c3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
@@ -290,9 +220,7 @@ $(function () {
       );
       newAddedToFav.addClass(`added-to-fav-${addedAnime.id}`);
       newAddedToFav.click(removeFromFavFromList);
-      // newAddedToFav.click(returnToHome)
       userFavUl.append(newAddedToFav);
-
       favAnimesArray.push(addedAnime);
       const favAnimeArrayToString = JSON.stringify(favAnimesArray);
       localStorage.setItem("favAnimesArray", favAnimeArrayToString);
@@ -308,7 +236,6 @@ $(function () {
 
     const returnToHome = function () {
       setTimeout(() => {
-        // header.css("display", "grid");
         mainPageDiv.show();
         filterPopUpDiv.hide();
         logInSignUpPage.hide();
@@ -322,7 +249,6 @@ $(function () {
     //* //////////////// go to anime page /////////////////////
 
     const goToAnimePage = function () {
-      // header.hide();
       mainPageDiv.hide();
       logInSignUpPage.hide();
       mainPage.hide();
@@ -347,16 +273,11 @@ $(function () {
         animePageTrailerDiv
       );
 
-      // console.log(animes[$(this)[0].id - 1]);
-      // const animeInfo = animesFromApi[$(this)[0].id - 1];
-      // console.log($(this)[0]);
       let animeInfo = animesFromApi.filter(
         (elem, i) => elem.id * 1 === $(this)[0].id * 1
       );
 
       animeInfo = animeInfo[0];
-
-      // console.log(animeInfo);
 
       //* ///////////
 
@@ -373,23 +294,8 @@ $(function () {
       const animeName = $(`<p>${animeInfo.attributes.canonicalTitle}</p>`);
       animeName.addClass("anime-page-name");
 
-      // const AnimeGenresArray = animeInfo.Genres.join(" ");
-      // const animeGenre = $(`<p>${AnimeGenresArray}</p>`);
-      // animeGenre.addClass("anime-page-genre");
-
-      // const animeStudio = $(`<p>${animeInfo.Studios}</p>`);
-      // animeStudio.addClass("anime-page-studio");
-
       const animeType = $(`<p>${animeInfo.attributes.showType}</p>`);
       animeType.addClass("anime-page-type");
-
-      //   const animeFav =
-      //     $(`<p><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-      //   <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
-      // </svg></p>`);
-      //   animeFav.addClass("anime-page-fav");
-      //   animeFav.click(addToFav);
-      //   animeFav.click(returnToHome); //! click on both FAV and animeDiv at the same time
 
       const animeRate = $(
         `<p>${Math.floor(animeInfo.attributes.averageRating * 10) / 100}</p>`
@@ -399,24 +305,13 @@ $(function () {
       const animeDescription = $(`<p>${animeInfo.attributes.synopsis}</p>`);
       animeDescription.addClass("anime-page-description");
 
-      // const animeTrailer = $(`<iframe src=${animeInfo.trailerSrc}></iframe>`);
-      // animeTrailer.addClass("anime-trailer");
-
       //* ///////////
 
       animePageImageDiv.append(animeImage);
 
-      animePageDetailsDiv.append(
-        // animeFav,
-        animeName,
-        animeRate,
-        // animeGenre,
-        // animeStudio,
-        animeType
-      );
+      animePageDetailsDiv.append(animeName, animeRate, animeType);
 
       animePageDescriptionDiv.append(animeDescription);
-      // animePageTrailerDiv.append(animeTrailer);
     };
 
     //* ///////////////////////////////////////////////////////
@@ -442,15 +337,6 @@ $(function () {
 
         const animeName = $(`<p>${elem.attributes.canonicalTitle}</p>`);
         animeName.addClass("anime-name");
-        // animeName.css({
-        //   "overflow": "hidden",
-        // });
-        // const AnimeGenresArray = elem.Genres.join(" ");
-        // const animeGenre = $(`<p>${AnimeGenresArray}</p>`);
-        // animeGenre.addClass("anime-genre");
-
-        // const animeStudio = $(`<p>${elem.Studios}</p>`);
-        // animeStudio.addClass("anime-studio");
 
         const animeType = $(`<p>${elem.attributes.showType}</p>`);
         animeType.addClass("anime-type");
@@ -470,16 +356,7 @@ $(function () {
             return e.id;
           })
           .indexOf(elem.id);
-        // console.log(indexOfFavedAnimes);
         if (indexOfFavedAnimes >= 0) {
-          // console.log("sss", indexOfFavedAnimes);
-          // console.log(animeFav[0].innerText);
-          // const addedAnime = animesFromApi[elem.id - 1];
-          // const newAddedToFav = $(`<li>${addedAnime.animeName}</li>`);
-          // console.log(elem);
-          // let addedAnime = animesFromApi[indexOfFavedAnimes]
-          // console.log(addedAnime); //! elem === addedAnime
-
           const newAddedToFav = $(`<li>${elem.attributes.canonicalTitle}</li>`);
 
           newAddedToFav.addClass(`added-to-fav-${elem.id}`);
@@ -491,12 +368,6 @@ $(function () {
           animeFav.off();
           animeFav.click(removeFromFav);
           animeFav.click(returnToHome);
-          // $("p.anime-fav").trigger("click") //! Trigger now working
-          // animeFav.trigger("click")
-          // const checkIfInFav = animes[$(this).parent()[0].id - 1];
-          // console.log(favAnimesArray);
-
-          // console.log(indexOfFavedAnimes);
         }
 
         //* ////
@@ -510,8 +381,6 @@ $(function () {
           animeBg,
           animeImage,
           animeName,
-          // animeGenre,
-          // animeStudio,
           animeType,
           animeFav,
           animeRate
@@ -531,16 +400,11 @@ $(function () {
 
     //* ////////////////// Events listeners ///////////////////
 
-    searchInput.on(/* "keyup" */ "change", function () {
-      // console.log($(this).val());
-
+    searchInput.on("change", function () {
       let searchVal = $(this).val().toLowerCase();
 
       localStorage.setItem("apiSearchWord", searchVal);
       location.reload();
-      // $(".anime-div").filter(function () {
-      //   $(this).toggle($(this).text().toLowerCase().indexOf(searchVal) > -1);
-      // });
     });
 
     homeButton.click(function () {
@@ -570,7 +434,6 @@ $(function () {
         filterPage.hide();
       } else {
         mainPageDiv.hide();
-        // logInSignUpPage.css("display", "grid");
         logInSignUpPage.css("display", "flex");
         container.css("display", "flex");
         mainPage.hide();
@@ -619,14 +482,7 @@ $(function () {
 
     filterButtonAZ.click(function () {
       //! will sort the original anime array ascending only.
-
-      // homeButton.trigger("click");
-
-      // console.log($(".anime-div"));
-      // console.log(animes);
       animesFromApi.sort((a, b) => {
-        // console.log("A", a.animeName);
-        // console.log("B", b.animeName);
         let nameA;
         a.attributes.canonicalTitle === undefined
           ? (nameA = "undefined")
@@ -636,7 +492,6 @@ $(function () {
         b.attributes.canonicalTitle === undefined
           ? (nameB = "undefined")
           : (nameB = b.attributes.canonicalTitle.toLowerCase());
-        // console.log(nameA > nameB);
         if (nameA < nameB) {
           return -1;
         }
@@ -647,19 +502,13 @@ $(function () {
       });
 
       renderAnimesList(animesFromApi);
-      // console.log(animes);
     });
 
     studiosArray = [];
 
     animesFromApi.forEach((elem, i) => {
-      // console.log(elem.Studios);
-      // console.log(studiosArray.includes(elem.Studios));
       if (!studiosArray.includes(elem.Studios)) studiosArray.push(elem.Studios);
     });
-
-    // console.log(studiosArray);
-
     studiosArray.forEach((elem, i) => {
       const addStudioToSelectList = $(`<option value=""></option>`);
       addStudioToSelectList.text(`${elem}`);
@@ -687,12 +536,9 @@ $(function () {
     let MaxRatingRange = filterMaxRatingRange.val() / 10;
 
     filterMinRatingRange.change(function () {
-      // console.log(filterMinRatingRange.val()/10);
       MinRatingRange = filterMinRatingRange.val() / 10;
     });
-    // console.log(filterMaxRatingRange.val());
     filterMaxRatingRange.change(function () {
-      // console.log(filterMaxRatingRange.val()/10);
       MaxRatingRange = filterMaxRatingRange.val() / 10;
     });
 
@@ -706,30 +552,13 @@ $(function () {
       }
       console.log(`Rating range : ( ${MinRatingRange} - ${MaxRatingRange} ) `);
 
-      // const ratingRange =
-
-      // if(MinRatingRange < )
-
-      //   let toArray = $(`.anime-rate`).text()
-      // console.log(toArray);
-
       $(".anime-div").filter((elem, index) => {
-        // console.log(Number($(`#${i+1} .anime-rate`)[0].innerText));
-
-        // console.log(elem,index);
-
         const rateValue = Number($(`#${index.id} .anime-rate`)[0].innerText);
 
-        console.log("rateValue", rateValue);
-        // console.log($(this));
         $(`#${index.id}.anime-div`).toggle(
           MinRatingRange <= rateValue && rateValue <= MaxRatingRange
         );
       });
-
-      // animes.forEach((elem,i)=> {
-      //   console.log(elem.rate);
-      // })
     });
 
     //* ///////////////////////////////////////////////////////
@@ -754,20 +583,7 @@ $(function () {
       settingPopUp.toggle();
     });
 
-    //! ///////////////////////////////////////////////////////
-    //! ///////////////////Log-in Sign-up////////////////////////
-
-    // const logInSignUpPage = $("#log-in-sign-up-page");
-    // const signUpDiv = $("#sign-up-div");
-    // const signUpUserName = $("#sign-up-user-name");
-    // const signUpPassword = $("#sign-up-password");
-    // const signUpPasswordAgain = $("#sign-up-password-again");
-    // const signUpButton = $("#sign-up-button");
-    // const logInDiv = $("#log-in-div");
-    // const logInName = $("#log-in-user-name");
-    // const logInPassword = $("#log-in-password");
-    // const logInButton = $("#log-in-button");
-    // const logInRules = $("#log-in-rules");
+    //* ///////////////////Log-in Sign-up////////////////////////
 
     let signUpInformation = { username: "", password: "" };
     let logInInformation = { username: "", password: "" };
@@ -800,7 +616,7 @@ $(function () {
     });
 
     const isValidSignUp = (infoObject) => {
-      logInSignUpErrors.html(""); //! remove old errors
+      logInSignUpErrors.html("");
       const errorsList = $(`<ul>## Errors:</ul>`);
       let errorsCounter = 0;
 
@@ -840,7 +656,7 @@ $(function () {
       }
 
       if (errorsCounter === 0) {
-        logInSignUpErrors.html(""); //! remove old errors
+        logInSignUpErrors.html("");
         const registerSuccessful = $(
           `<p>Register Successful for user : ${infoObject.username.toLowerCase()}</p>`
         );
@@ -856,7 +672,7 @@ $(function () {
     };
 
     const isValidLogIn = (infoObject) => {
-      logInSignUpErrors.html(""); //! remove old errors
+      logInSignUpErrors.html("");
       const errorsList = $(`<ul>## Errors:</ul>`);
       let errorsCounter = 0;
 
@@ -901,11 +717,8 @@ $(function () {
         localStorage.setItem("successfulLogIn", true);
         successfulLogIn = true;
 
-        // console.log(logInUserName);
-
         logInUserName.val("");
         logInPassword.val("");
-        // userButton.trigger("click")
         //! edit the userButton event click
         mainPageDiv.hide();
         logInSignUpPage.hide();
@@ -924,7 +737,6 @@ $(function () {
         password: signUpPasswordNew,
       };
       isValidSignUp(signUpInformation);
-      console.log(allUsers);
     });
 
     logInButton.click(function () {
@@ -941,7 +753,6 @@ $(function () {
       successfulLogIn = false;
       //! edit the userButton event click
       mainPageDiv.hide();
-      // logInSignUpPage.css("display", "grid");
       logInSignUpPage.css("display", "flex");
       container.css("display", "flex");
       mainPage.hide();
@@ -967,7 +778,6 @@ $(function () {
     });
 
     lightButton.click(function () {
-      //! edit with it ( style.css / :root)
       root.css({
         "--color-1": "var(--color-1-a)",
         "--color-2": "var(--color-2-a)",
@@ -981,7 +791,6 @@ $(function () {
     });
 
     theme0.click(function () {
-      //! edit with it ( style.css / :root)
       root.css({
         "--color-1-a": "rgb(244, 238, 255)",
         "--color-2-a": "rgb(220, 214, 247)",
@@ -993,7 +802,6 @@ $(function () {
     });
 
     theme1.click(function () {
-      //! edit with it ( style.css / :root)
       root.css({
         "--color-1-a": "rgba(248, 248, 247, 1)",
         "--color-2-a": "rgba(248, 200, 164, 1)",
@@ -1005,7 +813,6 @@ $(function () {
     });
 
     theme2.click(function () {
-      //! edit with it ( style.css / :root)
       root.css({
         "--color-1-a": "rgba(252, 252, 252, 1)",
         "--color-2-a": "rgba(217, 227, 240, 1)",
@@ -1019,7 +826,6 @@ $(function () {
     apiFirst.click(function () {
       apiPageCounter = 0;
       localStorage.setItem("apiPageCounter", apiPageCounter);
-      // homeButton.trigger("click");
       renderAnimesList(animesFromApi);
       location.reload();
     });
@@ -1027,7 +833,6 @@ $(function () {
     apiBack.click(function () {
       apiPageCounter >= 18 ? (apiPageCounter -= 18) : (apiPageCounter = 0);
       localStorage.setItem("apiPageCounter", apiPageCounter);
-      // homeButton.trigger("click");
       renderAnimesList(animesFromApi);
       location.reload();
     });
@@ -1037,7 +842,6 @@ $(function () {
         ? (apiPageCounter += 18)
         : (apiPageCounter = 12000);
       localStorage.setItem("apiPageCounter", apiPageCounter);
-      // homeButton.trigger("click");
       renderAnimesList(animesFromApi);
       location.reload();
     });
@@ -1045,7 +849,6 @@ $(function () {
     apiLast.click(function () {
       apiPageCounter = 12000;
       localStorage.setItem("apiPageCounter", apiPageCounter);
-      // homeButton.trigger("click");
       renderAnimesList(animesFromApi);
       location.reload();
     });
