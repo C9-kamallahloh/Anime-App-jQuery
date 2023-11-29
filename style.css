@@ -212,11 +212,12 @@ html {
   position: relative;
   box-shadow: 0 0 5px var(--color-5);
   background-color: var(--color-2);
+  cursor: pointer;
 }
 
 .anime-div > p:hover {
   overflow-y: visible;
-  background-color: var(--color-2);
+  background: var(--color-2) 0.5;
   border-radius: inherit;
 }
 
@@ -252,10 +253,12 @@ html {
 
   /* overflow-wrap: break-word; */
   /* overflow:hidden; */
-  display: -webkit-box;
+  /* display: -webkit-box;
   -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: vertical; */
   overflow-y: hidden;
+  z-index: 1;
+
 }
 
 .anime-genre {
@@ -265,10 +268,12 @@ html {
   overflow-wrap: break-word;
   font-size: medium;
   /* overflow:hidden; */
-  display: -webkit-box;
+  /* display: -webkit-box;
   -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: vertical; */
   overflow-y: hidden;
+  z-index: 1;
+
 }
 
 .anime-studio {
@@ -281,10 +286,12 @@ html {
   font-size: medium;
   font-weight: bold;
   /* overflow:hidden; */
-  display: -webkit-box;
+  /* display: -webkit-box;
   -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: vertical; */
   overflow-y: hidden;
+  z-index: 1;
+
 }
 
 .anime-type {
@@ -296,11 +303,13 @@ html {
   font-family: sans-serif, Arial, Helvetica;
   font-size: medium;
   font-weight: bold;
-  /* overflow:hidden; */
-  display: -webkit-box;
+  overflow:hidden;
+  /* display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  overflow-y: hidden;
+  overflow-y: hidden; */
+  z-index: 0;
+  width: 50%;
 }
 
 .anime-fav {
@@ -311,12 +320,13 @@ html {
   /* z-index: 1;
   background: url(Media/User-image-default.jpg);
   border: 2px var(--color-5) solid */
+  cursor: copy;
 }
 
 .anime-rate {
   position: absolute;
-  bottom: 5%;
-  left: 10%;
+  bottom: 0%;
+  left: 50%;
   color: var(--color-4);
   background-color: var(--color-1);
   opacity: 0.85;
@@ -327,7 +337,8 @@ html {
 }
 
 .anime-rate::first-letter {
-  color: var(--color-5);
+  color: var(--color-warning);
+  
   font-size: x-large;
 }
 
@@ -607,6 +618,7 @@ input[type="range"] {
 
   /* background-color: var(--color-2); */
   background: radial-gradient(var(--color-2) 75%, var(--color-3) 100%);
+  z-index: 1;
 }
 
 .setting-pop-up-des {

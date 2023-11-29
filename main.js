@@ -609,7 +609,7 @@ $(function () {
     filterButtonAZ.click(function () {
       //! will sort the original anime array ascending only.
 
-      homeButton.trigger("click");
+      // homeButton.trigger("click");
 
       // console.log($(".anime-div"));
       // console.log(animes);
