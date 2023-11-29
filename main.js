@@ -580,8 +580,18 @@ $(function () {
       filterPage.show();
     });
 
-
-    filterPopUpButton.click(function(){
+    const filterPopUpOff = function () {
+      mainPageDiv.show();
+      filterPopUpDiv.hide();
+      logInSignUpPage.hide();
+      mainPage.css("display", "flex");
+      userPage.hide();
+      animePage.hide();
+      filterPage.show();
+      filterPopUpButton.off("click");
+      filterPopUpButton.click(filterPopUpOn);
+    };
+    const filterPopUpOn = function () {
       mainPageDiv.show();
       filterPopUpDiv.css("display", "flex");
       logInSignUpPage.hide();
@@ -589,10 +599,12 @@ $(function () {
       userPage.hide();
       animePage.hide();
       filterPage.show();
-    })
+      filterPopUpButton.off("click");
+      filterPopUpButton.click(filterPopUpOff);
+    };
+    filterPopUpButton.click(filterPopUpOn);
+
     //* /////////////////////// Filters ////////////////////////
-
-
 
     filterButtonAZ.click(function () {
       //! will sort the original anime array ascending only.

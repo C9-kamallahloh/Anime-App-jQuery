@@ -69,7 +69,7 @@ html {
   */
   /* display: grid;
   grid-template: 7fr 1fr / 1fr; */
-  display: flex;
+  /* display: flex; */
   justify-content: space-around;
   padding: 10px;
   background-color: var(--color-1);
@@ -92,6 +92,15 @@ html {
 }
 #filter-pop-up-div {
   display: flex;
+  width: 100%;
+  gap: 2%;
+  padding: 0 2vw ;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#filter-pop-up-div div {
+  width: 100%;
 }
 /* #log-in-sign-up-page {
   display: grid;
@@ -476,7 +485,7 @@ li::marker {
 
 #footer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   position: fixed;
   right: 2.5vw;
   bottom: 10px; /* ! related to container padding */
