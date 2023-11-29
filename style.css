@@ -106,9 +106,9 @@ html {
 #log-in-sign-up-page {
   display: flex;
   flex-wrap: wrap;
-  gap: 2%;
+  row-gap: 5%;
   flex-grow: 1;
-  margin: 5%;
+  margin: 3%;
   font-size: larger;
 }
 
@@ -179,7 +179,7 @@ html {
   overflow-y: auto;
 }
 
-#log-in-rules p {
+#log-in-sign-up-errors ul li {
   color: var(--color-warning);
 }
 

@@ -211,7 +211,6 @@ $(function () {
       //       <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
       //     </svg>`);
 
-      
       console.log(favAnimesArray);
       $(this).remove();
     };
@@ -370,13 +369,13 @@ $(function () {
       const animeType = $(`<p>${animeInfo.attributes.showType}</p>`);
       animeType.addClass("anime-page-type");
 
-    //   const animeFav =
-    //     $(`<p><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-    //   <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
-    // </svg></p>`);
-    //   animeFav.addClass("anime-page-fav");
-    //   animeFav.click(addToFav);
-    //   animeFav.click(returnToHome); //! click on both FAV and animeDiv at the same time
+      //   const animeFav =
+      //     $(`<p><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+      //   <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+      // </svg></p>`);
+      //   animeFav.addClass("anime-page-fav");
+      //   animeFav.click(addToFav);
+      //   animeFav.click(returnToHome); //! click on both FAV and animeDiv at the same time
 
       const animeRate = $(
         `<p>${Math.floor(animeInfo.attributes.averageRating * 10) / 100}</p>`
@@ -756,19 +755,22 @@ $(function () {
     });
 
     const isValidSignUp = (infoObject) => {
-      if (infoObject.username.length < 6) {
-        logInRules.remove($("div .usernameLength")); //! remove old errors
-        $("p").removeClass("usernameLength"); //! remove old errors
+      logInSignUpErrors.html(""); //! remove old errors
+      const errorsList = $(`<ul>## Errors:</ul>`);
+      let errorsCounter = 0;
 
-        const usernameLength = $(`<p>User must be >= 6</p>`);
+      if (infoObject.username.length < 6) {
+        const usernameLength = $(`<li>User must be >= 6</li>`);
         usernameLength.addClass("username-length");
-        return logInRules.append(usernameLength);
+        errorsList.append(usernameLength);
+        errorsCounter++;
       }
 
       if (infoObject.password.length < 8) {
-        const passwordLength = $(`<p>Password must be > 8</p>`);
+        const passwordLength = $(`<li>Password must be > 8</li>`);
         passwordLength.addClass("password-length");
-        return logInRules.append(passwordLength);
+        errorsList.append(passwordLength);
+        errorsCounter++;
       }
 
       if (
@@ -777,78 +779,96 @@ $(function () {
             ele.username.toLowerCase() === infoObject.username.toLowerCase()
         )
       ) {
-        const userNameTaken = $(`<p>User name already taken</p>`);
+        const userNameTaken = $(`<li>User name already taken</li>`);
         userNameTaken.addClass("user-name-taken");
-        return logInRules.append(userNameTaken);
+        errorsList.append(userNameTaken);
+        errorsCounter++;
       }
 
       if (signUpPasswordNew !== signUpPasswordAgainNew) {
         const passwordNotMatch = $(
-          `<p>the re-entered password don't match the new password</p>`
+          `<li>the re-entered password don't match the new password</li>`
         );
         passwordNotMatch.addClass("password-not-match");
-        return logInRules.append(passwordNotMatch);
+        errorsList.append(passwordNotMatch);
+        errorsCounter++;
       }
 
-      const registerSuccessful = $(
-        `<p>Register Successful for user : ${infoObject.username.toLowerCase()}</p>`
-      );
-      registerSuccessful.addClass("register-successful");
-      logInRules.append(registerSuccessful);
-      allUsers.push(infoObject);
+      if (errorsCounter === 0) {
+        logInSignUpErrors.html(""); //! remove old errors
+        const registerSuccessful = $(
+          `<p>Register Successful for user : ${infoObject.username.toLowerCase()}</p>`
+        );
+        registerSuccessful.addClass("register-successful");
+        logInSignUpErrors.append(registerSuccessful);
+        allUsers.push(infoObject);
 
-      const allUsersArrayToString = JSON.stringify(allUsers);
-      localStorage.setItem("allUsersArray", allUsersArrayToString);
+        const allUsersArrayToString = JSON.stringify(allUsers);
+        localStorage.setItem("allUsersArray", allUsersArrayToString);
+      } else {
+        logInSignUpErrors.append(errorsList);
+      }
     };
 
     const isValidLogIn = (infoObject) => {
-      if (
-        !allUsers.some(
-          (ele) =>
-            ele.username.toLowerCase() === infoObject.username.toLowerCase()
-        )
-      ) {
+      logInSignUpErrors.html(""); //! remove old errors
+      const errorsList = $(`<ul>## Errors:</ul>`);
+      let errorsCounter = 0;
+
+      const isUserNameInAllUsers = allUsers.some(
+        (ele) =>
+          ele.username.toLowerCase() === infoObject.username.toLowerCase()
+      );
+      if (!isUserNameInAllUsers) {
         const userNameNotFound = $(
-          `<p>User name not found in our database</p>`
+          `<li>User name not found in our database</li>`
         );
         userNameNotFound.addClass("user-name-not-found");
-        return logInRules.append(userNameNotFound);
+        errorsList.append(userNameNotFound);
+        errorsCounter++;
+      }
+      if (isUserNameInAllUsers) {
+        let indexOfLogInName = allUsers
+          .map(function (e) {
+            return e.username;
+          })
+          .indexOf(infoObject.username);
+
+        if (infoObject.password !== allUsers[indexOfLogInName].password) {
+          const passwordWrong = $(`<li>Wrong password</li>`);
+          passwordWrong.addClass("password-wrong");
+          errorsList.append(passwordWrong);
+          errorsCounter++;
+        }
       }
 
-      let indexOfLogInName = allUsers
-        .map(function (e) {
-          return e.username;
-        })
-        .indexOf(infoObject.username);
+        if (errorsCounter === 0) {
+          logInSignUpErrors.html("");
+          const logInSuccessful = $(
+            `<p>log-in Successful for user : ${infoObject.username.toLowerCase()}</p>`
+          );
+          logInSuccessful.addClass("log-in-successful");
+          logInSignUpErrors.append(logInSuccessful);
 
-      if (infoObject.password !== allUsers[indexOfLogInName].password) {
-        const passwordWrong = $(`<p>Wrong password</p>`);
-        passwordWrong.addClass("password-wrong");
-        return logInRules.append(passwordWrong);
-      }
+          console.log("log-in-successful");
+          localStorage.setItem("successfulLogIn", true);
+          successfulLogIn = true;
 
-      const logInSuccessful = $(
-        `<p>log-in Successful for user : ${infoObject.username.toLowerCase()}</p>`
-      );
-      logInSuccessful.addClass("log-in-successful");
-      logInRules.append(logInSuccessful);
+          // console.log(logInUserName);
 
-      console.log("log-in-successful");
-      localStorage.setItem("successfulLogIn", true);
-      successfulLogIn = true;
-
-      // console.log(logInUserName);
-
-      logInUserName.val("");
-      logInPassword.val("");
-      // userButton.trigger("click")
-      //! edit the userButton event click
-      mainPageDiv.hide();
-      logInSignUpPage.hide();
-      mainPage.hide();
-      userPage.css("display", "grid");
-      animePage.hide();
-      filterPage.hide();
+          logInUserName.val("");
+          logInPassword.val("");
+          // userButton.trigger("click")
+          //! edit the userButton event click
+          mainPageDiv.hide();
+          logInSignUpPage.hide();
+          mainPage.hide();
+          userPage.css("display", "grid");
+          animePage.hide();
+          filterPage.hide();
+        } else {
+          logInSignUpErrors.append(errorsList);
+        }
     };
 
     signUpButton.click(function () {
@@ -869,12 +889,13 @@ $(function () {
     });
 
     logOutButton.click(function () {
+      logInSignUpErrors.html(`<p>## Errors:</p>`);
       localStorage.setItem("successfulLogIn", "");
       successfulLogIn = false;
       //! edit the userButton event click
       mainPageDiv.hide();
-        // logInSignUpPage.css("display", "grid");
-        logInSignUpPage.css("display", "flex");
+      // logInSignUpPage.css("display", "grid");
+      logInSignUpPage.css("display", "flex");
       mainPage.hide();
       userPage.hide();
       animePage.hide();
